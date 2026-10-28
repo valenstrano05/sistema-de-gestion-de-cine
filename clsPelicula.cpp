@@ -108,6 +108,7 @@ void Pelicula::modificar()
     cout <<"5. FECHA DE ESTRENO: ";
     cout <<"6. DURACION: " <<endl;
     cout <<"7. CLASIFICACION: " <<endl;
+    cin >> opcion;
     switch(opcion){
         case 1:
             cargarCadena("TITULO: ", titulo, 50);

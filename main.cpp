@@ -1,20 +1,18 @@
-#include <windows.h>
-#include "clsArchivoPelicula.h"
+#include <iostream>
+#include "clsArchivoPeliculas.h"
 #include "clsPelicula.h"
 #include "funciones.h"
+#include <clocale>
 using namespace std;
-
-
 void menuPeliculas();
 void menuDescuentos();
 
 
 int main(){
-       SetConsoleOutputCP(CP_UTF8);
-       SetConsoleCP(CP_UTF8);
+setlocale(LC_ALL, "Spanish");
        while (true){
        int opcion;
-       cout << "\n";
+        cout << endl;
         cout << "  ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐" << endl;
         cout << "  ⭐                                                             ⭐" << endl;
         cout << "  ⭐            ██████╗ ██╗███╗   ██╗███████╗                    ⭐" << endl;
@@ -25,15 +23,14 @@ int main(){
         cout << "  ⭐             ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝                   ⭐" << endl;
         cout << "  ⭐                                                             ⭐" << endl;
         cout << "  ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐ ⭐" << endl;
-        cout << "\n";
-       cout <<"\t 1. PELICULAS" <<endl;
-       cout <<"\t 2. DESCUENTOS" <<endl;
+        cout << endl;
+       cout <<" 1. PELICULAS" <<endl;
+       cout <<" 2. DESCUENTOS" <<endl;
        cout <<endl;
        cout <<"------------------------------------------------" <<endl;
        cout <<"Ingrese una opción: "; cin >>opcion;
        cout <<"------------------------------------------------" <<endl;
        system("cls");
-
        switch(opcion){
        case 1:
            menuPeliculas();
@@ -48,20 +45,18 @@ int main(){
 
 return 0;}
 
-
-
 void menuPeliculas(){
     while (true){
        int opcion;
        cout <<"||||||||||||||||||||||||||||||||||||||||||||||||" <<endl;
-       cout <<"\n                   PELICULAS" <<endl;
-       cout <<"\n||||||||||||||||||||||||||||||||||||||||||||||||" <<endl;
+       cout <<"                   PELICULAS" <<endl;
+       cout <<"||||||||||||||||||||||||||||||||||||||||||||||||" <<endl;
        cout <<endl;
-       cout <<"\t 1. CARGAR PELICULAS" <<endl;
-       cout <<"\t 2. LISTAR PELICULAS" <<endl;
-       cout <<"\t 3. MODIFICAR" <<endl;
-       cout <<"\t 4. DAR DE BAJA" <<endl;
-       cout <<"\t 0. VOLVER AL MENU PRINCIPAL" <<endl;
+       cout <<"  1. CARGAR PELICULAS" <<endl;
+       cout <<"  2. LISTAR PELICULAS" <<endl;
+       cout <<"  3. MODIFICAR" <<endl;
+       cout <<"  4. DAR DE BAJA" <<endl;
+       cout <<"  0. VOLVER AL MENU PRINCIPAL" <<endl;
        cout <<endl;
        cout <<"------------------------------------------------" <<endl;
        cout <<"Ingrese una opción: "; cin >>opcion;
@@ -99,11 +94,11 @@ void menuDescuentos(){
        cout <<"                   DESCUENTOS" <<endl;
        cout <<"||||||||||||||||||||||||||||||||||||||||||||||||" <<endl;
        cout <<endl;
-       cout <<"\t 1. CARGAR DESCUENTOS" <<endl;
-       cout <<"\t 2. LISTAR DESCUENTOS" <<endl;
-       cout <<"\t 3. MODIFICAR" <<endl;
-       cout <<"\t 4. DAR DE BAJA" <<endl;
-       cout <<"\t 0. VOLVER AL MENU PRINCIPAL" <<endl;
+       cout <<"  1. CARGAR DESCUENTOS" <<endl;
+       cout <<"  2. LISTAR DESCUENTOS" <<endl;
+       cout <<"  3. MODIFICAR" <<endl;
+       cout <<"  4. DAR DE BAJA" <<endl;
+       cout <<"  0. VOLVER AL MENU PRINCIPAL" <<endl;
        cout <<endl;
        cout <<"------------------------------------------------" <<endl;
        cout <<"Ingrese una opción: "; cin >>opcion;
