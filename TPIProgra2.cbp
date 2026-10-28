@@ -36,12 +36,18 @@
 		</Compiler>
 		<Unit filename="clsArchivoCompras.cpp" />
 		<Unit filename="clsArchivoCompras.h" />
+		<Unit filename="clsArchivoDescuento.cpp" />
+		<Unit filename="clsArchivoDescuento.h" />
 		<Unit filename="clsArchivoDetalleEntradas.cpp" />
 		<Unit filename="clsArchivoDetalleEntradas.h" />
 		<Unit filename="clsArchivoFunciones.cpp" />
 		<Unit filename="clsArchivoFunciones.h" />
+		<Unit filename="clsArchivoPelicula.cpp" />
+		<Unit filename="clsArchivoPeliculas.h" />
 		<Unit filename="clsCompra.cpp" />
 		<Unit filename="clsCompra.h" />
+		<Unit filename="clsDescuento.cpp" />
+		<Unit filename="clsDescuento.h" />
 		<Unit filename="clsDetalleEntrada.cpp" />
 		<Unit filename="clsDetalleEntrada.h" />
 		<Unit filename="clsFecha.cpp" />
@@ -50,7 +56,12 @@
 		<Unit filename="clsFuncion.h" />
 		<Unit filename="clsHora.cpp" />
 		<Unit filename="clsHora.h" />
+		<Unit filename="clsPelicula.cpp" />
+		<Unit filename="clsPelicula.h" />
+		<Unit filename="funciones.cpp" />
+		<Unit filename="funciones.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="submenus.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
