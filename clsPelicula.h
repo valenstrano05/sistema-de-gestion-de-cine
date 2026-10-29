@@ -1,6 +1,6 @@
 #ifndef PELICULA_H_INCLUDED
 #define PELICULA_H_INCLUDED
-#include "fecha.h"
+#include "clsFecha.h"
 
 class Pelicula{
 private:

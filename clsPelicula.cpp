@@ -101,6 +101,7 @@ void Pelicula::modificar()
 {
     int opcion;
     cout <<"Seleccione el campo a modificar..." <<endl;
+<<<<<<< HEAD
     cout <<"1. TITULO " <<endl;
     cout <<"2. GENERO " <<endl;
     cout <<"3. DIRECTOR " <<endl;
@@ -109,6 +110,16 @@ void Pelicula::modificar()
     cout <<"6. DURACION " <<endl;
     cout <<"7. CLASIFICACION" <<endl;
     cin >>opcion;
+=======
+    cout <<"1. TITULO: " <<endl;
+    cout <<"2. GENERO: " <<endl;
+    cout <<"3. DIRECTOR: " <<endl;
+    cout <<"4. SINOPSIS: " <<endl;
+    cout <<"5. FECHA DE ESTRENO: ";
+    cout <<"6. DURACION: " <<endl;
+    cout <<"7. CLASIFICACION: " <<endl;
+    cin >> opcion;
+>>>>>>> 643727e8bd71fed0e8af1ba20871ce70a4e00511
     switch(opcion){
         case 1:
             cin.ignore();
