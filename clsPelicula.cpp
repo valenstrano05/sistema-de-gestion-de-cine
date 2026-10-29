@@ -2,7 +2,7 @@
 #include <cstring>
 #include "clsPelicula.h"
 #include "clsArchivoPeliculas.h"
-#include "clsFecha.h"
+#include "fecha.h"
 #include "funciones.h"
 using namespace std;
 
@@ -101,24 +101,29 @@ void Pelicula::modificar()
 {
     int opcion;
     cout <<"Seleccione el campo a modificar..." <<endl;
-    cout <<"1. TITULO: " <<endl;
-    cout <<"2. GENERO: " <<endl;
-    cout <<"3. DIRECTOR: " <<endl;
-    cout <<"4. SINOPSIS: " <<endl;
-    cout <<"5. FECHA DE ESTRENO: ";
-    cout <<"6. DURACION: " <<endl;
-    cout <<"7. CLASIFICACION: " <<endl;
+    cout <<"1. TITULO " <<endl;
+    cout <<"2. GENERO " <<endl;
+    cout <<"3. DIRECTOR " <<endl;
+    cout <<"4. SINOPSIS " <<endl;
+    cout <<"5. FECHA DE ESTRENO " <<endl;
+    cout <<"6. DURACION " <<endl;
+    cout <<"7. CLASIFICACION" <<endl;
+    cin >>opcion;
     switch(opcion){
         case 1:
+            cin.ignore();
             cargarCadena("TITULO: ", titulo, 50);
         break;
         case 2:
+            cin.ignore();
             cargarCadena("GENERO: ", genero, 30);
         break;
         case 3:
+            cin.ignore();
             cargarCadena("DIRECTOR: ", director, 50);
         break;
         case 4:
+            cin.ignore();
             cargarCadena("SINOPSIS: ", sinopsis, 500);
         break;
         case 5:
