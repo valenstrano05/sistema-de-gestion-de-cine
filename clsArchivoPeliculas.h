@@ -3,7 +3,8 @@
 #include "clsPelicula.h"
 
 
-class ArchivoPelicula{
+class ArchivoPelicula
+{
 private:
     char nombreArchivo[30];
 public:

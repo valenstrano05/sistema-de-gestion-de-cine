@@ -3,7 +3,8 @@
 #include "clsFecha.h"
 #include "clsHora.h"
 
-class Compra {
+class Compra
+{
 private:
     int _idCompra;
     int _idSocio;

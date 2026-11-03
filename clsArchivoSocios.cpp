@@ -4,13 +4,16 @@
 
 using namespace std;
 
-ArchivoSocios::ArchivoSocios(const char * nombre){
+ArchivoSocios::ArchivoSocios(const char * nombre)
+{
     strcpy(_nombreArchivo, nombre);
 }
 
-bool ArchivoSocios::grabarRegistro(Socio reg){
+bool ArchivoSocios::grabarRegistro(Socio reg)
+{
     FILE *p = fopen(_nombreArchivo, "ab");
-    if(p == nullptr){
+    if(p == nullptr)
+    {
         return false;
     }
     bool ok = fwrite(&reg, sizeof(Socio), 1, p) == 1;
@@ -18,10 +21,12 @@ bool ArchivoSocios::grabarRegistro(Socio reg){
     return ok;
 }
 
-Socio ArchivoSocios::leerRegistro(int pos){
+Socio ArchivoSocios::leerRegistro(int pos)
+{
     Socio reg;
     FILE *p = fopen(_nombreArchivo, "rb");
-    if(p == nullptr){
+    if(p == nullptr)
+    {
         return reg;
     }
     fseek(p, pos * sizeof(Socio), SEEK_SET);
@@ -30,9 +35,11 @@ Socio ArchivoSocios::leerRegistro(int pos){
     return reg;
 }
 
-int ArchivoSocios::contarRegistros(){
+int ArchivoSocios::contarRegistros()
+{
     FILE *p = fopen(_nombreArchivo, "rb");
-    if(p == nullptr){
+    if(p == nullptr)
+    {
         return 0;
     }
     fseek(p, 0, SEEK_END);
@@ -41,20 +48,25 @@ int ArchivoSocios::contarRegistros(){
     return cantidad;
 }
 
-int ArchivoSocios::buscarRegistro(int idSocio){
+int ArchivoSocios::buscarRegistro(int idSocio)
+{
     int cantidad = contarRegistros();
-    for(int i = 0; i < cantidad; i++){
+    for(int i = 0; i < cantidad; i++)
+    {
         Socio reg = leerRegistro(i);
-        if(reg.getIdSocio() == idSocio && reg.getEstado()){
+        if(reg.getIdSocio() == idSocio && reg.getEstado())
+        {
             return i;
         }
     }
     return -1;
 }
 
-bool ArchivoSocios::modificarRegistro(Socio reg, int pos){
+bool ArchivoSocios::modificarRegistro(Socio reg, int pos)
+{
     FILE *p = fopen(_nombreArchivo, "rb+");
-    if(p == nullptr){
+    if(p == nullptr)
+    {
         return false;
     }
     fseek(p, pos * sizeof(Socio), SEEK_SET);

@@ -1,9 +1,9 @@
- #ifndef ARCHIVODESCUENTO_H_INCLUDED
+#ifndef ARCHIVODESCUENTO_H_INCLUDED
 #define ARCHIVODESCUENTO_H_INCLUDED
 #include "clsDescuento.h"
 
-
-class ArchivoDescuento {
+class ArchivoDescuento
+{
 private:
     char nombreArchivo [30];
 public:
@@ -14,11 +14,4 @@ public:
     int buscarPorID (int);
     bool modificar (Descuento, int);
 };
-
-
-
-
-
-
-
 #endif // ARCHIVODESCUENTO_H_INCLUDED

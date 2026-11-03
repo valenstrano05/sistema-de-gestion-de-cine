@@ -7,7 +7,7 @@ void cargarPelicula();
 void listarPeliculas();
 void modificarPelicula();
 void darBajaPelicula();
-void confirmacionSalida();
+bool confirmacionSalida();
 
 void cargarDescuento();
 void listarDescuentos();

@@ -7,14 +7,22 @@ using namespace std;
 
 
 // ----------------------------------
-
-void cargarCadena (const char* mensaje, char* cadena, int tam){
-        cout << mensaje;
-        cin.getline(cadena, tam);
-        while (cadena[0]=='\0'){
-            cout <<"Campo obligatorio. "<<mensaje;
-            cin.getline(cadena, tam);
+void cargarCadena(const char* mensaje, char* palabra, int tam) {
+    string texto;
+    cout << mensaje;
+    if (cin.peek() == '\n') {
+        cin.ignore();
+    }
+    getline(cin, texto);
+    while (texto[0] == '\0') {
+        cout << "Campo obligatorio. " << mensaje;
+        if (cin.peek() == '\n') {
+            cin.ignore();
         }
+        getline(cin, texto);
+    }
+    strncpy(palabra, texto.c_str(), tam);
+    palabra[tam - 1] = '\0';
 }
 //-------------------------------------------
 
@@ -23,7 +31,7 @@ void cargarPelicula(){
     Pelicula obj;
        obj.cargar();
        if (arch.guardar(obj)){
-            cout<<"\n\t Registro exitoso!"<<endl;
+            cout<<"Registro exitoso!"<<endl;
         }else {
             cout <<"\nError al guardar el archivo"<<endl;
         }
@@ -39,8 +47,9 @@ void listarPeliculas(){
     for (int i = 0; i < arch.cantidadRegistros(); i++) {
         Pelicula obj = arch.leer(i);
         obj.mostrar();
-        cout << "-----------------------------------" << endl;
     }
+    cout << endl;
+    system("pause");
 }
 
 void modificarPelicula(){
@@ -84,12 +93,11 @@ void darBajaPelicula(){
     }
 }
 
-
-void confirmacionSalida(){
+bool confirmacionSalida(){
     char opcion;
     cout <<"Esta seguro/a de que desea salir? (S/N):"; cin >>opcion;
-
     if (opcion == 's' || opcion == 'S'){
-        return;
+        return true;
     }
+    return false;
 }

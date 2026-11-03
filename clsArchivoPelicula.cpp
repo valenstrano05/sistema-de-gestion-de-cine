@@ -9,8 +9,8 @@ ArchivoPelicula::ArchivoPelicula(const char* nombre)
     strcpy(nombreArchivo, nombre);
 }
 
-
-bool ArchivoPelicula::guardar(Pelicula pelicula) {
+bool ArchivoPelicula::guardar(Pelicula pelicula)
+{
     FILE* p = fopen(nombreArchivo, "ab");
     if (p == NULL) return false;
 
@@ -31,7 +31,6 @@ int ArchivoPelicula::cantidadRegistros()
     return tam / sizeof(Pelicula);
 }
 
-
 Pelicula ArchivoPelicula::leer(int posicion)
 {
     Pelicula obj;
@@ -49,9 +48,11 @@ Pelicula ArchivoPelicula::leer(int posicion)
 int ArchivoPelicula::buscarPorID(int id)
 {
     int cant = cantidadRegistros();
-    for (int i=0; i<cant; i++){
+    for (int i=0; i<cant; i++)
+    {
         Pelicula obj = leer(i);
-        if (obj.getID()==id && obj.getEstado()){
+        if (obj.getID()==id && obj.getEstado())
+        {
             return i;
         }
     }

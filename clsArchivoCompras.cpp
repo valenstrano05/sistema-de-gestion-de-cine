@@ -2,13 +2,16 @@
 #include "clsArchivoCompras.h"
 using namespace std;
 
-ArchivoCompras::ArchivoCompras(const char* n) {
+ArchivoCompras::ArchivoCompras(const char* n)
+{
     strcpy(nombre, n);
 }
 
-bool ArchivoCompras::grabarRegistro(Compra obj) {
+bool ArchivoCompras::grabarRegistro(Compra obj)
+{
     FILE* p = fopen(nombre, "ab");
-    if (p == nullptr) {
+    if (p == nullptr)
+    {
         return false;
     }
     bool escribio = (fwrite(&obj, sizeof(Compra), 1, p) == 1);
@@ -16,9 +19,11 @@ bool ArchivoCompras::grabarRegistro(Compra obj) {
     return escribio;
 }
 
-int ArchivoCompras::contarRegistros() {
+int ArchivoCompras::contarRegistros()
+{
     FILE* p = fopen(nombre, "rb");
-    if (p == nullptr) {
+    if (p == nullptr)
+    {
         return -1;
     }
     fseek(p, 0, SEEK_END);
@@ -27,9 +32,11 @@ int ArchivoCompras::contarRegistros() {
     return bytes / sizeof(Compra);
 }
 
-void ArchivoCompras::listarRegistros() {
+void ArchivoCompras::listarRegistros()
+{
     int cantReg = contarRegistros();
-    if (cantReg <= 0) {
+    if (cantReg <= 0)
+    {
         cout << "No hay compras registradas o el archivo esta vacio." << endl;
         return;
     }
@@ -38,19 +45,23 @@ void ArchivoCompras::listarRegistros() {
     cout << "         LISTADO DE COMPRAS            " << endl;
     cout << "=======================================" << endl;
 
-    for (int i = 0; i < cantReg; i++) {
+    for (int i = 0; i < cantReg; i++)
+    {
         Compra obj = leerRegistro(i);
-        if (obj.getEstado() == true) {
+        if (obj.getEstado() == true)
+        {
             obj.mostrar();
             cout << "=======================================" << endl;
         }
     }
 }
 
-Compra ArchivoCompras::leerRegistro(int pos) {
+Compra ArchivoCompras::leerRegistro(int pos)
+{
     FILE* p = fopen(nombre, "rb");
     Compra obj;
-    if (p == nullptr) {
+    if (p == nullptr)
+    {
         obj.setIdCompra(-1);
         return obj;
     }
@@ -60,20 +71,25 @@ Compra ArchivoCompras::leerRegistro(int pos) {
     return obj;
 }
 
-int ArchivoCompras::buscarRegistro(int idCompra) {
+int ArchivoCompras::buscarRegistro(int idCompra)
+{
     int cant = contarRegistros();
-    for (int i = 0; i < cant; i++) {
+    for (int i = 0; i < cant; i++)
+    {
         Compra obj = leerRegistro(i);
-        if (obj.getIdCompra() == idCompra) {
+        if (obj.getIdCompra() == idCompra)
+        {
             return i;
         }
     }
     return -1;
 }
 
-bool ArchivoCompras::modificarRegistro(Compra obj, int pos) {
+bool ArchivoCompras::modificarRegistro(Compra obj, int pos)
+{
     FILE* p = fopen(nombre, "rb+");
-    if (p == nullptr) {
+    if (p == nullptr)
+    {
         return false;
     }
     fseek(p, pos * sizeof(Compra), SEEK_SET);

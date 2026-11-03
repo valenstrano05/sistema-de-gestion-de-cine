@@ -4,7 +4,8 @@
 
 
 
-class Descuento {
+class Descuento
+{
 private:
     int id;
     char nombrePromo[40];
@@ -26,7 +27,7 @@ public:
     int getTipoDescuento ();
     void setEstado (bool);
     bool getEstado ();
-    };
+};
 
 
 

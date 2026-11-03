@@ -5,7 +5,6 @@
 #include "clsArchivoCompras.h"
 #include "clsArchivoButacas.h"
 #include "clsArchivoDescuento.h"
-
 using namespace std;
 
 DetalleEntrada::DetalleEntrada()

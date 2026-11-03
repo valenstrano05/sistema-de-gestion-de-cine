@@ -2,13 +2,16 @@
 #include <cstring>
 #include "clsArchivoSalas.h"
 
-ArchivoSalas::ArchivoSalas(const char * nombre){
+ArchivoSalas::ArchivoSalas(const char * nombre)
+{
     strcpy(_nombreArchivo, nombre);
 }
 
-bool ArchivoSalas::grabarRegistro(Sala reg){
+bool ArchivoSalas::grabarRegistro(Sala reg)
+{
     FILE *p = fopen(_nombreArchivo, "ab");
-    if(p == nullptr){
+    if(p == nullptr)
+    {
         return false;
     }
     bool ok = fwrite(&reg, sizeof(Sala), 1, p) == 1;
@@ -16,10 +19,12 @@ bool ArchivoSalas::grabarRegistro(Sala reg){
     return ok;
 }
 
-Sala ArchivoSalas::leerRegistro(int pos){
+Sala ArchivoSalas::leerRegistro(int pos)
+{
     Sala reg;
     FILE *p = fopen(_nombreArchivo, "rb");
-    if(p == nullptr){
+    if(p == nullptr)
+    {
         return reg;
     }
     fseek(p, pos * sizeof(Sala), SEEK_SET);
@@ -28,9 +33,11 @@ Sala ArchivoSalas::leerRegistro(int pos){
     return reg;
 }
 
-int ArchivoSalas::contarRegistros(){
+int ArchivoSalas::contarRegistros()
+{
     FILE *p = fopen(_nombreArchivo, "rb");
-    if(p == nullptr){
+    if(p == nullptr)
+    {
         return 0;
     }
     fseek(p, 0, SEEK_END);
@@ -39,20 +46,25 @@ int ArchivoSalas::contarRegistros(){
     return cantidad;
 }
 
-int ArchivoSalas::buscarRegistro(int idSala){
+int ArchivoSalas::buscarRegistro(int idSala)
+{
     int cantidad = contarRegistros();
-    for(int i = 0; i < cantidad; i++){
+    for(int i = 0; i < cantidad; i++)
+    {
         Sala reg = leerRegistro(i);
-        if(reg.getIdSala() == idSala && reg.getEstado()){
+        if(reg.getIdSala() == idSala && reg.getEstado())
+        {
             return i;
         }
     }
     return -1;
 }
 
-bool ArchivoSalas::modificarRegistro(Sala reg, int pos){
+bool ArchivoSalas::modificarRegistro(Sala reg, int pos)
+{
     FILE *p = fopen(_nombreArchivo, "rb+");
-    if(p == nullptr){
+    if(p == nullptr)
+    {
         return false;
     }
     fseek(p, pos * sizeof(Sala), SEEK_SET);

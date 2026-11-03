@@ -3,7 +3,8 @@
 #include "clsDetalleEntrada.h"
 #include <cstring>
 
-class ArchivoDetalleEntradas {
+class ArchivoDetalleEntradas
+{
 private:
     char nombre[30];
 

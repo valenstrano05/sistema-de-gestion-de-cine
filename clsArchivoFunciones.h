@@ -3,7 +3,8 @@
 #include "clsFuncion.h"
 #include <cstring>
 
-class ArchivoFunciones {
+class ArchivoFunciones
+{
 private:
     char nombre[30];
 

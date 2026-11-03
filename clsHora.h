@@ -1,7 +1,8 @@
 #ifndef CLSHORA_H_INCLUDED
 #define CLSHORA_H_INCLUDED
 
-class Hora {
+class Hora
+{
 private:
     int hora;
     int minutos;

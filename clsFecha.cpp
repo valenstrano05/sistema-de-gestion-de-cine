@@ -36,42 +36,20 @@ void Fecha::Cargar()
 {
     do
     {
-        cout << "Dia: ";
-        cin >> dia;
-        if (dia <= 0 || dia >= 32)
+        cin >> dia >> mes >> anio;
+        if (dia <= 0 || dia >= 32 || mes <= 0 || mes >= 13 || anio < 0)
         {
-            cout << "Error, el día tiene que estar entre 1 y 31, intente de nuevo." << endl;
+            cout << "Fecha incorrecta, intente de nuevo." << endl;
         }
     }
-    while (dia <= 0 || dia >= 32);
-
-    do
-    {
-        cout << "Mes: ";
-        cin >> mes;
-        if (mes <= 0 || mes >= 13)
-        {
-            cout << "Error, el mes tiene que estar entre 1 y 12, intente de nuevo." << endl;
-        }
-    }
-    while (mes <= 0 || mes >= 13);
-
-    do
-    {
-        cout << "Año: ";
-        cin >> anio;
-        if (anio < 0)
-        {
-            cout << "Error, el año tiene que ser mayor o igual a 0, intente de nuevo." << endl;
-        }
-    }
-    while (anio < 0);
+    while (dia <= 0 || dia >= 32 || mes <= 0 || mes >= 13 || anio < 0);
 }
 void Fecha::Mostrar()
 {
     cout<<dia<<"/"<<mes<<"/"<<anio<<endl;
 }
-bool Fecha::operator==(Fecha fec){
+bool Fecha::operator==(Fecha fec)
+{
     return dia == fec.dia and mes == fec.mes and anio == fec.anio;
 }
 Fecha::~Fecha()

@@ -1,7 +1,8 @@
 #ifndef CLSDETALLEENTRADA_H
 #define CLSDETALLEENTRADA_H
 
-class DetalleEntrada {
+class DetalleEntrada
+{
 private:
     int _idDetalleEntrada;
     int _idFuncion;
