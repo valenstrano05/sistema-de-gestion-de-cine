@@ -34,6 +34,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="clsArchivoButacas.cpp" />
+		<Unit filename="clsArchivoButacas.h" />
 		<Unit filename="clsArchivoCompras.cpp" />
 		<Unit filename="clsArchivoCompras.h" />
 		<Unit filename="clsArchivoDescuento.cpp" />
@@ -44,6 +46,12 @@
 		<Unit filename="clsArchivoFunciones.h" />
 		<Unit filename="clsArchivoPelicula.cpp" />
 		<Unit filename="clsArchivoPeliculas.h" />
+		<Unit filename="clsArchivoSalas.cpp" />
+		<Unit filename="clsArchivoSalas.h" />
+		<Unit filename="clsArchivoSocios.cpp" />
+		<Unit filename="clsArchivoSocios.h" />
+		<Unit filename="clsButaca.cpp" />
+		<Unit filename="clsButaca.h" />
 		<Unit filename="clsCompra.cpp" />
 		<Unit filename="clsCompra.h" />
 		<Unit filename="clsDescuento.cpp" />
@@ -58,6 +66,10 @@
 		<Unit filename="clsHora.h" />
 		<Unit filename="clsPelicula.cpp" />
 		<Unit filename="clsPelicula.h" />
+		<Unit filename="clsSala.cpp" />
+		<Unit filename="clsSala.h" />
+		<Unit filename="clsSocio.cpp" />
+		<Unit filename="clsSocio.h" />
 		<Unit filename="funciones.cpp" />
 		<Unit filename="funciones.h" />
 		<Unit filename="main.cpp" />

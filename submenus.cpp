@@ -29,6 +29,7 @@ int main(){
         cout << "\n";
        cout <<"\t 1. PELICULAS" <<endl;
        cout <<"\t 2. DESCUENTOS" <<endl;
+       cout <<"\t 3. SOCIOS"<<endl;
        cout <<endl;
        cout <<"------------------------------------------------" <<endl;
        cout <<"Ingrese una opción: "; cin >>opcion;
@@ -36,11 +37,14 @@ int main(){
        system("cls");
 
        switch(opcion){
-       case 1:
+        case 1:
            menuPeliculas();
         break;
-       case 2:
+        case 2:
            menuDescuentos();
+        break;
+        case 3:
+
         break;
        default:
         break;

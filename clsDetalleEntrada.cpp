@@ -4,7 +4,9 @@
 #include "clsArchivoFunciones.h"
 #include "clsArchivoCompras.h"
 #include "clsArchivoButacas.h"
-#include "clsArchivoDescuentos.h"
+#include "clsArchivoDescuento.h"
+
+using namespace std;
 
 DetalleEntrada::DetalleEntrada()
 {
@@ -61,7 +63,7 @@ void DetalleEntrada::cargar()
     ArchivoFunciones arcFunciones;
     ArchivoCompras arcCompras;
     ArchivoButacas arcButacas;
-    ArchivoDescuentos arcDescuentos;
+    ArchivoDescuento arcDescuentos;
 
     cout << "=== CARGAR DETALLE DE ENTRADA ===" << endl;
 
@@ -125,7 +127,7 @@ void DetalleEntrada::cargar()
         {
             cout << "Error, el ID de la butaca tiene que ser mayor a 0, intente de nuevo." << endl;
         }
-        else if (archButacas.buscarRegistro(_idButaca) == -1)
+        else if (arcButacas.buscarRegistro(_idButaca) == -1)
         {
             cout << "Error, no existe una butaca con ese ID, intente de nuevo." << endl;
             _idButaca = 0;
@@ -142,7 +144,7 @@ void DetalleEntrada::cargar()
         {
             cout << "Error, el ID de descuento no puede ser negativo, intente de nuevo." << endl;
         }
-        else if (_idDescuento > 0 && archDescuentos.buscarRegistro(_idDescuento) == -1)
+        else if (_idDescuento > 0 && arcDescuentos.buscarPorID(_idDescuento) == -1)
         {
             cout << "Error, no existe un descuento con ese ID, intente de nuevo." << endl;
             _idDescuento = -1;
@@ -153,10 +155,10 @@ void DetalleEntrada::cargar()
 
 void DetalleEntrada::mostrar()
 {
-    cout << "ID Detalle Entrada: " << _idDetalleEntrada << <<endl;
-    cout << "ID Funcion: " << _idFuncion << <<endl;
-    cout << "ID Compra: " << _idCompra << <<endl;
-    cout << "ID Butaca: " << _idButaca << <<endl;
+    cout << "ID Detalle Entrada: " << _idDetalleEntrada <<" "<<endl;
+    cout << "ID Funcion: " << _idFuncion <<" "<<endl;
+    cout << "ID Compra: " << _idCompra <<" "<<endl;
+    cout << "ID Butaca: " << _idButaca <<" "<<endl;
     cout << "ID Descuento: " << _idDescuento<<endl;
     cout << "==========================================="<<endl;;
 }

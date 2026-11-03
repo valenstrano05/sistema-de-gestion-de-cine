@@ -100,7 +100,7 @@ return _estado;
 void Funcion::cargar()
 {
 ArchivoFunciones arcFunciones;
-ArchivoPeliculas arcPeliculas;
+ArchivoPelicula arcPeliculas;
 ArchivoSalas arcSalas;
 cout << "=== CARGAR NUEVA FUNCION ==="<<endl;
 do
@@ -126,7 +126,7 @@ do
     {
         cout << "Error, el ID de la película tiene que ser mayor a 0, intente de nuevo."<<endl;
     }
-    else if (arcPeliculas.buscarRegistro(_idPelicula)==-1)
+    else if (arcPeliculas.buscarPorID(_idPelicula)==-1)
     {
         cout << "Error, no existe una película con ese ID, intente de nuevo."<<endl;
         _idPelicula=0;
@@ -151,9 +151,9 @@ do
 while (_idSala <= 0);
 
 cout << "Fecha de proyeccion: ";
-_fecha.cargar();
+_fecha.Cargar();
 cout << "Horario de proyeccion: ";
-_horario.cargar();
+_horario.Cargar();
 
 do
 {
@@ -182,15 +182,15 @@ _estado = true;
 
 void Funcion::mostrar()
 {
-if(_estadofalse)
+if(_estado==false)
 {
 return;
 }
 cout << "ID Funcion: " << _idFuncion << endl;
 cout << "ID Pelicula: " << _idPelicula <<endl;
 cout << "ID Sala: " << _idSala << endl;
-_fecha.mostrar();
-_horario.mostrar();
+_fecha.Mostrar();
+_horario.Mostrar();
 cout << "\nPrecio: $ " << _precio <<endl;
 cout << "Butacas Disponibles: " << _butacasDisponibles << endl;
 cout << "===================================" << endl;
