@@ -2,6 +2,7 @@
 #define FUNCIONES_H_INCLUDED
 
 void cargarCadena (const char* mensaje, char* cadena, int tam);
+int pedirEntero(const char * mensaje);
 
 void cargarPelicula();
 void listarPeliculas();
@@ -13,5 +14,21 @@ void cargarDescuento();
 void listarDescuentos();
 void modificarDescuento();
 void darBajaDescuento();
+
+void cargarSocio();
+void listarSocios();
+void modificarSocio();
+void darBajaSocio();
+
+void cargarSala();
+void listarSalas();
+void modificarSala();
+void darBajaSala();
+
+void cargarButaca();
+void listarButacas();
+void darBajaButaca();
+
+
 
 #endif // FUNCIONES_H_INCLUDED

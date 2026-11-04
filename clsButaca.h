@@ -6,7 +6,7 @@ class Butaca
 private:
     int _idButaca;
     int _idSala;
-    char _numeroButaca[7];   // Ej: F17B36 = fila 17, butaca 36
+    char _numeroButaca[7];
     bool _estado;
 public:
     Butaca (int idButaca=0, int idSala=0, const char * numeroButaca="S/N", bool estado=false);

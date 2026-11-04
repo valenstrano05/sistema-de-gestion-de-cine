@@ -72,8 +72,7 @@ bool ArchivoButacas::modificarRegistro(Butaca reg, int pos)
     fclose(p);
     return ok;
 }
-
-// Crea 'capacidad' butacas para la sala: F01B01, F01B02, ... (10 por fila)
+//ATENCION.
 bool ArchivoButacas::generarButacas(int idSala, int capacidad)
 {
     const int ASIENTOS_POR_FILA = 10;

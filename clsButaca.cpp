@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// Formato valido: F + 2 digitos + B + 2 digitos (ej: F17B36)
+//ATENCION.
 static bool codigoValido(const char * codigo)
 {
     if (codigo == nullptr || strlen(codigo) != 6) return false;
