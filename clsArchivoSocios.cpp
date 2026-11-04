@@ -12,8 +12,8 @@ ArchivoSocios::ArchivoSocios(const char * nombre)
 bool ArchivoSocios::grabarRegistro(Socio reg)
 {
     FILE *p = fopen(_nombreArchivo, "ab");
-    if(p == nullptr)
     {
+    if(p == nullptr)
         return false;
     }
     bool ok = fwrite(&reg, sizeof(Socio), 1, p) == 1;

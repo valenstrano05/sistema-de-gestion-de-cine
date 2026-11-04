@@ -71,13 +71,3 @@ bool ArchivoPelicula::modificar(Pelicula obj, int posicion)
 
     return escribio;
 }
-
-
-
-
-
-
-
-
-
-

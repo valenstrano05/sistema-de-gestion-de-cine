@@ -6,13 +6,14 @@
 
 using namespace std;
 
-//ATENCION.
-static bool codigoValido(const char * codigo)
+bool codigoValido(const char *codigo)
 {
-    if (codigo == nullptr || strlen(codigo) != 6) return false;
-    return codigo[0]=='F' && codigo[3]=='B'
-           && isdigit((unsigned char)codigo[1]) && isdigit((unsigned char)codigo[2])
-           && isdigit((unsigned char)codigo[4]) && isdigit((unsigned char)codigo[5]);
+    if (codigo == NULL || strlen(codigo) != 6)
+    {
+        return false;
+    }
+
+    return (codigo[0] == 'F' && codigo[1] >= '0' && codigo[1] <= '9' && codigo[2] >= '0' && codigo[2] <= '9' && codigo[3] == 'B' && codigo[4] >= '0' && codigo[4] <= '9' && codigo[5] >= '0' && codigo[5] <= '9');
 }
 
 Butaca::Butaca (int idButaca, int idSala, const char * numeroButaca, bool estado)

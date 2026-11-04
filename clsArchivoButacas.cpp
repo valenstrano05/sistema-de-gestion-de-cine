@@ -72,10 +72,10 @@ bool ArchivoButacas::modificarRegistro(Butaca reg, int pos)
     fclose(p);
     return ok;
 }
-//ATENCION.
+
 bool ArchivoButacas::generarButacas(int idSala, int capacidad)
 {
-    const int ASIENTOS_POR_FILA = 10;
+    const int ASIENTOS_POR_FILA = 26;
     int primerId = contarRegistros() + 1;
 
     FILE *p = fopen(_nombreArchivo, "ab");
@@ -83,20 +83,26 @@ bool ArchivoButacas::generarButacas(int idSala, int capacidad)
     {
         return false;
     }
-    bool ok = true;
+    bool genero = true;
     for(int i = 0; i < capacidad; i++)
     {
         int fila = (i / ASIENTOS_POR_FILA + 1) % 100;
         int num  = (i % ASIENTOS_POR_FILA + 1) % 100;
         char codigo[7];
-        snprintf(codigo, sizeof(codigo), "F%02dB%02d", fila, num);
+        codigo[0] = 'F';
+        codigo[1] = (fila / 10) + '0';
+        codigo[2] = (fila % 10) + '0';
+        codigo[3] = 'B';
+        codigo[4] = (num / 10) + '0';
+        codigo[5] = (num % 10) + '0';
+        codigo[6] = '\0';
         Butaca reg(primerId + i, idSala, codigo, true);
         if(fwrite(&reg, sizeof(Butaca), 1, p) != 1)
         {
-            ok = false;
+            genero = false;
             break;
         }
     }
     fclose(p);
-    return ok;
+    return genero;
 }
