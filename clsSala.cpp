@@ -68,23 +68,7 @@ void Sala::cargar()
         cout << "Ingresar formato nuevamente: ";
     }
 
-    cout << "PRECIO: ";
-    while (!(cin >> _precio) || _precio <= 0)
-    {
-        if (cin.fail())
-        {
-            cin.clear();
-            cin.ignore(1000, '\n');
-            cout << "Error: Debe ingresar un numero valido." << endl;
-        }
-        else
-        {
-            cout << "Error, el precio debe ser mayor a 0." << endl;
-        }
-        cout << "Ingresar precio nuevamente: ";
-    }
 
-    cin.ignore(1000, '\n');
     _estado = true;
 }
 
@@ -100,12 +84,15 @@ void Sala::mostrar()
         {
         case 1:
             cout << "2D" << endl;
+            _precio = 18000;
             break;
         case 2:
             cout << "3D" << endl;
+            _precio = 21000;
             break;
         case 3:
             cout << "IMAX" << endl;
+            _precio = 24000;
             break;
         }
         cout << "PRECIO: $" << _precio << endl;
