@@ -29,6 +29,21 @@ void cargarButaca();
 void listarButacas();
 void darBajaButaca();
 
+void cargarFuncion();
+void listarFunciones();
+void modificarFuncion();
+void darBajaFuncion();
 
+void registrarCompra();
+void listarCompras();
+void consultarComprasPorSocio();
+void darBajaCompra();
+
+void informeRankingRecaudacionPeliculas();
+void informeOcupacionPorFuncion();
+void informeEntradasPorFormato();
+void informeSociosMasFrecuentes();
+void informeImpactoDescuentos();
+void informeTicketsSuperanPromedio();
 
 #endif // FUNCIONES_H_INCLUDED

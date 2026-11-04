@@ -72,6 +72,8 @@
 		<Unit filename="clsSocio.h" />
 		<Unit filename="funciones.cpp" />
 		<Unit filename="funciones.h" />
+		<Unit filename="listados.cpp" />
+		<Unit filename="listados.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="submenues.cpp" />
 		<Unit filename="submenues.h" />

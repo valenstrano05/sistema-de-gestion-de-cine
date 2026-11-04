@@ -386,3 +386,19 @@ void darBajaButaca(){
         cout << "Error al dar de baja la butaca." << endl;
     }
 }
+void cargarFuncion(){}
+void listarFunciones(){}
+void modificarFuncion(){}
+void darBajaFuncion(){}
+
+void registrarCompra(){}
+void listarCompras(){}
+void consultarComprasPorSocio(){}
+void darBajaCompra(){}
+
+void informeRankingRecaudacionPeliculas(){}
+void informeOcupacionPorFuncion(){}
+void informeEntradasPorFormato(){}
+void informeSociosMasFrecuentes(){}
+void informeImpactoDescuentos(){}
+void informeTicketsSuperanPromedio(){}

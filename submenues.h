@@ -15,5 +15,8 @@ void menuDescuentos();
 void menuSocios();
 void menuSalas();
 void menuButacas();
+void menuFunciones();
+void menuCompras();
+void menuInformes();
 
 #endif // SUBMENUES_H_INCLUDED
