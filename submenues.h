@@ -6,8 +6,6 @@
 #include "clsPelicula.h"
 #include "funciones.h"
 using namespace std;
-void menuPeliculas();
-void menuDescuentos();
 int menuPrincipal();
 void menuPeliculas();
 void menuDescuentos();

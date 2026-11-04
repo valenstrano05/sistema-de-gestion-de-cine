@@ -31,9 +31,11 @@ void cargarPelicula(){
     Pelicula obj;
        obj.cargar();
        if (arch.guardar(obj)){
+            cout<<endl;
             cout<<"Registro exitoso!"<<endl;
         }else {
-            cout <<"\nError al guardar el archivo"<<endl;
+            cout<<endl;
+            cout <<"Error al guardar el archivo"<<endl;
         }
 }
 

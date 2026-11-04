@@ -122,6 +122,7 @@ void Pelicula::modificar()
     cout <<"6. DURACION " <<endl;
     cout <<"7. CLASIFICACION" <<endl;
     cin >>opcion;
+    cout << endl;
     switch(opcion)
     {
     case 1:

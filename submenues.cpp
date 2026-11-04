@@ -61,9 +61,9 @@ void menuPeliculas()
         system("cls");
         int opcion;
         cout <<"||||||||||||||||||||||||||||||||||||||||||||||||" <<endl;
-        cout << endl;
-        cout <<"                    PELICULAS                    " <<endl;
-        cout << endl;
+        cout <<"|                                              |" << endl;
+        cout <<"|                   PELICULAS                  |" <<endl;
+        cout <<"|                                              |" << endl;
         cout <<"||||||||||||||||||||||||||||||||||||||||||||||||" <<endl;
         cout <<endl;
         cout <<    "     1. CARGAR PELICULAS" <<endl;
@@ -110,7 +110,9 @@ void menuDescuentos()
         system("cls");
         int opcion;
         cout <<"||||||||||||||||||||||||||||||||||||||||||||||||" <<endl;
-        cout <<"                    DESCUENTOS" <<endl;
+        cout <<"|                                              |" << endl;
+        cout <<"|                   DESCUENTOS                 |" <<endl;
+        cout <<"|                                              |" << endl;
         cout <<"||||||||||||||||||||||||||||||||||||||||||||||||" <<endl;
         cout <<endl;
         cout <<    "     1. CARGAR DESCUENTOS" <<endl;
