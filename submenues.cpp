@@ -158,6 +158,7 @@ void menuDescuentos()
 }
 
 void menuSocios(){
+    system("cls");
     while (true){
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                               |" << endl;
@@ -190,14 +191,14 @@ void menuSocios(){
             darBajaSocio();
             break;
         case 0:
+            confirmacionSalida();
             return;
-        default:
-            break;
         }
     }
 }
 
 void menuSalas(){
+    system("cls");
     while (true){
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                               |" << endl;
@@ -231,14 +232,14 @@ void menuSalas(){
             darBajaSala();
             break;
         case 0:
+            confirmacionSalida();
             return;
-        default:
-            break;
         }
     }
 }
 
 void menuButacas(){
+    system("cls");
     while (true){
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                               |" << endl;
@@ -268,9 +269,8 @@ void menuButacas(){
             darBajaButaca();
             break;
         case 0:
+            confirmacionSalida();
             return;
-        default:
-            break;
         }
     }
 }

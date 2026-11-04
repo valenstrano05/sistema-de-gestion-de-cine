@@ -67,8 +67,6 @@ void Sala::cargar()
         }
         cout << "Ingresar formato nuevamente: ";
     }
-
-
     _estado = true;
 }
 

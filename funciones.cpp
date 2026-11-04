@@ -386,6 +386,3 @@ void darBajaButaca(){
         cout << "Error al dar de baja la butaca." << endl;
     }
 }
-
-
-

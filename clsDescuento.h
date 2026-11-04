@@ -10,9 +10,10 @@ private:
     int id;
     char nombrePromo[40];
     float porcentaje;
+    int tipoDescuento;
     bool estado;
 public:
-    Descuento (int _id=0, const char* nombre ="", float _porcentaje=0.0, bool _estado=0);
+    Descuento (int _id=0, const char* nombre ="", float _porcentaje=0.0, int tipo=1, bool _estado=0);
     void cargar();
     void mostrar();
     void modificar();
