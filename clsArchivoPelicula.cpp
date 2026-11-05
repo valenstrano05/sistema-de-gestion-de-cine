@@ -4,12 +4,12 @@
 using namespace std;
 
 
-ArchivoPelicula::ArchivoPelicula(const char* nombre)
+ArchivoPeliculas::ArchivoPeliculas(const char* nombre)
 {
     strcpy(nombreArchivo, nombre);
 }
 
-bool ArchivoPelicula::guardar(Pelicula pelicula)
+bool ArchivoPeliculas::guardarRegistro(Pelicula pelicula)
 {
     FILE* p = fopen(nombreArchivo, "ab");
     if (p == NULL) return false;
@@ -19,7 +19,7 @@ bool ArchivoPelicula::guardar(Pelicula pelicula)
     return escribio;
 }
 
-int ArchivoPelicula::cantidadRegistros()
+int ArchivoPeliculas::contarRegistros()
 {
     FILE* p = fopen(nombreArchivo, "rb");
     if (p == NULL) return 0;
@@ -31,7 +31,7 @@ int ArchivoPelicula::cantidadRegistros()
     return tam / sizeof(Pelicula);
 }
 
-Pelicula ArchivoPelicula::leer(int posicion)
+Pelicula ArchivoPeliculas::leerRegistro(int posicion)
 {
     Pelicula obj;
     FILE* p = fopen(nombreArchivo, "rb");
@@ -45,12 +45,12 @@ Pelicula ArchivoPelicula::leer(int posicion)
 }
 
 
-int ArchivoPelicula::buscarPorID(int id)
+int ArchivoPeliculas::buscarPorID(int id)
 {
-    int cant = cantidadRegistros();
+    int cant = contarRegistros();
     for (int i=0; i<cant; i++)
     {
-        Pelicula obj = leer(i);
+        Pelicula obj = leerRegistro(i);
         if (obj.getID()==id && obj.getEstado())
         {
             return i;
@@ -60,7 +60,7 @@ int ArchivoPelicula::buscarPorID(int id)
 }
 
 
-bool ArchivoPelicula::modificar(Pelicula obj, int posicion)
+bool ArchivoPeliculas::modificarRegistro(Pelicula obj, int posicion)
 {
     FILE* p = fopen (nombreArchivo, "rb+");
     if (p == nullptr) return false;

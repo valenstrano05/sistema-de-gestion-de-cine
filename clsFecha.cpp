@@ -55,3 +55,54 @@ bool Fecha::operator==(Fecha fec)
 Fecha::~Fecha()
 {
 }
+bool Fecha::operator>(Fecha fec)
+{
+if (anio!=fec.anio){
+    if (anio>fec.anio){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+if (mes!=fec.mes){
+    if(mes>fec.mes){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+if (dia!=fec.dia){
+    if (dia>fec.dia){
+        return true;
+    }
+    return false;
+}
+}
+
+bool Fecha::operator<(Fecha fec)
+{
+if (anio!=fec.anio){
+    if (anio<fec.anio){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+if (mes!=fec.mes){
+    if(mes<fec.mes){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+if (dia!=fec.dia){
+    if (dia<fec.dia){
+        return true;
+    }
+    return false;
+}
+}

@@ -46,13 +46,13 @@ int ArchivoButacas::contarRegistros()
     return cantidad;
 }
 
-int ArchivoButacas::buscarRegistro(int idButaca)
+int ArchivoButacas::buscarRegistro(int idSala, const char * numButaca)
 {
     int cantidad = contarRegistros();
     for(int i = 0; i < cantidad; i++)
     {
         Butaca reg = leerRegistro(i);
-        if(reg.getIdButaca() == idButaca && reg.getEstado())
+        if(reg.getIdSala() == idSala && strcmp(reg.getNumeroButaca(), numButaca) == 0 && reg.getEstado())
         {
             return i;
         }
@@ -96,7 +96,7 @@ bool ArchivoButacas::generarButacas(int idSala, int capacidad)
         codigo[4] = (num / 10) + '0';
         codigo[5] = (num % 10) + '0';
         codigo[6] = '\0';
-        Butaca reg(primerId + i, idSala, codigo, true);
+        Butaca reg(idSala, codigo, true);
         if(fwrite(&reg, sizeof(Butaca), 1, p) != 1)
         {
             genero = false;

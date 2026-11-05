@@ -23,17 +23,12 @@ Pelicula::Pelicula(int _id, const char* _titulo, const char* _genero, const char
 
 void Pelicula::cargar()
 {
-    ArchivoPelicula arch;
+    ArchivoPeliculas arch;
     cout << "ID: ";
-    while (!(cin >> id) || id <= 0 || arch.buscarPorID(id) != -1)
+    cin >> id;
+    while (id <= 0 || arch.buscarPorID(id) != -1)
     {
-        if (cin.fail())
-        {
-            cin.clear();
-            cin.ignore(1000, '\n');
-            cout << "Error: Debe ingresar un número válido." << endl;
-        }
-        else if (id <= 0)
+        if (id <= 0)
         {
             cout << "Error, el ID no puede ser negativo o cero." << endl;
         }
@@ -41,21 +36,15 @@ void Pelicula::cargar()
         {
             cout << "Error, el ID ya existe." << endl;
         }
-        cout << "Ingresar Id nuevamente: ";
+        cout << "Ingresar ID nuevamente: ";
+        cin >> id;
     }
-
-    cin.ignore();
     cargarCadena("TITULO: ", titulo, 50);
-
     cargarCadena("GENERO: ", genero, 30);
-
     cargarCadena("DIRECTOR: ", director, 50);
-
     cargarCadena("SINOPSIS: ", sinopsis, 500);
-
     cout <<"FECHA DE ESTRENO (DD MM AAAA): ";
     fechaEstreno.Cargar();
-
     cout <<"DURACION (en minutos): ";
     cin >>duracion;
     while (duracion<=0 || duracion>=300)
@@ -75,8 +64,6 @@ void Pelicula::cargar()
     estado = true;
 }
 
-
-
 void Pelicula::mostrar()
 {
     if (estado)
@@ -90,7 +77,7 @@ void Pelicula::mostrar()
         cout <<"SINOPSIS: " <<sinopsis <<endl;
         cout <<"FECHA DE ESTRENO: ";
         fechaEstreno.Mostrar();
-        cout <<"DURACION: " <<duracion <<endl;
+        cout <<"DURACION: " << duracion << " minutos"<<endl;
         cout <<"CLASIFICACION: ";
         switch(clasificacion)
         {
@@ -107,8 +94,6 @@ void Pelicula::mostrar()
         cout <<endl;
     }
 }
-
-
 
 void Pelicula::modificar()
 {
@@ -235,11 +220,11 @@ const char* Pelicula::getSinopsis()
 }
 
 
-void Pelicula::setFecha(Fecha fecha)
+void Pelicula::setFechaEstreno(Fecha fecha)
 {
     fechaEstreno=fecha;
 }
-Fecha Pelicula::getFecha()
+Fecha Pelicula::getFechaEstreno()
 {
     return fechaEstreno;
 }

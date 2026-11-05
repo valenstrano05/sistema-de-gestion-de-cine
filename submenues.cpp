@@ -170,8 +170,8 @@ void menuDescuentos()
 }
 
 void menuSocios(){
-    system("cls");
     while (true){
+        system("cls");
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                               |" << endl;
         cout << "|                   SOCIOS                      |"<< endl;
@@ -203,15 +203,16 @@ void menuSocios(){
             darBajaSocio();
             break;
         case 0:
-            confirmacionSalida();
+            if (confirmacionSalida()){
             return;
+            }
         }
     }
 }
 
 void menuSalas(){
-    system("cls");
     while (true){
+            system("cls");
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                               |" << endl;
         cout << "|                    SALAS                      |"<< endl;
@@ -244,15 +245,16 @@ void menuSalas(){
             darBajaSala();
             break;
         case 0:
-            confirmacionSalida();
+            if (confirmacionSalida()){
             return;
+            }
         }
     }
 }
 
 void menuButacas(){
-    system("cls");
     while (true){
+    system("cls");
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                               |" << endl;
         cout << "|                    BUTACAS                    |"<< endl;
@@ -260,7 +262,7 @@ void menuButacas(){
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
         cout << endl;
-        cout << "     1. LISTAR BUTACAS DE UNA SALA" << endl;
+        cout << "     1. LISTAR BUTACAS DISPONIBLES DE UNA SALA" << endl;
         cout << "     2. DAR DE BAJA" << endl;
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;

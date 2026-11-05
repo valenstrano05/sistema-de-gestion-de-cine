@@ -30,8 +30,8 @@ public:
     const char* getDirector();
     void setSinopsis (const char*);
     const char* getSinopsis();
-    void setFecha (Fecha);
-    Fecha getFecha();
+    void setFechaEstreno (Fecha);
+    Fecha getFechaEstreno();
     void setDuracion (int);
     int getDuracion();
     void setClasificacion (int);

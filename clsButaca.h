@@ -4,19 +4,15 @@
 class Butaca
 {
 private:
-    int _idButaca;
     int _idSala;
     char _numeroButaca[7];
     bool _estado;
 public:
-    Butaca (int idButaca=0, int idSala=0, const char * numeroButaca="S/N", bool estado=false);
-    void cargar();
+    Butaca (int idSala=0, const char * numeroButaca="S/N", bool estado=false);
     void mostrar();
-    void setIdButaca(int);
     void setIdSala(int);
     void setNumeroButaca(const char *);
     void setEstado(bool);
-    int getIdButaca();
     int getIdSala();
     const char * getNumeroButaca();
     bool getEstado();

@@ -67,3 +67,41 @@ bool Hora::operator==(Hora h)
 Hora::~Hora()
 {
 }
+bool Hora::operator>(Hora h)
+{
+if (hora!=h.hora){
+    if (hora>h.hora){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+if (minutos!=h.minutos){
+    if(minutos>h.minutos){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+}
+bool Hora::operator<(Hora h)
+{
+if (hora!=h.hora){
+    if (hora<h.hora){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+if (minutos!=h.minutos){
+    if(minutos<h.minutos){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+}

@@ -3,17 +3,17 @@
 #include "clsPelicula.h"
 
 
-class ArchivoPelicula
+class ArchivoPeliculas
 {
 private:
     char nombreArchivo[30];
 public:
-    ArchivoPelicula (const char* nombre = "peliculas.dat");
-    bool guardar (Pelicula);
-    int cantidadRegistros();
-    Pelicula leer (int posicion);
+    ArchivoPeliculas (const char* nombre = "peliculas.dat");
+    bool guardarRegistro (Pelicula);
+    int contarRegistros();
+    Pelicula leerRegistro (int posicion);
     int buscarPorID (int);
-    bool modificar (Pelicula, int);
+    bool modificarRegistro (Pelicula, int);
 };
 
 #endif // ARCHIVOPELICULA_H_INCLUDED

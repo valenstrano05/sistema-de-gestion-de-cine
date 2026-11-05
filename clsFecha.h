@@ -17,6 +17,8 @@ public:
     void Cargar();
     void Mostrar();
     ~Fecha();
-    bool operator==(Fecha fec);
+    bool operator==(Fecha);
+    bool operator>(Fecha);
+    bool operator<(Fecha);
 };
 #endif // CLSFECHA_H_INCLUDED

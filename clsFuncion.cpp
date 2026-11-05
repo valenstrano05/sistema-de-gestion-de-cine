@@ -100,7 +100,7 @@ bool Funcion::getEstado()
 void Funcion::cargar()
 {
     ArchivoFunciones arcFunciones;
-    ArchivoPelicula arcPeliculas;
+    ArchivoPeliculas arcPeliculas;
     ArchivoSalas arcSalas;
     cout << "=== CARGAR NUEVA FUNCION ==="<<endl;
     do

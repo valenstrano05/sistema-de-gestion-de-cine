@@ -45,10 +45,10 @@ int pedirEntero(const char * mensaje){
 //PELICULAS
 
 void cargarPelicula(){
-    ArchivoPelicula arch;
+    ArchivoPeliculas arch;
     Pelicula obj;
        obj.cargar();
-       if (arch.guardar(obj)){
+       if (arch.guardarRegistro(obj)){
             cout<<endl;
             cout<<"Registro exitoso!"<<endl;
         }else {
@@ -59,34 +59,33 @@ void cargarPelicula(){
 
 
 void listarPeliculas(){
-    ArchivoPelicula arch;
-    if (arch.cantidadRegistros()==0){
-        cout <<"No hay peliculas registradas."<<endl;
+    ArchivoPeliculas arch;
+    if (arch.contarRegistros()==0){
+        cout << "No hay peliculas registradas en el archivo." << endl;
         return;
     }
-    for (int i = 0; i < arch.cantidadRegistros(); i++) {
-        Pelicula obj = arch.leer(i);
+    for (int i = 0; i < arch.contarRegistros(); i++) {
+        Pelicula obj = arch.leerRegistro(i);
         obj.mostrar();
     }
     cout << endl;
-    system("pause");
 }
 
 void modificarPelicula(){
     int idBuscado;
     cout <<"Ingrese ID de pelicula a modificar: "; cin>>idBuscado;
 
-    ArchivoPelicula arch;
+    ArchivoPeliculas arch;
     int pos = arch.buscarPorID(idBuscado);
     if (pos == -1){
         cout <<"No existe registro activo con el ID " <<idBuscado <<"." <<endl;
         return;
     }
 
-    Pelicula obj = arch.leer(pos);
+    Pelicula obj = arch.leerRegistro(pos);
     obj.modificar();
 
-    if (arch.modificar(obj, pos)) {
+    if (arch.modificarRegistro(obj, pos)) {
         cout << "Registro modificado con exito." << endl;
     }else {
         cout << "Error al intentar guardar los cambios." << endl;
@@ -98,15 +97,15 @@ void darBajaPelicula(){
     int idBuscado;
     cout <<"Ingrese el ID a dar de baja: "; cin >>idBuscado;
 
-    ArchivoPelicula arch;
+    ArchivoPeliculas arch;
     int pos = arch.buscarPorID(idBuscado);
     if (pos == -1){
         cout <<"No se encontro un registro con el ID " <<idBuscado <<"." <<endl;
     }
-    Pelicula obj = arch.leer(pos);
+    Pelicula obj = arch.leerRegistro(pos);
     obj.setEstado(false);
 
-    if (arch.modificar(obj, pos)) {
+    if (arch.modificarRegistro(obj, pos)) {
         cout << "Registro dado de baja con exito." << endl;
     } else {
         cout << "Error al intentar actualizar el archivo." << endl;
@@ -235,6 +234,7 @@ void cargarSala(){
     else {
         cout << "Error al guardar la sala." << endl;
     }
+    system("pause");
 }
 
 void listarSalas(){
@@ -249,6 +249,7 @@ void listarSalas(){
         Sala obj = arch.leerRegistro(i);
         obj.mostrar();
     }
+    system("pause");
 }
 
 void modificarSala(){
@@ -318,7 +319,6 @@ void darBajaSala(){
         return;
     }
 
-    // Tambien se dan de baja las butacas de esa sala
     int cantidad = archButacas.contarRegistros();
     for (int i = 0; i < cantidad; i++){
         Butaca b = archButacas.leerRegistro(i);
@@ -328,22 +328,10 @@ void darBajaSala(){
         }
     }
     cout << "Sala y sus butacas dadas de baja correctamente." << endl;
+system("pause");
 }
 //-------------------------------------------
 //BUTACAS
-
-void cargarButaca(){
-    ArchivoButacas arch;
-    Butaca obj;
-
-    obj.cargar();
-    if (arch.grabarRegistro(obj)){
-        cout << "Butaca cargada correctamente." << endl;
-    }
-    else {
-        cout << "Error al guardar la butaca." << endl;
-    }
-}
 
 void listarButacas(){
     ArchivoSalas archSalas;
@@ -364,38 +352,72 @@ void listarButacas(){
             mostradas++;
         }
     }
-    cout << "Total de butacas de la sala " << idSala << ": " << mostradas << endl;
+    cout << "Total de butacas disponibles de la sala " << idSala << ": " << mostradas << endl;
+    system("pause");
 }
 
 void darBajaButaca(){
-    ArchivoButacas arch;
+    ArchivoSalas archSalas;
+    ArchivoButacas archButacas;
+    int idSala = pedirEntero("ID de la sala: ");
+    while (idSala <= 0) {
+        idSala = pedirEntero("ID invalido. Ingrese un ID de sala mayor a 0: ");
+    }
 
-    int id = pedirEntero("ID de la butaca a dar de baja: ");
-    int pos = arch.buscarRegistro(id);
-    if (pos == -1){
-        cout << "No existe una butaca con ese ID." << endl;
+    if (archSalas.buscarRegistro(idSala) == -1){
+        cout << "No existe una sala registrada con ese ID." << endl;
+        return;
+    }
+    char numButaca[7];
+    cargarCadena("Ingrese el numero de la butaca a dar de baja (ej: F11B26): ", numButaca, 7);
+    int cantidad = archButacas.contarRegistros();
+    int posBuscada = -1;
+
+    for (int i = 0; i < cantidad; i++){
+        Butaca b = archButacas.leerRegistro(i);
+        if (b.getIdSala() == idSala && strcmp(b.getNumeroButaca(), numButaca) == 0){
+            posBuscada = i;
+            break;
+        }
+    }
+
+    if (posBuscada == -1){
+        cout << "No se encontro una butaca con ese numero en la sala " << idSala << "." << endl;
         return;
     }
 
-    Butaca obj = arch.leerRegistro(pos);
+    Butaca obj = archButacas.leerRegistro(posBuscada);
+
+    if (obj.getEstado()==false){
+        cout << "La butaca ya se encuentra dada de baja / ocupada." << endl;
+        return;
+    }
+
     obj.setEstado(false);
-    if (arch.modificarRegistro(obj, pos)){
-        cout << "Butaca dada de baja correctamente." << endl;
+    if (archButacas.modificarRegistro(obj, posBuscada)){
+        cout << "Butaca " << numButaca << " de la sala " << idSala << " dada de baja correctamente." << endl;
     }
     else {
-        cout << "Error al dar de baja la butaca." << endl;
+        cout << "Error al intentar actualizar el archivo de butacas." << endl;
     }
 }
+
+//-------------------------------------------
+//FUNCIONES
 void cargarFuncion(){}
 void listarFunciones(){}
 void modificarFuncion(){}
 void darBajaFuncion(){}
 
+//-------------------------------------------
+//COMPRAS
 void registrarCompra(){}
 void listarCompras(){}
 void consultarComprasPorSocio(){}
 void darBajaCompra(){}
 
+//-------------------------------------------
+//INFORMES
 void informeRankingRecaudacionPeliculas(){}
 void informeOcupacionPorFuncion(){}
 void informeEntradasPorFormato(){}

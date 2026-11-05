@@ -15,7 +15,10 @@ public:
     void Cargar();
     void Mostrar();
     ~Hora();
-    bool operator==(Hora h);
+    bool operator==(Hora);
+    bool operator>(Hora);
+    bool operator<(Hora);
+
 };
 
 #endif // CLSHORA_H_INCLUDED

@@ -12,7 +12,7 @@ public:
     bool grabarRegistro(Butaca reg);
     Butaca leerRegistro(int pos);
     int contarRegistros();
-    int buscarRegistro(int idButaca);
+    int buscarRegistro(int idSala, const char * numButaca);
     bool modificarRegistro(Butaca reg, int pos);
     bool generarButacas(int idSala, int capacidad);
 };
