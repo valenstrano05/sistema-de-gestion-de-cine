@@ -7,7 +7,8 @@ private:
     int _idDetalleEntrada;
     int _idFuncion;
     int _idCompra;
-    int _idButaca;
+    int _idSala;
+    char _numeroButaca[7];
     int _idDescuento;
 
 public:
@@ -15,12 +16,14 @@ public:
     void setIdDetalleEntrada(int ID);
     void setIdFuncion(int ID);
     void setIdCompra(int ID);
-    void setIdButaca(int ID);
+    void setIdSala(int ID);
+    void setNumeroButaca(const char * num);
     void setIdDescuento(int ID);
     int getIdDetalleEntrada();
     int getIdFuncion();
     int getIdCompra();
-    int getIdButaca();
+    int getIdSala();
+    const char * getNumeroButaca();
     int getIdDescuento();
     void cargar();
     void mostrar();

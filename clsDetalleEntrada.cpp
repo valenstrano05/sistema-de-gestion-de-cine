@@ -1,10 +1,13 @@
 #include <iostream>
+#include <cstring>
 #include "clsDetalleEntrada.h"
 #include "clsArchivoDetalleEntradas.h"
 #include "clsArchivoFunciones.h"
 #include "clsArchivoCompras.h"
 #include "clsArchivoButacas.h"
 #include "clsArchivoDescuento.h"
+#include "clsArchivoSalas.h"
+#include "funciones.h"
 using namespace std;
 
 DetalleEntrada::DetalleEntrada()
@@ -12,55 +15,31 @@ DetalleEntrada::DetalleEntrada()
     _idDetalleEntrada = 0;
     _idFuncion = 0;
     _idCompra = 0;
-    _idButaca = 0;
+    _idSala = 0;
+    strcpy(_numeroButaca, "S/N");
     _idDescuento = 0;
 }
 
-void DetalleEntrada::setIdDetalleEntrada(int ID)
-{
-    _idDetalleEntrada = ID;
-}
-void DetalleEntrada::setIdFuncion(int ID)
-{
-    _idFuncion = ID;
-}
-void DetalleEntrada::setIdCompra(int ID)
-{
-    _idCompra = ID;
-}
-void DetalleEntrada::setIdButaca(int ID)
-{
-    _idButaca = ID;
-}
-void DetalleEntrada::setIdDescuento(int ID)
-{
-    _idDescuento = ID;
-}
-int DetalleEntrada::getIdDetalleEntrada()
-{
-    return _idDetalleEntrada;
-}
-int DetalleEntrada::getIdFuncion()
-{
-    return _idFuncion;
-}
-int DetalleEntrada::getIdCompra()
-{
-    return _idCompra;
-}
-int DetalleEntrada::getIdButaca()
-{
-    return _idButaca;
-}
-int DetalleEntrada::getIdDescuento()
-{
-    return _idDescuento;
-}
+void DetalleEntrada::setIdDetalleEntrada(int ID) { _idDetalleEntrada = ID; }
+void DetalleEntrada::setIdFuncion(int ID) { _idFuncion = ID; }
+void DetalleEntrada::setIdCompra(int ID) { _idCompra = ID; }
+void DetalleEntrada::setIdSala(int ID) { _idSala = ID; }
+void DetalleEntrada::setNumeroButaca(const char *num) { strcpy(_numeroButaca, num); }
+void DetalleEntrada::setIdDescuento(int ID) { _idDescuento = ID; }
+
+int DetalleEntrada::getIdDetalleEntrada() { return _idDetalleEntrada; }
+int DetalleEntrada::getIdFuncion() { return _idFuncion; }
+int DetalleEntrada::getIdCompra() { return _idCompra; }
+int DetalleEntrada::getIdSala() { return _idSala; }
+const char * DetalleEntrada::getNumeroButaca() { return _numeroButaca; }
+int DetalleEntrada::getIdDescuento() { return _idDescuento; }
+
 void DetalleEntrada::cargar()
 {
     ArchivoDetalleEntradas arcDetalle;
     ArchivoFunciones arcFunciones;
     ArchivoCompras arcCompras;
+    ArchivoSalas arcSalas;
     ArchivoButacas arcButacas;
     ArchivoDescuento arcDescuentos;
 
@@ -119,20 +98,24 @@ void DetalleEntrada::cargar()
 
     do
     {
-        cout << "ID Butaca: ";
-        cin >> _idButaca;
+        cout << "ID de la Sala de la butaca: ";
+        cin >> _idSala;
 
-        if (_idButaca <= 0)
+        if (_idSala <= 0 || arcSalas.buscarRegistro(_idSala) == -1)
         {
-            cout << "Error, el ID de la butaca tiene que ser mayor a 0, intente de nuevo." << endl;
+            cout << "Error, la sala no existe o el ID es invalido, intente de nuevo." << endl;
+            _idSala = 0;
+            continue;
         }
-        else if (arcButacas.buscarRegistro(_idButaca) == -1)
+        cargarCadena("Numero de butaca (ej:F01B05:", _numeroButaca, 7);
+
+        if (arcButacas.buscarRegistro(_idSala, _numeroButaca) == -1)
         {
-            cout << "Error, no existe una butaca con ese ID, intente de nuevo." << endl;
-            _idButaca = 0;
+            cout << "Error, no existe esa butaca en la sala indicada (o no esta disponible)." << endl;
+            _idSala = 0; // Forzar a repetir el ciclo
         }
     }
-    while (_idButaca <= 0);
+    while (_idSala <= 0);
 
     do
     {
@@ -154,10 +137,10 @@ void DetalleEntrada::cargar()
 
 void DetalleEntrada::mostrar()
 {
-    cout << "ID Detalle Entrada: " << _idDetalleEntrada <<" "<<endl;
-    cout << "ID Funcion: " << _idFuncion <<" "<<endl;
-    cout << "ID Compra: " << _idCompra <<" "<<endl;
-    cout << "ID Butaca: " << _idButaca <<" "<<endl;
-    cout << "ID Descuento: " << _idDescuento<<endl;
-    cout << "==========================================="<<endl;;
+    cout << "ID Detalle Entrada: " << _idDetalleEntrada << endl;
+    cout << "ID Funcion: " << _idFuncion << endl;
+    cout << "ID Compra: " << _idCompra << endl;
+    cout << "Sala: " << _idSala << " | Butaca: " << _numeroButaca << endl;
+    cout << "ID Descuento: " << _idDescuento << endl;
+    cout << "===========================================" << endl;
 }
