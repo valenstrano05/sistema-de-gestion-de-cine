@@ -6,6 +6,7 @@
 #include <vector>
 #include "clsArchivoSocios.h"
 #include "clsArchivoFunciones.h"
+#include "clsArchivoCompras.h"
 using namespace std;
 
 void listadosPeliculas()
@@ -440,4 +441,67 @@ void listadosCompras()
     }
 }
 
-void listarComprasPorFecha() {}
+void listarComprasPorFecha()
+{
+    ArchivoCompras arch;
+    int cant = arch.contarRegistros();
+
+    if (cant <= 0)
+    {
+        cout << "No hay compras registradas en el archivo." << endl;
+        return;
+    }
+    vector<Compra> vecCompras;
+
+    for (int i = 0; i < cant; i++)
+    {
+        Compra obj = arch.leerRegistro(i);
+        if (obj.getEstado())
+        {
+            vecCompras.push_back(obj);
+        }
+    }
+    int activas = vecCompras.size();
+    if (activas == 0)
+    {
+        cout << "No hay funciones activas para ordenar." << endl;
+        return;
+    }
+
+    Compra aux;
+    for (int i = 0; i < activas-1; i++)
+    {
+        for (int j = 0; j < activas-1 - i; j++)
+        {
+            if (vecCompras[j].getFecha() > vecCompras[j+1].getFecha())
+            {
+                aux = vecCompras[j];
+                vecCompras[j] = vecCompras[j+1];
+                vecCompras[j+1] = aux;
+            }
+        }
+    }
+        for (int i = 0; i < activas-1; i++)
+    {
+        for (int j = 0; j < activas-1 - i; j++)
+        {
+            if (vecCompras[j].getFecha() == vecCompras[j+1].getFecha()){
+                if(vecCompras[j].getHorario()>vecCompras[j+1].getHorario())
+            {
+                aux = vecCompras[j];
+                vecCompras[j] = vecCompras[j+1];
+                vecCompras[j+1] = aux;
+            }
+        }
+    }
+}
+    cout << "=======================================" << endl;
+    cout << "COMPRAS ORDENADAS DE FORMA CRONOLÓGICA" << endl;
+    cout << "=======================================" << endl;
+
+    for (int i = 0; i < activas; i++)
+    {
+        vecCompras[i].mostrar();
+
+    }
+}

@@ -20,13 +20,13 @@ void Compra::setIdSocio(int ID)
 {
     _idSocio = ID;
 }
-void Compra::setFechaCompra(Fecha fechaCompra)
+void Compra::setFecha(Fecha fechaCompra)
 {
-    _fechaCompra = fechaCompra;
+    _fecha= fechaCompra;
 }
-void Compra::setHoraCompra(Hora horaCompra)
+void Compra::setHora(Hora horaCompra)
 {
-    _horaCompra = horaCompra;
+    _hora = horaCompra;
 }
 void Compra::setEstado(bool estado)
 {
@@ -41,13 +41,13 @@ int Compra::getIdSocio()
 {
     return _idSocio;
 }
-Fecha Compra::getFechaCompra()
+Fecha Compra::getFecha()
 {
-    return _fechaCompra;
+    return _fecha;
 }
-Hora Compra::getHoraCompra()
+Hora Compra::getHorario()
 {
-    return _horaCompra;
+    return _hora;
 }
 bool Compra::getEstado()
 {
@@ -96,10 +96,10 @@ void Compra::cargar()
     while (_idSocio <= 0);
 
     cout << "Fecha de compra:" << endl;
-    _fechaCompra.Cargar();
+    _fecha.Cargar();
 
     cout << "Hora de compra:" << endl;
-    _horaCompra.Cargar();
+    _hora.Cargar();
 
     _estado = true;
 }
@@ -111,8 +111,8 @@ void Compra::mostrar()
     cout << "ID Compra: " << _idCompra << endl;
     cout << "ID Socio: " << _idSocio << endl;
     cout << "Fecha de Compra: ";
-    _fechaCompra.Mostrar();
+    _fecha.Mostrar();
     cout << "Hora de Compra: ";
-    _horaCompra.Mostrar();
+    _hora.Mostrar();
     cout << endl << "========================================" << endl;
 }
