@@ -48,6 +48,9 @@ void Fecha::Mostrar()
 {
     cout<<dia<<"/"<<mes<<"/"<<anio<<endl;
 }
+
+
+
 bool Fecha::operator==(Fecha fec)
 {
     return dia == fec.dia and mes == fec.mes and anio == fec.anio;

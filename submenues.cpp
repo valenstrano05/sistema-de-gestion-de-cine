@@ -5,6 +5,7 @@
 #include "funciones.h"
 #include "submenues.h"
 #include "listados.h"
+#include "consultas.h"
 using namespace std;
 
 int menuPrincipal()
@@ -93,6 +94,7 @@ void menuPeliculas()
         cout <<    "     2. LISTAR PELICULAS" <<endl;
         cout <<    "     3. MODIFICAR" <<endl;
         cout <<    "     4. DAR DE BAJA" <<endl;
+        cout <<    "     5. CONSULTAR" <<endl;
         cout <<    "     0. VOLVER AL MENU PRINCIPAL" <<endl;
         cout <<endl;
         cout <<"------------------------------------------------" <<endl;
@@ -115,6 +117,9 @@ void menuPeliculas()
             break;
         case 4:
             darBajaPelicula();
+            break;
+        case 5:
+            consultarPeliculas();
             break;
         case 0:
             if(confirmacionSalida())

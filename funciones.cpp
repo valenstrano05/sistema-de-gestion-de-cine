@@ -61,7 +61,7 @@ void cargarPelicula(){
 void listarPeliculas(){
     ArchivoPeliculas arch;
     if (arch.contarRegistros()==0){
-        cout << "No hay peliculas registradas en el archivo." << endl;
+        cout << "No hay peliculas registradas." <<endl <<endl;
         return;
     }
     for (int i = 0; i < arch.contarRegistros(); i++) {

@@ -70,6 +70,8 @@
 		<Unit filename="clsSala.h" />
 		<Unit filename="clsSocio.cpp" />
 		<Unit filename="clsSocio.h" />
+		<Unit filename="consultas.cpp" />
+		<Unit filename="consultas.h" />
 		<Unit filename="funciones.cpp" />
 		<Unit filename="funciones.h" />
 		<Unit filename="listados.cpp" />
