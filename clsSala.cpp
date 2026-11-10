@@ -118,13 +118,7 @@ void Sala::setFormatoProyeccion(int formato)
         _formatoProyeccion=formato;
     }
 }
-//void Sala::setPrecio(float precio)
-//{
-//    if(precio>0)
-//    {
-//        _precio=precio;
-//    }
-//}
+
 void Sala::setEstado(bool estado)
 {
     _estado=estado;

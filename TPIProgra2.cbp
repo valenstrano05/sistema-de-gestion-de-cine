@@ -62,6 +62,8 @@
 		<Unit filename="clsDetalleEntrada.h" />
 		<Unit filename="clsFecha.cpp" />
 		<Unit filename="clsFecha.h" />
+		<Unit filename="clsFormato.cpp" />
+		<Unit filename="clsFormato.h" />
 		<Unit filename="clsFuncion.cpp" />
 		<Unit filename="clsFuncion.h" />
 		<Unit filename="clsHora.cpp" />
@@ -74,8 +76,6 @@
 		<Unit filename="clsSocio.h" />
 		<Unit filename="consultas.cpp" />
 		<Unit filename="consultas.h" />
-		<Unit filename="formato.cpp" />
-		<Unit filename="formato.h" />
 		<Unit filename="funciones.cpp" />
 		<Unit filename="funciones.h" />
 		<Unit filename="listados.cpp" />
