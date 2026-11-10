@@ -7,16 +7,14 @@ private:
     int _idSala;
     int _capacidadButacas;
     int _formatoProyeccion;
-    float _precio;
     bool _estado;
 public:
-    Sala (int idSala=0, int capacidadButacas=120, int formatoProyeccion=1, float precio=0, bool estado=false);
+    Sala (int idSala=0, int capacidadButacas=120, int formatoProyeccion=1, bool estado=false);
     void cargar();
     void mostrar();
     void setIdSala(int);
     void setCapacidadButacas(int);
     void setFormatoProyeccion(int);
-    void setPrecio(float);
     void setEstado(bool);
     int getIdSala();
     int getCapacidadButacas();

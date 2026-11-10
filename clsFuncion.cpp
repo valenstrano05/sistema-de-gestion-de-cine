@@ -10,7 +10,6 @@ Funcion::Funcion()
     _idFuncion = 0;
     _idPelicula = 0;
     _idSala = 0;
-    _precio = 0;
     _butacasDisponibles = 0;
     _estado = true;
 }
@@ -42,10 +41,6 @@ void Funcion::setFecha(Fecha valor)
     _fecha = valor;
 }
 
-void Funcion::setPrecio(float valor)
-{
-    _precio = valor;
-}
 
 void Funcion::setButacasDisponibles(int valor)
 {
@@ -82,10 +77,6 @@ Fecha Funcion::getFecha()
     return _fecha;
 }
 
-float Funcion::getPrecio()
-{
-    return _precio;
-}
 
 int Funcion::getButacasDisponibles()
 {
@@ -102,7 +93,6 @@ void Funcion::cargar()
     ArchivoFunciones arcFunciones;
     ArchivoPeliculas arcPeliculas;
     ArchivoSalas arcSalas;
-    cout << "=== CARGAR NUEVA FUNCION ==="<<endl;
     do
     {
         cout << "ID Funcion: ";
@@ -152,19 +142,8 @@ void Funcion::cargar()
 
     cout << "Fecha de proyeccion: ";
     _fecha.Cargar();
-    cout << "Horario de proyeccion: ";
+    cout << "Horario de proyeccion... " <<endl;
     _horario.Cargar();
-
-    do
-    {
-        cout << "Precio de la entrada ($): ";
-        cin >> _precio;
-        if (_precio <= 0)
-        {
-            cout << "Error, el precio de la entrada tiene que ser mayor a 0, intente de nuevo."<<endl;
-        }
-    }
-    while (_precio <= 0);
 
     do
     {
@@ -187,11 +166,25 @@ void Funcion::mostrar()
         return;
     }
     cout << "ID Funcion: " << _idFuncion << endl;
-    cout << "ID Pelicula: " << _idPelicula <<endl;
+
+    ArchivoPeliculas archP;
+    int pos = archP.buscarPorID(_idPelicula);
+    if (pos != -1){
+        Pelicula objP = archP.leerRegistro(pos);
+        cout <<"PELICULA: " <<objP.getTitulo() <<endl;
+    }
+
     cout << "ID Sala: " << _idSala << endl;
     _fecha.Mostrar();
     _horario.Mostrar();
-    cout << "\nPrecio: $ " << _precio <<endl;
+
+    ArchivoSalas archS;
+    int posS = archS.buscarRegistro(_idSala);
+    if (posS != -1){
+        Sala objS = archS.leerRegistro(pos);
+        cout << "PRECIO: " <<objS.getPrecio() <<endl;
+    }
+
     cout << "Butacas Disponibles: " << _butacasDisponibles << endl;
     cout << "===================================" << endl;
 }

@@ -1,15 +1,15 @@
 #include <iostream>
 #include "clsSala.h"
 #include "clsArchivoSalas.h"
+#include "clsArchivoFormato.h"
 
 using namespace std;
 
-Sala::Sala (int idSala, int capacidadButacas, int formatoProyeccion, float precio, bool estado)
+Sala::Sala (int idSala, int capacidadButacas, int formatoProyeccion, bool estado)
 {
     _idSala=idSala;
     _capacidadButacas=capacidadButacas;
     _formatoProyeccion=formatoProyeccion;
-    _precio=precio;
     _estado=estado;
 }
 
@@ -52,8 +52,9 @@ void Sala::cargar()
         cout << "Ingresar capacidad nuevamente: ";
     }
 
-    cout << "FORMATO DE PROYECCION (1: 2D, 2: 3D, 3: IMAX): ";
-    while (!(cin >> _formatoProyeccion) || _formatoProyeccion < 1 || _formatoProyeccion > 3)
+    ArchivoFormato archF;
+    cout << "ID FORMATO: ";
+    while (!(cin >> _formatoProyeccion) || _formatoProyeccion <= 0 || archF.buscarPorID(_formatoProyeccion) == -1)
     {
         if (cin.fail())
         {
@@ -61,12 +62,17 @@ void Sala::cargar()
             cin.ignore(1000, '\n');
             cout << "Error: Debe ingresar un numero valido." << endl;
         }
+        else if (_idSala <= 0)
+        {
+            cout << "Error, el ID no puede ser negativo o cero." << endl;
+        }
         else
         {
-            cout << "Error, ingrese un formato valido." << endl;
+            cout << "Error, el ID de formato no esta registrado." << endl;
         }
-        cout << "Ingresar formato nuevamente: ";
+        cout << "Ingresar ID nuevamente: ";
     }
+
     _estado = true;
 }
 
@@ -77,23 +83,16 @@ void Sala::mostrar()
         cout << "---------------------------------------" << endl;
         cout << "ID: " << _idSala << endl;
         cout << "CAPACIDAD: " << _capacidadButacas << " butacas" << endl;
-        cout << "FORMATO: ";
-        switch(_formatoProyeccion)
-        {
-        case 1:
-            cout << "2D" << endl;
-            _precio = 18000;
-            break;
-        case 2:
-            cout << "3D" << endl;
-            _precio = 21000;
-            break;
-        case 3:
-            cout << "IMAX" << endl;
-            _precio = 24000;
-            break;
+
+        ArchivoFormato arch;
+        int pos = arch.buscarPorID(_formatoProyeccion);
+        if (pos != -1){
+            Formato obj = arch.leerRegistro(pos);
+            cout << "FORMATO: " <<obj.getNombre() <<endl;
+            cout << "PRECIO: " <<obj.getPrecio() <<endl;
+        }else {
+            cout <<"Formato no encontrado."<<endl;
         }
-        cout << "PRECIO: $" << _precio << endl;
         cout << endl;
     }
 }
@@ -119,13 +118,13 @@ void Sala::setFormatoProyeccion(int formato)
         _formatoProyeccion=formato;
     }
 }
-void Sala::setPrecio(float precio)
-{
-    if(precio>0)
-    {
-        _precio=precio;
-    }
-}
+//void Sala::setPrecio(float precio)
+//{
+//    if(precio>0)
+//    {
+//        _precio=precio;
+//    }
+//}
 void Sala::setEstado(bool estado)
 {
     _estado=estado;
@@ -142,9 +141,13 @@ int Sala::getFormatoProyeccion()
 {
     return _formatoProyeccion;
 }
-float Sala::getPrecio()
-{
-    return _precio;
+
+
+float Sala::getPrecio(){
+    ArchivoFormato arch;
+    int pos = arch.buscarPorID(_formatoProyeccion);
+    if (pos == -1) return 0;
+    return arch.leerRegistro(pos).getPrecio();
 }
 bool Sala::getEstado()
 {

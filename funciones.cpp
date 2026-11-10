@@ -6,6 +6,7 @@
 #include "clsArchivoSalas.h"
 #include "clsArchivoSocios.h"
 #include "clsArchivoFunciones.h"
+#include "clsArchivoFormato.h"
 
 using namespace std;
 
@@ -217,6 +218,83 @@ void darBajaSocio(){
         cout << "Error al dar de baja el socio." << endl;
     }
 }
+
+//-------------------------------------------
+//FORMATOS
+
+void cargarFormato(){
+    ArchivoFormato arch;
+    Formato obj;
+    obj.cargar();
+    if (arch.guardarRegistro(obj)){
+        cout<<"\n Registro exitoso!"<<endl;
+    }else {
+        cout <<"\n Error al guardar el archivo."<<endl;
+    }
+    system("pause");
+}
+
+
+
+void listarFormatos(){
+    ArchivoFormato arch;
+    if (arch.contarRegistros()==0){
+        cout << "No hay formatos registrados." <<endl <<endl;
+        return;
+    }
+    for (int i = 0; i < arch.contarRegistros(); i++) {
+        Formato obj = arch.leerRegistro(i);
+        obj.mostrar();
+    }
+    cout << endl;
+    system("pause");
+}
+
+
+void modificarFormato(){
+    int idBuscado;
+    cout <<"Ingrese ID del formato a modificar: "; cin>>idBuscado;
+
+    ArchivoFormato arch;
+    int pos = arch.buscarPorID(idBuscado);
+    if (pos == -1){
+        cout <<"No existe registro activo con el ID " <<idBuscado <<"." <<endl;
+        return;
+    }
+
+    Formato obj = arch.leerRegistro(pos);
+    obj.modificar();
+
+    if (arch.modificarRegistro(obj, pos)) {
+        cout << "Registro modificado con exito." << endl;
+    }else {
+        cout << "Error al intentar guardar los cambios." << endl;
+    }
+    system("pause");
+}
+
+
+void darBajaFormato(){
+    int idBuscado;
+    cout <<"Ingrese el ID a dar de baja: "; cin >>idBuscado;
+
+    ArchivoFormato arch;
+    int pos = arch.buscarPorID(idBuscado);
+    if (pos == -1){
+        cout <<"No se encontro un registro con el ID " <<idBuscado <<"." <<endl;
+    }
+    Formato obj = arch.leerRegistro(pos);
+    obj.setEstado(false);
+
+    if (arch.modificarRegistro(obj, pos)) {
+        cout << "Registro dado de baja con exito." << endl;
+    } else {
+        cout << "Error al intentar actualizar el archivo." << endl;
+    }
+}
+
+
+
 //-------------------------------------------
 //SALAS
 
@@ -263,7 +341,6 @@ void modificarSala(){
 
     Sala obj = arch.leerRegistro(pos);
     cout << "1. FORMATO DE PROYECCION" << endl;
-    cout << "2. PRECIO" << endl;
     cout << "0. CANCELAR" << endl;
     int opcion = pedirEntero("Que desea modificar: ");
 
@@ -276,16 +353,6 @@ void modificarSala(){
             formato = pedirEntero("Error, ingrese un formato valido (1, 2 o 3): ");
         }
         obj.setFormatoProyeccion(formato);
-        break;
-    case 2:
-        cout << "NUEVO PRECIO: ";
-        while (!(cin >> precio) || precio <= 0){
-            cin.clear();
-            cin.ignore(1000, '\n');
-            cout << "Error, el precio debe ser un numero mayor a 0. Ingresar nuevamente: ";
-        }
-        cin.ignore(1000, '\n');
-        obj.setPrecio(precio);
         break;
     default:
         cout << "No se modifico nada." << endl;

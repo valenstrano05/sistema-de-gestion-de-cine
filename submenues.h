@@ -13,6 +13,7 @@ int menuPrincipal();
 void menuPeliculas();
 void menuDescuentos();
 void menuSocios();
+void menuFormato();
 void menuSalas();
 void menuButacas();
 void menuFunciones();

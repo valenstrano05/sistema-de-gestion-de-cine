@@ -29,11 +29,12 @@ int menuPrincipal()
         cout <<    "     1. PELICULAS" <<endl;
         cout <<    "     2. DESCUENTOS" <<endl;
         cout <<    "     3. SOCIOS"<<endl;
-        cout <<    "     4. SALAS"<<endl;
-        cout <<    "     5. BUTACAS"<<endl;
-        cout <<    "     6. FUNCIONES"<<endl;
-        cout <<    "     7. COMPRAS"<<endl;
-        cout <<    "     8. INFORMES"<<endl;
+        cout <<    "     4. FORMATO"<<endl;
+        cout <<    "     5. SALAS"<<endl;
+        cout <<    "     6. BUTACAS"<<endl;
+        cout <<    "     7. FUNCIONES"<<endl;
+        cout <<    "     8. COMPRAS"<<endl;
+        cout <<    "     9. INFORMES"<<endl;
         cout <<    "     0. SALIR"<<endl;
         cout <<endl;
         cout <<"------------------------------------------------" <<endl;
@@ -54,18 +55,21 @@ int menuPrincipal()
             menuSocios();
             break;
         case 4:
-            menuSalas();
+            menuFormato();
             break;
         case 5:
+            menuSalas();
+            break;
+        case 6:
             menuButacas();
             break;
-            case 6:
+        case 7:
             menuFunciones();
             break;
-        case 7:
+        case 8:
             menuCompras();
             break;
-        case 8:
+        case 9:
             menuInformes();
             break;
         case 0:
@@ -206,6 +210,49 @@ void menuSocios(){
             break;
         case 4:
             darBajaSocio();
+            break;
+        case 0:
+            if (confirmacionSalida()){
+            return;
+            }
+        }
+    }
+}
+
+void menuFormato()
+{
+    while (true){
+        system("cls");
+        cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << "|                                               |" << endl;
+        cout << "|                  FORMATOS                     |"<< endl;
+        cout << "|                                               |" << endl;
+        cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << endl;
+        cout << endl;
+        cout << "     1. CARGAR FORMATOS" << endl;
+        cout << "     2. LISTAR FORMATOS" << endl;
+        cout << "     3. MODIFICAR" << endl;
+        cout << "     4. DAR DE BAJA" << endl;
+        cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
+        cout << endl;
+        cout << "------------------------------------------------" << endl;
+        int opcion = pedirEntero("Ingrese una opcion: ");
+        cout << "------------------------------------------------" << endl;
+        system("cls");
+
+        switch (opcion){
+        case 1:
+            cargarFormato();
+            break;
+        case 2:
+            listarFormatos();
+            break;
+        case 3:
+            modificarFormato();
+            break;
+        case 4:
+            darBajaFormato();
             break;
         case 0:
             if (confirmacionSalida()){

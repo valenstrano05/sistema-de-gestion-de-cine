@@ -20,6 +20,11 @@ void listarSocios();
 void modificarSocio();
 void darBajaSocio();
 
+void cargarFormato();
+void listarFormatos();
+void modificarFormato();
+void darBajaFormato();
+
 void cargarSala();
 void listarSalas();
 void modificarSala();

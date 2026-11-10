@@ -82,7 +82,8 @@ void Descuento::mostrar()
 
 void Descuento::modificar()
 {
-    cout <<"PORCENTAJE (%): " <<porcentaje;
+    cout <<"ACTUALIZAR PORCENTAJE DE DESCUENTO(%): ";
+    cin >>porcentaje;
 }
 
 void Descuento::setID(int _id)

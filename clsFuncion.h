@@ -11,7 +11,6 @@ private:
     int _idSala;
     Hora _horario;
     Fecha _fecha;
-    float _precio;
     int _butacasDisponibles;
     bool _estado;
 
@@ -23,7 +22,6 @@ public:
     void setIdSala(int idSala);
     void setHorario(Hora horario);
     void setFecha(Fecha fecha);
-    void setPrecio(float precio);
     void setButacasDisponibles(int butacasDisponibles);
     void setEstado(bool estado);
     int getIdFuncion();
@@ -31,7 +29,6 @@ public:
     int getIdSala();
     Hora getHorario();
     Fecha getFecha();
-    float getPrecio();
     int getButacasDisponibles();
     bool getEstado();
     void cargar();

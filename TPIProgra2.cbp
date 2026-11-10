@@ -42,6 +42,8 @@
 		<Unit filename="clsArchivoDescuento.h" />
 		<Unit filename="clsArchivoDetalleEntradas.cpp" />
 		<Unit filename="clsArchivoDetalleEntradas.h" />
+		<Unit filename="clsArchivoFormato.cpp" />
+		<Unit filename="clsArchivoFormato.h" />
 		<Unit filename="clsArchivoFunciones.cpp" />
 		<Unit filename="clsArchivoFunciones.h" />
 		<Unit filename="clsArchivoPelicula.cpp" />
@@ -72,6 +74,8 @@
 		<Unit filename="clsSocio.h" />
 		<Unit filename="consultas.cpp" />
 		<Unit filename="consultas.h" />
+		<Unit filename="formato.cpp" />
+		<Unit filename="formato.h" />
 		<Unit filename="funciones.cpp" />
 		<Unit filename="funciones.h" />
 		<Unit filename="listados.cpp" />
