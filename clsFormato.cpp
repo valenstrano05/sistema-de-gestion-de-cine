@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstring>
-#include "formato.h"
+#include "clsFormato.h"
 #include "clsArchivoFormato.h"
 #include "funciones.h"
 

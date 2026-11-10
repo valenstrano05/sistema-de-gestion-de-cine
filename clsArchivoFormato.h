@@ -1,6 +1,6 @@
 #ifndef CLSARCHIVOFORMATO_H_INCLUDED
 #define CLSARCHIVOFORMATO_H_INCLUDED
-#include "formato.h"
+#include "clsFormato.h"
 
 class ArchivoFormato {
 private:
