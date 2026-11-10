@@ -304,6 +304,7 @@ void menuFunciones()
         cout << "     2. LISTAR FUNCIONES" << endl;
         cout << "     3. MODIFICAR" << endl;
         cout << "     4. DAR DE BAJA" << endl;
+        cout << "     5. CONSULTAR" <<endl;
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "------------------------------------------------" << endl;
@@ -324,6 +325,9 @@ void menuFunciones()
             break;
         case 4:
             darBajaFuncion();
+            break;
+        case 5:
+            consultarFunciones();
             break;
         case 0:
             if(confirmacionSalida())

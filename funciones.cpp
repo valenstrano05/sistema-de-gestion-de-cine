@@ -5,6 +5,7 @@
 #include "clsArchivoButacas.h"
 #include "clsArchivoSalas.h"
 #include "clsArchivoSocios.h"
+#include "clsArchivoFunciones.h"
 
 using namespace std;
 
@@ -49,11 +50,9 @@ void cargarPelicula(){
     Pelicula obj;
        obj.cargar();
        if (arch.guardarRegistro(obj)){
-            cout<<endl;
-            cout<<"Registro exitoso!"<<endl;
+            cout<<"\n Registro exitoso!"<<endl;
         }else {
-            cout<<endl;
-            cout <<"Error al guardar el archivo"<<endl;
+            cout <<"\n Error al guardar el archivo."<<endl;
         }
 }
 
@@ -404,8 +403,37 @@ void darBajaButaca(){
 
 //-------------------------------------------
 //FUNCIONES
-void cargarFuncion(){}
-void listarFunciones(){}
+
+void cargarFuncion()
+{
+    ArchivoFunciones arch;
+    Funcion obj;
+    obj.cargar();
+    if (arch.grabarRegistro(obj)){
+        cout <<"\n Registro exitoso!" <<endl;
+    }else{
+        cout <<"\n Error al guardar el archivo." <<endl;
+    }
+}
+
+
+void listarFunciones()
+{
+    ArchivoFunciones arch;
+    int cant = arch.contarRegistros();
+    if (cant == 0){
+        cout <<"No hay funciones registradas." <<endl;
+    }else {
+        for (int i=0; i<cant; i++){
+            Funcion obj = arch.leerRegistro(i);
+            obj.mostrar();
+        }
+    }
+    cout <<endl;
+}
+
+
+
 void modificarFuncion(){}
 void darBajaFuncion(){}
 
