@@ -56,7 +56,7 @@ void Hora::Cargar()
 
 void Hora::Mostrar()
 {
-    cout << "Hora: "<< hora<< ":"<<minutos<<endl;
+    cout << "HORA: "<< hora<< ":"<<minutos<<endl;
 }
 
 bool Hora::operator==(Hora h)

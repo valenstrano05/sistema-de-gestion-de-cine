@@ -7,6 +7,8 @@
 #include "clsArchivoSocios.h"
 #include "clsArchivoFunciones.h"
 #include "clsArchivoFormato.h"
+#include "clsArchivoCompras.h"
+#include "clsArchivoDetalleEntradas.h"
 
 using namespace std;
 
@@ -43,6 +45,37 @@ int pedirEntero(const char * mensaje){
     cin.ignore(1000, '\n');
     return n;
 }
+
+//-------------------------------------------
+
+int butacasOcupadas(int idFuncion){
+    ArchivoDetalleEntradas archD;
+    ArchivoCompras archC;
+    int ocupadas = 0;
+
+    for (int i = 0; i < archD.contarRegistros(); i++){
+        DetalleEntrada detalle = archD.leerRegistro(i);
+
+        if (detalle.getIdFuncion() == idFuncion){
+            int pos = archC.buscarRegistro(detalle.getIdCompra());
+            if (pos != -1 && archC.leerRegistro(pos).getEstado()){
+                ocupadas++;
+            }
+        }
+    }
+    return ocupadas;
+}
+
+int butacasDisponibles(Funcion f){
+    ArchivoSalas archS;
+    int pos = archS.buscarRegistro(f.getIdSala());
+    if (pos == -1) return 0;
+
+    int capacidad = archS.leerRegistro(pos).getCapacidadButacas();
+    return capacidad - butacasOcupadas(f.getIdFuncion());
+}
+
+
 //-------------------------------------------
 //PELICULAS
 
@@ -494,6 +527,8 @@ void listarFunciones()
         for (int i=0; i<cant; i++){
             Funcion obj = arch.leerRegistro(i);
             obj.mostrar();
+            cout << "BUTACAS DISPONIBLES: " << butacasDisponibles(obj) << endl;
+            cout <<"=====================================" <<endl;
         }
     }
     cout <<endl;

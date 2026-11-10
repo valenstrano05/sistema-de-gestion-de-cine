@@ -10,7 +10,6 @@ Funcion::Funcion()
     _idFuncion = 0;
     _idPelicula = 0;
     _idSala = 0;
-    _butacasDisponibles = 0;
     _estado = true;
 }
 
@@ -42,11 +41,6 @@ void Funcion::setFecha(Fecha valor)
 }
 
 
-void Funcion::setButacasDisponibles(int valor)
-{
-    _butacasDisponibles = valor;
-}
-
 void Funcion::setEstado(bool valor)
 {
     _estado = valor;
@@ -77,11 +71,6 @@ Fecha Funcion::getFecha()
     return _fecha;
 }
 
-
-int Funcion::getButacasDisponibles()
-{
-    return _butacasDisponibles;
-}
 
 bool Funcion::getEstado()
 {
@@ -145,17 +134,6 @@ void Funcion::cargar()
     cout << "Horario de proyeccion... " <<endl;
     _horario.Cargar();
 
-    do
-    {
-        cout << "Butacas disponibles iniciales: ";
-        cin >> _butacasDisponibles;
-        if (_butacasDisponibles <= 0)
-        {
-            cout << "Error, la cantidad de butacas disponibles iniciales tiene que ser mayor a 0, intente de nuevo."<<endl;
-        }
-    }
-    while (_butacasDisponibles <= 0);
-
     _estado = true;
 }
 
@@ -175,6 +153,7 @@ void Funcion::mostrar()
     }
 
     cout << "ID Sala: " << _idSala << endl;
+    cout << "FECHA: ";
     _fecha.Mostrar();
     _horario.Mostrar();
 
@@ -184,7 +163,4 @@ void Funcion::mostrar()
         Sala objS = archS.leerRegistro(pos);
         cout << "PRECIO: " <<objS.getPrecio() <<endl;
     }
-
-    cout << "Butacas Disponibles: " << _butacasDisponibles << endl;
-    cout << "===================================" << endl;
 }
