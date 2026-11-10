@@ -164,3 +164,62 @@ void Funcion::mostrar()
         cout << "PRECIO: " <<objS.getPrecio() <<endl;
     }
 }
+
+
+void Funcion::modificar()
+{
+    int opcion;
+    cout <<"Seleccione el campo a modificar..." <<endl;
+    cout <<"1. PELICULA " <<endl;
+    cout <<"2. SALA " <<endl;
+    cout <<"3. HORARIO " <<endl;
+    cout <<"4. FECHA " <<endl;
+    cin >>opcion;
+    system("cls");
+    switch(opcion)
+    {
+    case 1:{
+        ArchivoPeliculas arcPeliculas;
+        do{
+        cout << "NUEVO ID PELICULA: ";
+        cin >> _idPelicula;
+        if(_idPelicula<=0)
+        {
+            cout << "Error, el ID de la película tiene que ser mayor a 0, intente de nuevo."<<endl;
+        }
+        else if (arcPeliculas.buscarPorID(_idPelicula)==-1)
+        {
+            cout << "Error, no existe una película con ese ID, intente de nuevo."<<endl;
+            _idPelicula=0;
+        }
+    }while (_idPelicula<=0);
+        break;}
+    case 2:{
+        ArchivoSalas arcSalas;
+        do{
+        cout << "NUEVO ID SALA: ";
+        cin >> _idSala;
+        if (_idSala <= 0)
+        {
+            cout << "Error, el ID de la sala tiene que ser mayor a 0, intente de nuevo."<<endl;
+        }
+        else if (arcSalas.buscarRegistro(_idSala) == -1)
+        {
+            cout << "Error, no existe una sala con ese ID, intente de nuevo."<<endl;
+            _idSala = 0;
+        }
+    }while (_idSala <= 0);
+        break;}
+    case 3:
+        cout <<"NUEVO HORARIO: ";
+        _horario.Cargar();
+        break;
+    case 4:
+        cout <<"NUEVA FECHA: ";
+        _fecha.Cargar();
+        break;
+    default:
+        cout <<"Opcion invalida." <<endl;
+        break;
+    }
+}

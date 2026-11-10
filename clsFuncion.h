@@ -30,6 +30,7 @@ public:
     bool getEstado();
     void cargar();
     void mostrar();
+    void modificar();
 };
 
 #endif

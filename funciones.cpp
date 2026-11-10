@@ -82,12 +82,12 @@ int butacasDisponibles(Funcion f){
 void cargarPelicula(){
     ArchivoPeliculas arch;
     Pelicula obj;
-       obj.cargar();
-       if (arch.guardarRegistro(obj)){
-            cout<<"\n Registro exitoso!"<<endl;
-        }else {
-            cout <<"\n Error al guardar el archivo."<<endl;
-        }
+    obj.cargar();
+    if (arch.guardarRegistro(obj)){
+        cout<<"\n Registro exitoso!"<<endl;
+    }else {
+        cout <<"\n Error al guardar el archivo."<<endl;
+    }
 }
 
 
@@ -153,6 +153,86 @@ bool confirmacionSalida(){
     }
     return false;
 }
+
+//-------------------------------------------
+//DESCUENTOS
+
+void cargarDescuento()
+{
+    ArchivoDescuento arch;
+    Descuento obj;
+    obj.cargar();
+    if (arch.guardar(obj)){
+        cout <<"\nRegistro exitoso!" <<endl;
+    } else {
+        cout <<"\nError al guardar el archivo." <<endl;
+    }
+    system("pause");
+}
+
+
+void listarDescuentos()
+{
+    ArchivoDescuento arch;
+    int cant = arch.cantidadRegistros();
+    if (cant == 0){
+        cout <<"No hay registros activos." <<endl;
+        return;
+    }
+    for (int i=0; i<cant; i++){
+        Descuento obj = arch.leer(i);
+        obj.mostrar();
+    }
+    cout <<endl;
+    system("pause");
+}
+
+
+void modificarDescuento()
+{
+    int idBuscado;
+    cout <<"Ingrese el ID del descuento a modificar: "; cin>>idBuscado;
+    ArchivoDescuento arch;
+    int pos = arch.buscarPorID(idBuscado);
+    if (pos == -1){
+        cout <<"No hay descuentos activos con el ID " <<idBuscado <<"."<<endl;
+        return;
+    }
+    Descuento obj = arch.leer(pos);
+    obj.modificar();
+    if (arch.modificar(obj, pos)){
+        cout <<"Registro modificado con exito!" <<endl;
+    }else{
+        cout<<"Error al modificar el archivo." <<endl;
+    }
+    system("pause");
+}
+
+
+void darBajaDescuento()
+{
+    int idBuscado;
+    cout <<"Ingrese el ID del descuento a dar de baja: "; cin>>idBuscado;
+
+    ArchivoDescuento arch;
+    int pos = arch.buscarPorID(idBuscado);
+    if (pos == -1){
+        cout <<"No hay descuento activo con el ID " <<idBuscado <<"." <<endl;
+        return;
+    }
+
+    Descuento obj = arch.leer(pos);
+    obj.setEstado(false);
+    if (arch.modificar(obj, pos)){
+        cout <<"Descuento dado de baja coon exito!" <<endl;
+    }else{
+        cout <<"Error al dar de baja." <<endl;
+    }
+}
+
+
+
+
 
 //-------------------------------------------
 //SOCIOS
@@ -427,7 +507,7 @@ void darBajaSala(){
         }
     }
     cout << "Sala y sus butacas dadas de baja correctamente." << endl;
-system("pause");
+    system("pause");
 }
 //-------------------------------------------
 //BUTACAS
@@ -514,6 +594,7 @@ void cargarFuncion()
     }else{
         cout <<"\n Error al guardar el archivo." <<endl;
     }
+    system("pause");
 }
 
 
@@ -532,12 +613,53 @@ void listarFunciones()
         }
     }
     cout <<endl;
+    system("pause");
 }
 
 
+void modificarFuncion()
+{
+    int idBuscado;
+    cout <<"Ingrese el ID de la funciona a modificar: "; cin>> idBuscado;
+    ArchivoFunciones arch;
+    int pos = arch.buscarRegistro(idBuscado);
+    if (pos == -1){
+        cout <<"Error, no hay funcion registrada con el ID"<<idBuscado <<"." <<endl;
+        return;
+    }
 
-void modificarFuncion(){}
-void darBajaFuncion(){}
+    Funcion obj = arch.leerRegistro(pos);
+    obj.modificar();
+
+    if (arch.modificarRegistro(obj, pos)){
+        cout<<"Registro actualizado." <<endl;
+    }else{
+        cout <<"Error al actualizar el registro." <<endl;
+    }
+    system("pause");
+}
+
+void darBajaFuncion()
+{
+    int idBuscado;
+    cout <<"Ingrese el ID de la funcion a dar de baja: "; cin>>idBuscado;
+    ArchivoFunciones arch;
+    int pos = arch.buscarRegistro(idBuscado);
+    if (pos == -1){
+        cout <<"Error, no se registro una funcion con el ID " <<idBuscado <<"." <<endl;
+        return;
+    }
+
+    Funcion obj = arch.leerRegistro(pos);
+    obj.setEstado(false);
+
+    if(arch.modificarRegistro(obj, pos)){
+        cout<<"Funcion dada de baja. " <<endl;
+    }else{
+        cout <<"Error al dar de baja la funcion." <<endl;
+    }
+    system("pause");
+}
 
 //-------------------------------------------
 //COMPRAS

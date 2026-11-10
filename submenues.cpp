@@ -161,12 +161,16 @@ void menuDescuentos()
         switch(opcion)
         {
         case 1:
+            cargarDescuento();
             break;
         case 2:
+            listarDescuentos();
             break;
         case 3:
+            modificarDescuento();
             break;
         case 4:
+            darBajaDescuento();
             break;
         case 0:
             if(confirmacionSalida())

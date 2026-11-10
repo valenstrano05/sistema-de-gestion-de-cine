@@ -4,12 +4,11 @@
 #include "funciones.h"
 using namespace std;
 
-Descuento::Descuento(int _id, const char* nombre, float _porcentaje, int tipo, bool _estado)
+Descuento::Descuento(int _id, const char* nombre, float _porcentaje, bool _estado)
 {
     id = _id;
     strcpy(nombrePromo, nombre);
     _porcentaje = porcentaje;
-    tipoDescuento = tipo;
     estado = false;
 }
 
@@ -40,18 +39,11 @@ void Descuento::cargar()
     cargarCadena("NOMBRE PROMO: ", nombrePromo, 40);
 
     cout <<"PORCENTAJE DE DESCUENTO (%): ";
+    cin>> porcentaje;
     while (porcentaje<=0 ||  porcentaje>=100)
     {
         cout <<"Porcentaje invalido, ingreselo nuevamente: ";
         cin>> porcentaje;
-    }
-
-    cout <<"TIPO (1: EDAD, 2: DIA, 3: EVENTO): ";
-    cin >>tipoDescuento;
-    while (tipoDescuento < 1 || tipoDescuento > 3)
-    {
-        cout <<"Error, ingrese una clasificación válida: ";
-        cin >>tipoDescuento;
     }
 
     estado = true;
@@ -63,20 +55,7 @@ void Descuento::mostrar()
     cout <<"ID: "<<id <<endl;
     cout <<"NOMBRE: "<<nombrePromo <<endl;
     cout <<"PORCENTAJE DESCONTADO: " <<porcentaje <<"%" <<endl;
-    cout <<"TIPO: ";
-    switch(tipoDescuento)
-    {
-    case 1:
-        cout<<"Edad"<<endl;
-        break;
-    case 2:
-        cout<<"Dia"<<endl;
-        break;
-    case 3:
-        cout<<"Evento"<<endl;
-        break;
-    }
-    cout <<endl;
+    cout << "============================="<<endl;
 }
 
 
@@ -116,14 +95,6 @@ float Descuento::getPorcentaje()
     return porcentaje;
 }
 
-void Descuento::setTipoDescuento(int tipo)
-{
-    if (tipo>=1 && tipo<=3) tipoDescuento=tipo;
-}
-int Descuento::getTipoDescuento()
-{
-    return tipoDescuento;
-}
 
 void Descuento::setEstado(bool _estado)
 {
