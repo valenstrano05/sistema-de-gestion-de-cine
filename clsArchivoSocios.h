@@ -8,7 +8,7 @@ class ArchivoSocios
 private:
     char _nombreArchivo[30];
 public:
-    ArchivoSocios(const char * nombre="socios.dat");
+    ArchivoSocios(const char * nombre="Socios.dat");
     bool grabarRegistro(Socio reg);
     Socio leerRegistro(int pos);
     int contarRegistros();

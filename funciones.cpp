@@ -18,24 +18,21 @@ using namespace std;
 
 void cargarCadena(const char* mensaje, char* palabra, int tam)
 {
-    string texto;
     cout << mensaje;
     if (cin.peek() == '\n')
     {
         cin.ignore();
     }
-    getline(cin, texto);
-    while (texto[0] == '\0')
+    cin.getline(palabra, tam);
+    while (palabra[0] == '\0')
     {
         cout << "Campo obligatorio. " << mensaje;
         if (cin.peek() == '\n')
         {
             cin.ignore();
         }
-        getline(cin, texto);
+        cin.getline(palabra, tam);
     }
-    strncpy(palabra, texto.c_str(), tam);
-    palabra[tam - 1] = '\0';
 }
 
 int pedirEntero(const char * mensaje)

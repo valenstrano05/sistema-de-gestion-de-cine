@@ -8,7 +8,7 @@ class ArchivoButacas
 private:
     char _nombreArchivo[30];
 public:
-    ArchivoButacas(const char * nombre="butacas.dat");
+    ArchivoButacas(const char * nombre="Butacas.dat");
     bool grabarRegistro(Butaca reg);
     Butaca leerRegistro(int pos);
     int contarRegistros();

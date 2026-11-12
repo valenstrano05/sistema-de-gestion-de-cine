@@ -6,7 +6,7 @@ class ArchivoFormato {
 private:
     char _nombreArchivo[30];
 public:
-    ArchivoFormato(const char* nombre = "formatos.dat");
+    ArchivoFormato(const char* nombre = "Formatos.dat");
     bool guardarRegistro(Formato);
     int contarRegistros();
     Formato leerRegistro(int );

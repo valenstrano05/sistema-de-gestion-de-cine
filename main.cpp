@@ -4,11 +4,7 @@
 using namespace std;
 int main()
 {
-    SetConsoleOutputCP(CP_UTF8);
-    SetConsoleCP(CP_UTF8);
-    cout << "áéíóú ñ ¿¡" << endl;
+setlocale(LC_ALL, "es_ES.UTF-8");
+    menuPrincipal();
     return 0;
 }
-//    menuPrincipal();
-//    return 0;
-//}

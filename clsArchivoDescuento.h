@@ -7,7 +7,7 @@ class ArchivoDescuento
 private:
     char nombreArchivo [30];
 public:
-    ArchivoDescuento (const char* nombre = "descuentos.dat");
+    ArchivoDescuento (const char* nombre = "Descuentos.dat");
     bool guardar (Descuento);
     int cantidadRegistros();
     Descuento leer (int posicion);

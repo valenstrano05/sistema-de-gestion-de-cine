@@ -8,7 +8,7 @@ class ArchivoPeliculas
 private:
     char nombreArchivo[30];
 public:
-    ArchivoPeliculas (const char* nombre = "peliculas.dat");
+    ArchivoPeliculas (const char* nombre = "Peliculas.dat");
     bool guardarRegistro (Pelicula);
     int contarRegistros();
     Pelicula leerRegistro (int posicion);

@@ -20,7 +20,6 @@ Pelicula::Pelicula(int _id, const char* _titulo, const char* _genero, const char
     estado = _estado;
 }
 
-
 void Pelicula::cargar()
 {
     ArchivoPeliculas arch;
