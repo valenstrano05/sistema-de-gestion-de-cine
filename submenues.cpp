@@ -17,33 +17,33 @@ int menuPrincipal()
         cout << endl;
         cout << "  * * * * * * * * * * * * * * * * * * * * * *" << endl;
         cout << "  *                                         *" << endl;
-        cout << "  *     ██████╗  ██╗███╗   ██╗███████╗      *" << endl;
-        cout << "  *     ██╔════╝ ██║████╗  ██║██╔════╝      *" << endl;
-        cout << "  *     ██║      ██║██╔██╗ ██║█████╗        *" << endl;
-        cout << "  *     ██║      ██║██║╚██╗██║██╔══╝        *" << endl;
-        cout << "  *     ╚██████╗ ██║██║ ╚████║███████╗      *" << endl;
-        cout << "  *      ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝      *" << endl;
+        cout << "  *      ██████╗  ██╗███╗   ██╗███████╗     *" << endl;
+        cout << "  *      ██╔════╝ ██║████╗  ██║██╔════╝     *" << endl;
+        cout << "  *      ██║      ██║██╔██╗ ██║█████╗       *" << endl;
+        cout << "  *      ██║      ██║██║╚██╗██║██╔══╝       *" << endl;
+        cout << "  *      ╚██████╗ ██║██║ ╚████║███████╗     *" << endl;
+        cout << "  *       ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝     *" << endl;
         cout << "  *                                         *" << endl;
         cout << "  * * * * * * * * * * * * * * * * * * * * * *" << endl;
         cout << endl;
-        cout <<    "     1. PELICULAS" <<endl;
-        cout <<    "     2. DESCUENTOS" <<endl;
-        cout <<    "     3. SOCIOS"<<endl;
-        cout <<    "     4. FORMATO"<<endl;
-        cout <<    "     5. SALAS"<<endl;
-        cout <<    "     6. BUTACAS"<<endl;
-        cout <<    "     7. FUNCIONES"<<endl;
-        cout <<    "     8. COMPRAS"<<endl;
-        cout <<    "     9. INFORMES"<<endl;
-        cout <<    "     0. SALIR"<<endl;
-        cout <<endl;
-        cout <<"------------------------------------------------" <<endl;
-        cout <<"Ingrese una opción: ";
-        cin >>opcion;
-        cout <<"------------------------------------------------" <<endl;
+        cout << "     1. PELICULAS" << endl;
+        cout << "     2. DESCUENTOS" << endl;
+        cout << "     3. SOCIOS" << endl;
+        cout << "     4. FORMATO" << endl;
+        cout << "     5. SALAS" << endl;
+        cout << "     6. BUTACAS" << endl;
+        cout << "     7. FUNCIONES" << endl;
+        cout << "     8. COMPRAS" << endl;
+        cout << "     9. INFORMES" << endl;
+        cout << "     0. SALIR" << endl;
+        cout << endl;
+        cout << "------------------------------------------------" << endl;
+        cout << "Ingrese una opción: ";
+        cin >> opcion;
+        cout << "------------------------------------------------" << endl;
         system("cls");
 
-        switch(opcion)
+        switch (opcion)
         {
         case 1:
             menuPeliculas();
@@ -74,7 +74,7 @@ int menuPrincipal()
             break;
         case 0:
             system("cls");
-            cout<<"Saliendo del programa..."<<endl;
+            cout << "Saliendo del programa..." << endl;
             return 0;
             break;
         }
@@ -88,30 +88,29 @@ void menuPeliculas()
     {
         system("cls");
         int opcion;
-        cout <<"||||||||||||||||||||||||||||||||||||||||||||||||" <<endl;
-        cout <<"|                                              |" << endl;
-        cout <<"|                   PELICULAS                  |" <<endl;
-        cout <<"|                                              |" << endl;
-        cout <<"||||||||||||||||||||||||||||||||||||||||||||||||" <<endl;
-        cout <<endl;
-        cout <<    "     1. CARGAR PELICULAS" <<endl;
-        cout <<    "     2. LISTAR PELICULAS" <<endl;
-        cout <<    "     3. MODIFICAR" <<endl;
-        cout <<    "     4. DAR DE BAJA" <<endl;
-        cout <<    "     5. CONSULTAR" <<endl;
-        cout <<    "     0. VOLVER AL MENU PRINCIPAL" <<endl;
-        cout <<endl;
-        cout <<"------------------------------------------------" <<endl;
-        cout <<"Ingrese una opción: ";
-        cin >>opcion;
-        cout <<"------------------------------------------------" <<endl;
+        cout << "||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << "|                                               |" << endl;
+        cout << "|                    PELICULAS                  |" << endl;
+        cout << "|                                               |" << endl;
+        cout << "||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << endl;
+        cout << "     1. CARGAR PELICULAS" << endl;
+        cout << "     2. LISTAR PELICULAS" << endl;
+        cout << "     3. MODIFICAR" << endl;
+        cout << "     4. DAR DE BAJA / REACTIVAR PELICULA" << endl;
+        cout << "     5. CONSULTAR PELICULAS" << endl;
+        cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
+        cout << endl;
+        cout << "------------------------------------------------" << endl;
+        cout << "Ingrese una opción: ";
+        cin >> opcion;
+        cout << "------------------------------------------------" << endl;
         system("cls");
 
-        switch(opcion)
+        switch (opcion)
         {
         case 1:
             cargarPelicula();
-            system("pause");
             break;
         case 2:
             listadosPeliculas();
@@ -120,13 +119,13 @@ void menuPeliculas()
             modificarPelicula();
             break;
         case 4:
-            darBajaPelicula();
+            cambiarEstadoPelicula();
             break;
         case 5:
             consultarPeliculas();
             break;
         case 0:
-            if(confirmacionSalida())
+            if (confirmacionSalida())
             {
                 return;
             }
@@ -141,24 +140,25 @@ void menuDescuentos()
     {
         system("cls");
         int opcion;
-        cout <<"||||||||||||||||||||||||||||||||||||||||||||||||" <<endl;
-        cout <<"|                                              |" << endl;
-        cout <<"|                   DESCUENTOS                 |" <<endl;
-        cout <<"|                                              |" << endl;
-        cout <<"||||||||||||||||||||||||||||||||||||||||||||||||" <<endl;
-        cout <<endl;
-        cout <<    "     1. CARGAR DESCUENTOS" <<endl;
-        cout <<    "     2. LISTAR DESCUENTOS" <<endl;
-        cout <<    "     3. MODIFICAR" <<endl;
-        cout <<    "     4. DAR DE BAJA" <<endl;
-        cout <<    "     0. VOLVER AL MENU PRINCIPAL" <<endl;
-        cout <<endl;
-        cout <<"------------------------------------------------" <<endl;
-        cout <<"Ingrese una opción: ";
-        cin >>opcion;
-        cout <<"------------------------------------------------" <<endl;
+        cout << "||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << "|                                               |" << endl;
+        cout << "|                   DESCUENTOS                  |" << endl;
+        cout << "|                                               |" << endl;
+        cout << "||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << endl;
+        cout << "     1. CARGAR DESCUENTOS" << endl;
+        cout << "     2. LISTAR DESCUENTOS" << endl;
+        cout << "     3. MODIFICAR" << endl;
+        cout << "     4. DAR DE BAJA / REACTIVAR DESCUENTO" << endl;
+        cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
+        cout << endl;
+        cout << "------------------------------------------------" << endl;
+        cout << "Ingrese una opción: ";
+        cin >> opcion;
+        cout << "------------------------------------------------" << endl;
         system("cls");
-        switch(opcion)
+
+        switch (opcion)
         {
         case 1:
             cargarDescuento();
@@ -170,10 +170,10 @@ void menuDescuentos()
             modificarDescuento();
             break;
         case 4:
-            darBajaDescuento();
+            cambiarEstadoDescuento();
             break;
         case 0:
-            if(confirmacionSalida())
+            if (confirmacionSalida())
             {
                 return;
             }
@@ -182,19 +182,22 @@ void menuDescuentos()
     }
 }
 
-void menuSocios(){
-    while (true){
+void menuSocios()
+{
+    while (true)
+    {
         system("cls");
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                               |" << endl;
-        cout << "|                   SOCIOS                      |"<< endl;
+        cout << "|                    SOCIOS                     |" << endl;
         cout << "|                                               |" << endl;
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
         cout << "     1. CARGAR SOCIO" << endl;
         cout << "     2. LISTAR SOCIOS" << endl;
         cout << "     3. MODIFICAR" << endl;
-        cout << "     4. DAR DE BAJA" << endl;
+        cout << "     4. DAR DE BAJA / REACTIVAR SOCIO" << endl;
+        cout << "     5. CONSULTAR SOCIOS" << endl;
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "------------------------------------------------" << endl;
@@ -202,7 +205,8 @@ void menuSocios(){
         cout << "------------------------------------------------" << endl;
         system("cls");
 
-        switch (opcion){
+        switch (opcion)
+        {
         case 1:
             cargarSocio();
             break;
@@ -213,23 +217,29 @@ void menuSocios(){
             modificarSocio();
             break;
         case 4:
-            darBajaSocio();
+            cambiarEstadoSocio();
+            break;
+        case 5:
+            consultarSocios();
             break;
         case 0:
-            if (confirmacionSalida()){
-            return;
+            if (confirmacionSalida())
+            {
+                return;
             }
+            break;
         }
     }
 }
 
 void menuFormato()
 {
-    while (true){
+    while (true)
+    {
         system("cls");
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                               |" << endl;
-        cout << "|                  FORMATOS                     |"<< endl;
+        cout << "|                    FORMATOS                   |" << endl;
         cout << "|                                               |" << endl;
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
@@ -237,7 +247,7 @@ void menuFormato()
         cout << "     1. CARGAR FORMATOS" << endl;
         cout << "     2. LISTAR FORMATOS" << endl;
         cout << "     3. MODIFICAR" << endl;
-        cout << "     4. DAR DE BAJA" << endl;
+        cout << "     4. DAR DE BAJA / REACTIVAR FORMATO" << endl;
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "------------------------------------------------" << endl;
@@ -245,7 +255,8 @@ void menuFormato()
         cout << "------------------------------------------------" << endl;
         system("cls");
 
-        switch (opcion){
+        switch (opcion)
+        {
         case 1:
             cargarFormato();
             break;
@@ -256,22 +267,26 @@ void menuFormato()
             modificarFormato();
             break;
         case 4:
-            darBajaFormato();
+            cambiarEstadoFormato();
             break;
         case 0:
-            if (confirmacionSalida()){
-            return;
+            if (confirmacionSalida())
+            {
+                return;
             }
+            break;
         }
     }
 }
 
-void menuSalas(){
-    while (true){
-            system("cls");
+void menuSalas()
+{
+    while (true)
+    {
+        system("cls");
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                               |" << endl;
-        cout << "|                    SALAS                      |"<< endl;
+        cout << "|                     SALAS                     |" << endl;
         cout << "|                                               |" << endl;
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
@@ -279,7 +294,7 @@ void menuSalas(){
         cout << "     1. CARGAR SALA" << endl;
         cout << "     2. LISTAR SALAS" << endl;
         cout << "     3. MODIFICAR" << endl;
-        cout << "     4. DAR DE BAJA" << endl;
+        cout << "     4. DAR DE BAJA / REACTIVAR SALA" << endl;
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "------------------------------------------------" << endl;
@@ -287,7 +302,8 @@ void menuSalas(){
         cout << "------------------------------------------------" << endl;
         system("cls");
 
-        switch (opcion){
+        switch (opcion)
+        {
         case 1:
             cargarSala();
             break;
@@ -298,28 +314,32 @@ void menuSalas(){
             modificarSala();
             break;
         case 4:
-            darBajaSala();
+            cambiarEstadoSala();
             break;
         case 0:
-            if (confirmacionSalida()){
-            return;
+            if (confirmacionSalida())
+            {
+                return;
             }
+            break;
         }
     }
 }
 
-void menuButacas(){
-    while (true){
-    system("cls");
+void menuButacas()
+{
+    while (true)
+    {
+        system("cls");
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                               |" << endl;
-        cout << "|                    BUTACAS                    |"<< endl;
+        cout << "|                    BUTACAS                    |" << endl;
         cout << "|                                               |" << endl;
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
         cout << endl;
         cout << "     1. LISTAR BUTACAS DISPONIBLES DE UNA SALA" << endl;
-        cout << "     2. DAR DE BAJA" << endl;
+        cout << "     2. DAR DE BAJA / REACTIVAR BUTACA" << endl;
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "------------------------------------------------" << endl;
@@ -327,35 +347,40 @@ void menuButacas(){
         cout << "------------------------------------------------" << endl;
         system("cls");
 
-        switch (opcion){
+        switch (opcion)
+        {
         case 1:
             listarButacas();
             break;
         case 2:
-            darBajaButaca();
+            cambiarEstadoButaca();
             break;
         case 0:
-            confirmacionSalida();
-            return;
+            if (confirmacionSalida())
+            {
+                return;
+            }
+            break;
         }
     }
 }
+
 void menuFunciones()
 {
-    system("cls");
     while (true)
     {
+        system("cls");
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                               |" << endl;
-        cout << "|                    FUNCIONES                  |" << endl;
+        cout << "|                   FUNCIONES                   |" << endl;
         cout << "|                                               |" << endl;
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
         cout << "     1. CARGAR FUNCION" << endl;
         cout << "     2. LISTAR FUNCIONES" << endl;
         cout << "     3. MODIFICAR" << endl;
-        cout << "     4. DAR DE BAJA" << endl;
-        cout << "     5. CONSULTAR" <<endl;
+        cout << "     4. DAR DE BAJA / REACTIVAR FUNCION" << endl;
+        cout << "     5. CONSULTAR FUNCIONES" << endl;
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "------------------------------------------------" << endl;
@@ -375,13 +400,13 @@ void menuFunciones()
             modificarFuncion();
             break;
         case 4:
-            darBajaFuncion();
+            cambiarEstadoFuncion();
             break;
         case 5:
             consultarFunciones();
             break;
         case 0:
-            if(confirmacionSalida())
+            if (confirmacionSalida())
             {
                 return;
             }
@@ -392,9 +417,9 @@ void menuFunciones()
 
 void menuCompras()
 {
-    system("cls");
     while (true)
     {
+        system("cls");
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                               |" << endl;
         cout << "|                 COMPRAS / VENTAS              |" << endl;
@@ -404,7 +429,7 @@ void menuCompras()
         cout << "     1. NUEVA COMPRA (REGISTRAR VENTA)" << endl;
         cout << "     2. LISTAR COMPRAS" << endl;
         cout << "     3. CONSULTAR HISTORIAL DE COMPRAS POR SOCIO" << endl;
-        cout << "     4. DAR DE BAJA"<<endl;
+        cout << "     4. DAR DE BAJA / REACTIVAR COMPRA" << endl;
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "------------------------------------------------" << endl;
@@ -421,13 +446,13 @@ void menuCompras()
             listadosCompras();
             break;
         case 3:
-            consultarComprasPorSocio();
+            comprasPorSocio();
             break;
         case 4:
-            darBajaCompra();
+            cambiarEstadoCompra();
             break;
         case 0:
-            if(confirmacionSalida())
+            if (confirmacionSalida())
             {
                 return;
             }
@@ -438,9 +463,9 @@ void menuCompras()
 
 void menuInformes()
 {
-    system("cls");
     while (true)
     {
+        system("cls");
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                               |" << endl;
         cout << "|               INFORMES Y ESTADISTICAS         |" << endl;
@@ -481,11 +506,10 @@ void menuInformes()
             informeTicketsSuperanPromedio();
             break;
         case 0:
-            if(confirmacionSalida())
+            if (confirmacionSalida())
             {
                 return;
             }
-            break;
         }
     }
 }

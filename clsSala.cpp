@@ -89,7 +89,7 @@ void Sala::mostrar()
         if (pos != -1){
             Formato obj = arch.leerRegistro(pos);
             cout << "FORMATO: " <<obj.getNombre() <<endl;
-            cout << "PRECIO: " <<obj.getPrecio() <<endl;
+            cout << "PRECIO POR ENTRADA: " <<obj.getPrecio() <<endl;
         }else {
             cout <<"Formato no encontrado."<<endl;
         }

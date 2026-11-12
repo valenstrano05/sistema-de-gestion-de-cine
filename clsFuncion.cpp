@@ -129,7 +129,7 @@ void Funcion::cargar()
     }
     while (_idSala <= 0);
 
-    cout << "Fecha de proyeccion: ";
+    cout << "Fecha de proyeccion (DD MM AAAA): ";
     _fecha.Cargar();
     cout << "Horario de proyeccion... " <<endl;
     _horario.Cargar();

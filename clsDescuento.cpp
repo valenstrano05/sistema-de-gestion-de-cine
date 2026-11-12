@@ -49,7 +49,6 @@ void Descuento::cargar()
     estado = true;
 }
 
-
 void Descuento::mostrar()
 {
     cout <<"ID: "<<id <<endl;

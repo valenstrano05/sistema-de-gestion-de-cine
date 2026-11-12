@@ -15,8 +15,6 @@ Formato::Formato(int id, const char* nombre, float precio)
     _estado = true;
 }
 
-
-
 void Formato::cargar()
 {
     ArchivoFormato arch;
@@ -39,10 +37,9 @@ void Formato::cargar()
     cargarCadena("NOMBRE: ", _nombre, 10);
 
     cout <<"PRECIO: $";
-    while (!(cin >> _precio) || _precio <= 0){
-    cin.clear();
-    cin.ignore(1000, '\n');
-    cout << "Error, el precio debe ser un numero mayor a 0. Ingresar nuevamente: ";
+    cin >> _precio;
+    while (_precio<=0){
+    cout << "Error, el precio debe ser un numero mayor a 0. Ingresar nuevamente: "; cin >> _precio;
     }
 
     _estado=true;

@@ -11,5 +11,9 @@ void funcionesPorPelicula();
 void funcionesPorFecha();
 void funcionesPorSala();
 
+void consultarSocios();
+void sociosPorDni();
+void sociosPorApellido();
 
+void comprasPorSocio();
 #endif // CONSULTAS_H_INCLUDED

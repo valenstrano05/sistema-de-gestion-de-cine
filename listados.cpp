@@ -335,9 +335,7 @@ void listadosFunciones()
             break;
         case 0:
             return;
-            break;
         }
-        system("pause");
     }
 }
 

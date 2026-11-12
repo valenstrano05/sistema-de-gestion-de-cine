@@ -10,42 +10,42 @@ int butacasDisponibles(Funcion f);
 void cargarPelicula();
 void listarPeliculas();
 void modificarPelicula();
-void darBajaPelicula();
+void cambiarEstadoPelicula();
 bool confirmacionSalida();
 
 void cargarDescuento();
 void listarDescuentos();
 void modificarDescuento();
-void darBajaDescuento();
+void cambiarEstadoDescuento();
 
 void cargarSocio();
 void listarSocios();
 void modificarSocio();
-void darBajaSocio();
+void cambiarEstadoSocio();
 
 void cargarFormato();
 void listarFormatos();
 void modificarFormato();
-void darBajaFormato();
+void cambiarEstadoFormato();
 
 void cargarSala();
 void listarSalas();
 void modificarSala();
-void darBajaSala();
+void cambiarEstadoSala();
 
 void cargarButaca();
 void listarButacas();
-void darBajaButaca();
+void cambiarEstadoButaca();
 
 void cargarFuncion();
 void listarFunciones();
 void modificarFuncion();
-void darBajaFuncion();
+void cambiarEstadoFuncion();
 
 void registrarCompra();
 void listarCompras();
 void consultarComprasPorSocio();
-void darBajaCompra();
+void cambiarEstadoCompra();
 
 void informeRankingRecaudacionPeliculas();
 void informeOcupacionPorFuncion();

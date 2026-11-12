@@ -95,10 +95,10 @@ void Compra::cargar()
     }
     while (_idSocio <= 0);
 
-    cout << "Fecha de compra:" << endl;
+    cout << "Fecha de la compra:" << endl;
     _fecha.Cargar();
 
-    cout << "Hora de compra:" << endl;
+    cout << "Hora de la compra:" << endl;
     _hora.Cargar();
 
     _estado = true;
