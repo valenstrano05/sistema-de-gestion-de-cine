@@ -218,7 +218,7 @@ void listadosSocios()
         cout << "||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
         cout << "     1. LISTADO GENERAL" << endl;
-        cout << "     2. ORDENADOS DE FORMA ALFABÉTICA" << endl;
+        cout << "     2. ORDENADOS DE FORMA ALFABETICA" << endl;
         cout << "     0. VOLVER" << endl;
         cout << endl;
         cout << "------------------------------------------------" << endl;
