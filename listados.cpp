@@ -461,7 +461,7 @@ void listarComprasPorFecha()
     int activas = vecCompras.size();
     if (activas == 0)
     {
-        cout << "No hay funciones activas para ordenar." << endl;
+        cout << "No hay compras activas para ordenar." << endl;
         return;
     }
 
@@ -478,20 +478,20 @@ void listarComprasPorFecha()
             }
         }
     }
-        for (int i = 0; i < activas-1; i++)
+    for (int i = 0; i < activas-1; i++)
     {
         for (int j = 0; j < activas-1 - i; j++)
         {
             if (vecCompras[j].getFecha() == vecCompras[j+1].getFecha()){
                 if(vecCompras[j].getHorario()>vecCompras[j+1].getHorario())
-            {
+                {
                 aux = vecCompras[j];
                 vecCompras[j] = vecCompras[j+1];
                 vecCompras[j+1] = aux;
+                }
             }
         }
     }
-}
     cout << "=======================================" << endl;
     cout << "COMPRAS ORDENADAS DE FORMA CRONOLÓGICA" << endl;
     cout << "=======================================" << endl;
@@ -499,6 +499,6 @@ void listarComprasPorFecha()
     for (int i = 0; i < activas; i++)
     {
         vecCompras[i].mostrar();
-
+    cout << "======================================="<< endl;
     }
 }

@@ -82,6 +82,7 @@ if (dia!=fec.dia){
     }
     return false;
 }
+return false;
 }
 
 bool Fecha::operator<(Fecha fec)
@@ -108,4 +109,5 @@ if (dia!=fec.dia){
     }
     return false;
 }
+return false;
 }

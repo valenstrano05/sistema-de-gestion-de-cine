@@ -155,6 +155,7 @@ void Funcion::mostrar()
     cout << "ID Sala: " << _idSala << endl;
     cout << "FECHA: ";
     _fecha.Mostrar();
+    cout << "HORA: ";
     _horario.Mostrar();
 
     ArchivoSalas archS;
