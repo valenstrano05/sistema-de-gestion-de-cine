@@ -81,6 +81,7 @@ void peliculasPorGenero()
     int encontrado = vecPeliculas.size();
     if (encontrado == 0){
         cout <<"No hay peliculas registradas del genero " <<genero <<"." <<endl;
+        system ("pause");
         return;
     }
     system("cls");
@@ -90,6 +91,8 @@ void peliculasPorGenero()
     for (int i=0; i<encontrado; i++){
         vecPeliculas[i].mostrar();
     }
+
+    system ("pause");
 
 }
 
@@ -135,6 +138,7 @@ void peliculasPorClasificacion()
     int encontradas = vecPeliculas.size();
     if (encontradas == 0){
         cout <<"No hay peliculas registradas con esta clasificacion." <<endl;
+        system ("pause");
         return;
     }
 
@@ -145,6 +149,7 @@ void peliculasPorClasificacion()
     for (int i=0; i<encontradas; i++){
         vecPeliculas[i].mostrar();
     }
+    system ("pause");
 
 }
 
@@ -180,6 +185,7 @@ void peliculasPorDirector()
     int encontrado = vecPeliculas.size();
     if (encontrado == 0){
         cout <<"No hay peliculas registradas del director/a "<<directorBuscado <<"."<<endl;
+        system ("pause");
         return;
     }
     system ("cls");
@@ -188,6 +194,7 @@ void peliculasPorDirector()
     cout << "=======================================" << endl;
     for (int i=0; i<encontrado; i++){
         vecPeliculas[i].mostrar();
+        system("pause");
     }
 }
 
@@ -281,6 +288,7 @@ void funcionesPorPelicula()
     int encontrados=vecFunciones.size();
     if (encontrados == 0){
         cout <<"No hay funciones registradas para la pelicula " <<titulo<<"." <<endl;
+        system ("pause");
         return;
     }
     system ("cls");
@@ -290,6 +298,7 @@ void funcionesPorPelicula()
     for (int i=0; i<encontrados; i++){
         vecFunciones[i].mostrar();
     }
+    system ("pause");
 
 }
 
@@ -410,6 +419,7 @@ void funcionesPorSala()
     cout << "=======================================" << endl;
         cout << endl;
     }
+    system("pause");
 }
 
 //SOCIOS
@@ -486,6 +496,7 @@ void sociosPorDni()
     {
         vecSocios[i].mostrar();
     }
+    system("pause");
 }
 
 void sociosPorApellido()
@@ -529,6 +540,7 @@ void sociosPorApellido()
     {
         vecSocios[i].mostrar();
     }
+    system ("pause");
 }
 
 void comprasPorSocio() {
@@ -569,4 +581,5 @@ void comprasPorSocio() {
     {
         cout << "El socio no registra compras activas en el sistema." << endl;
     }
+    system("pause");
 }

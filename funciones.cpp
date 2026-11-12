@@ -1,4 +1,5 @@
 #include <iostream>
+#include <windows.h>
 #include "funciones.h"
 #include "clsArchivoDescuento.h"
 #include "clsArchivoPeliculas.h"
@@ -158,7 +159,7 @@ void cambiarEstadoPelicula()
     cin >> idBuscado;
 
     ArchivoPeliculas arch;
-    int pos = arch.buscarPorIDIna11+ctivo(idBuscado);
+    int pos = arch.buscarPorIDInactivo(idBuscado);
     if (pos == -1)
     {
         cout << "No se encontro un registro con el ID " << idBuscado << "." << endl;

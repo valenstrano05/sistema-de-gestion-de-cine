@@ -114,5 +114,4 @@ void Compra::mostrar()
     _fecha.Mostrar();
     cout << "Hora de Compra: ";
     _hora.Mostrar();
-    cout << endl << "========================================" << endl;
 }
