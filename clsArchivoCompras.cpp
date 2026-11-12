@@ -77,7 +77,21 @@ int ArchivoCompras::buscarRegistro(int idCompra)
     for (int i = 0; i < cant; i++)
     {
         Compra obj = leerRegistro(i);
-        if (obj.getIdCompra() == idCompra)
+        if (obj.getIdCompra() == idCompra&&obj.getEstado())
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int ArchivoCompras::buscarRegistroInactivo(int idCompra)
+{
+    int cant = contarRegistros();
+    for (int i = 0; i < cant; i++)
+    {
+        Compra obj = leerRegistro(i);
+        if (obj.getIdCompra() == idCompra&&obj.getEstado())
         {
             return i;
         }

@@ -77,7 +77,21 @@ int ArchivoFunciones::buscarRegistro(int idFuncion)
     for (int i = 0; i < cant; i++)
     {
         Funcion obj = leerRegistro(i);
-        if (obj.getIdFuncion() == idFuncion)
+        if (obj.getIdFuncion() == idFuncion&&obj.getEstado())
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int ArchivoFunciones::buscarRegistroInactivo(int idFuncion)
+{
+    int cant = contarRegistros();
+    for (int i = 0; i < cant; i++)
+    {
+        Funcion obj = leerRegistro(i);
+        if (obj.getIdFuncion() == idFuncion&&obj.getEstado())
         {
             return i;
         }

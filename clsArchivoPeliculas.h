@@ -13,6 +13,7 @@ public:
     int contarRegistros();
     Pelicula leerRegistro (int posicion);
     int buscarPorID (int);
+    int buscarPorIDInactivo (int);
     bool modificarRegistro (Pelicula, int);
 };
 

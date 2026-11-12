@@ -13,6 +13,7 @@ public:
     Butaca leerRegistro(int pos);
     int contarRegistros();
     int buscarRegistro(int idSala, const char * numButaca);
+    int buscarRegistroInactivo(int idSala, const char * numButaca);
     bool modificarRegistro(Butaca reg, int pos);
     bool generarButacas(int idSala, int capacidad);
 };

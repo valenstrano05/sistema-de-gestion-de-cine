@@ -60,6 +60,20 @@ int ArchivoButacas::buscarRegistro(int idSala, const char * numButaca)
     return -1;
 }
 
+int ArchivoButacas::buscarRegistroInactivo(int idSala, const char * numButaca)
+{
+    int cantidad = contarRegistros();
+    for(int i = 0; i < cantidad; i++)
+    {
+        Butaca reg = leerRegistro(i);
+        if(reg.getIdSala() == idSala && strcmp(reg.getNumeroButaca(), numButaca) == 0)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
 bool ArchivoButacas::modificarRegistro(Butaca reg, int pos)
 {
     FILE *p = fopen(_nombreArchivo, "rb+");

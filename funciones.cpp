@@ -158,7 +158,7 @@ void cambiarEstadoPelicula()
     cin >> idBuscado;
 
     ArchivoPeliculas arch;
-    int pos = arch.buscarPorID(idBuscado);
+    int pos = arch.buscarPorIDIna11+ctivo(idBuscado);
     if (pos == -1)
     {
         cout << "No se encontro un registro con el ID " << idBuscado << "." << endl;
@@ -270,7 +270,7 @@ void cambiarEstadoDescuento()
     cin >> idBuscado;
 
     ArchivoDescuento arch;
-    int pos = arch.buscarPorID(idBuscado);
+    int pos = arch.buscarPorIDInactivo(idBuscado);
     if (pos == -1)
     {
         cout << "No hay descuento activo con el ID " << idBuscado << "." << endl;
@@ -401,7 +401,7 @@ void cambiarEstadoSocio()
     ArchivoSocios arch;
 
     int id = pedirEntero("ID del socio a modificar estado: ");
-    int pos = arch.buscarRegistro(id);
+    int pos = arch.buscarRegistroInactivo(id);
     if (pos == -1)
     {
         cout << "No existe un socio con ese ID." << endl;
@@ -504,7 +504,7 @@ void cambiarEstadoFormato()
     cin >> idBuscado;
 
     ArchivoFormato arch;
-    int pos = arch.buscarPorID(idBuscado);
+    int pos = arch.buscarPorIDInactivo(idBuscado);
     if (pos == -1)
     {
         cout << "No se encontro un registro con el ID " << idBuscado << "." << endl;
@@ -626,7 +626,7 @@ void cambiarEstadoSala()
     ArchivoButacas archButacas;
 
     int id = pedirEntero("ID de la sala a cambiar de estado: ");
-    int pos = arch.buscarRegistro(id);
+    int pos = arch.buscarRegistroInactivo(id);
     if (pos == -1)
     {
         cout << "No existe una sala con ese ID." << endl;
@@ -707,7 +707,7 @@ void cambiarEstadoButaca()
         idSala = pedirEntero("ID invalido. Ingrese un ID de sala mayor a 0: ");
     }
 
-    if (archSalas.buscarRegistro(idSala) == -1)
+    if (archSalas.buscarRegistroInactivo(idSala) == -1)
     {
         cout << "No existe una sala registrada con ese ID." << endl;
         system("pause");
@@ -834,7 +834,7 @@ void cambiarEstadoFuncion()
     cout << "Ingrese el ID de la funcion a modificar estado: ";
     cin >> idBuscado;
     ArchivoFunciones arch;
-    int pos = arch.buscarRegistro(idBuscado);
+    int pos = arch.buscarRegistroInactivo(idBuscado);
     if (pos == -1)
     {
         cout << "Error, no se registro una funcion con el ID " << idBuscado << "." << endl;
@@ -908,7 +908,7 @@ void cambiarEstadoCompra()
     cin >> idBuscado;
 
     ArchivoCompras arch;
-    int pos = arch.buscarRegistro(idBuscado);
+    int pos = arch.buscarRegistroInactivo(idBuscado);
     if (pos == -1)
     {
         cout << "No se encontro una compra con el ID " << idBuscado << "." << endl;

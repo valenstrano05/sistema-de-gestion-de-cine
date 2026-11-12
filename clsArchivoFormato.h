@@ -11,6 +11,7 @@ public:
     int contarRegistros();
     Formato leerRegistro(int );
     int buscarPorID(int);
+    int buscarPorIDInactivo (int);
     bool modificarRegistro(Formato, int);
 };
 

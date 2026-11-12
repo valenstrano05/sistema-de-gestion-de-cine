@@ -13,6 +13,7 @@ public:
     Socio leerRegistro(int pos);
     int contarRegistros();
     int buscarRegistro(int idSocio);
+    int buscarRegistroInactivo(int idSocio);
     bool modificarRegistro(Socio reg, int pos);
 };
 

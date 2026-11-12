@@ -47,7 +47,6 @@ void listadosPeliculas()
         case 0:
             return;
         }
-        system("pause");
     }
 }
 

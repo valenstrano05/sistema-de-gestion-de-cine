@@ -62,6 +62,19 @@ int ArchivoFormato::buscarPorID(int id)
     return -1;
 }
 
+int ArchivoFormato::buscarPorIDInactivo(int id)
+{
+    int cant = contarRegistros();
+    for (int i=0; i<cant; i++)
+    {
+        Formato obj = leerRegistro(i);
+        if (obj.getID()==id)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
 
 bool ArchivoFormato::modificarRegistro(Formato obj, int posicion)
 {

@@ -15,6 +15,7 @@ public:
     void listarRegistros();
     Funcion leerRegistro(int pos);
     int buscarRegistro(int idFuncion);
+    int buscarRegistroInactivo(int idFuncion);
     bool modificarRegistro(Funcion obj, int pos);
 };
 

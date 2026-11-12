@@ -13,6 +13,7 @@ public:
     Sala leerRegistro(int pos);
     int contarRegistros();
     int buscarRegistro(int idSala);
+    int buscarRegistroInactivo(int idSala);
     bool modificarRegistro(Sala reg, int pos);
 };
 

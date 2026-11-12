@@ -62,6 +62,20 @@ int ArchivoSocios::buscarRegistro(int idSocio)
     return -1;
 }
 
+int ArchivoSocios::buscarRegistroInactivo(int idSocio)
+{
+    int cantidad = contarRegistros();
+    for(int i = 0; i < cantidad; i++)
+    {
+        Socio reg = leerRegistro(i);
+        if(reg.getIdSocio() == idSocio)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
 bool ArchivoSocios::modificarRegistro(Socio reg, int pos)
 {
     FILE *p = fopen(_nombreArchivo, "rb+");

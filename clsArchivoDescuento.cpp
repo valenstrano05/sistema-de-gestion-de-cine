@@ -69,6 +69,20 @@ int ArchivoDescuento::buscarPorID(int id)
     return -1;
 }
 
+int ArchivoDescuento::buscarPorIDInactivo(int id)
+{
+    int cant = cantidadRegistros();
+    for (int i=0; i<cant; i++)
+    {
+        Descuento obj = leer(i);
+        if (obj.getID()==id)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
 bool ArchivoDescuento::modificar(Descuento obj, int posicion)
 {
     FILE* p = fopen (nombreArchivo, "rb+");

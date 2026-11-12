@@ -12,6 +12,7 @@ public:
     int cantidadRegistros();
     Descuento leer (int posicion);
     int buscarPorID (int);
+    int buscarPorIDInactivo(int);
     bool modificar (Descuento, int);
 };
 #endif // ARCHIVODESCUENTO_H_INCLUDED

@@ -15,6 +15,7 @@ public:
     void listarRegistros();
     Compra leerRegistro(int pos);
     int buscarRegistro(int ID);
+    int buscarRegistroInactivo(int ID);
     bool modificarRegistro(Compra obj, int pos);
 };
 

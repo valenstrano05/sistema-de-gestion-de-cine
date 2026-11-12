@@ -60,6 +60,20 @@ int ArchivoSalas::buscarRegistro(int idSala)
     return -1;
 }
 
+int ArchivoSalas::buscarRegistroInactivo(int idSala)
+{
+    int cantidad = contarRegistros();
+    for(int i = 0; i < cantidad; i++)
+    {
+        Sala reg = leerRegistro(i);
+        if(reg.getIdSala() == idSala)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
 bool ArchivoSalas::modificarRegistro(Sala reg, int pos)
 {
     FILE *p = fopen(_nombreArchivo, "rb+");
