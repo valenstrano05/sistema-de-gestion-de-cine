@@ -20,15 +20,10 @@ void Socio::cargar()
     ArchivoSocios arch;
 
     cout << "ID: ";
-    while (!(cin >> _idSocio) || _idSocio <= 0 || arch.buscarRegistro(_idSocio) != -1)
+    cin >> _idSocio;
+    while (_idSocio <= 0 || arch.buscarRegistro(_idSocio) != -1)
     {
-        if (cin.fail())
-        {
-            cin.clear();
-            cin.ignore(1000, '\n');
-            cout << "Error: Debe ingresar un numero valido." << endl;
-        }
-        else if (_idSocio <= 0)
+        if (_idSocio <= 0)
         {
             cout << "Error, el ID no puede ser negativo o cero." << endl;
         }
@@ -37,22 +32,16 @@ void Socio::cargar()
             cout << "Error, el ID ya existe." << endl;
         }
         cout << "Ingresar ID nuevamente: ";
+        cin >> _idSocio;
     }
 
     cout << "DNI: ";
-    while (!(cin >> _dni) || _dni < 1000000 || _dni > 99999999)
+    cin >> _dni;
+    while (_dni < 1000000 || _dni > 99999999)
     {
-        if (cin.fail())
-        {
-            cin.clear();
-            cin.ignore(1000, '\n');
-            cout << "Error: Debe ingresar un numero valido." << endl;
-        }
-        else
-        {
-            cout << "Error, el DNI debe tener 7 u 8 digitos." << endl;
-        }
+        cout << "Error, el DNI debe tener 7 u 8 digitos." << endl;
         cout << "Ingresar DNI nuevamente: ";
+        cin >> _dni;
     }
 
     cin.ignore(1000, '\n');

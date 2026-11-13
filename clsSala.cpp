@@ -17,15 +17,10 @@ void Sala::cargar()
 {
     ArchivoSalas arch;
     cout << "ID: ";
-    while (!(cin >> _idSala) || _idSala <= 0 || arch.buscarRegistro(_idSala) != -1)
+    cin >> _idSala;
+    while (_idSala <= 0 || arch.buscarRegistro(_idSala) != -1)
     {
-        if (cin.fail())
-        {
-            cin.clear();
-            cin.ignore(1000, '\n');
-            cout << "Error: Debe ingresar un numero valido." << endl;
-        }
-        else if (_idSala <= 0)
+        if (_idSala <= 0)
         {
             cout << "Error, el ID no puede ser negativo o cero." << endl;
         }
@@ -34,35 +29,24 @@ void Sala::cargar()
             cout << "Error, el ID ya existe." << endl;
         }
         cout << "Ingresar ID nuevamente: ";
+        cin >> _idSala;
     }
 
     cout << "CAPACIDAD DE BUTACAS (1 a 500): ";
-    while (!(cin >> _capacidadButacas) || _capacidadButacas < 1 || _capacidadButacas > 500)
+    cin >> _capacidadButacas;
+    while (_capacidadButacas < 1 || _capacidadButacas > 500)
     {
-        if (cin.fail())
-        {
-            cin.clear();
-            cin.ignore(1000, '\n');
-            cout << "Error: Debe ingresar un numero valido." << endl;
-        }
-        else
-        {
-            cout << "Error, la capacidad debe estar entre 1 y 500." << endl;
-        }
+        cout << "Error, la capacidad debe estar entre 1 y 500." << endl;
         cout << "Ingresar capacidad nuevamente: ";
+        cin >> _capacidadButacas;
     }
 
     ArchivoFormato archF;
     cout << "ID FORMATO: ";
-    while (!(cin >> _formatoProyeccion) || _formatoProyeccion <= 0 || archF.buscarPorID(_formatoProyeccion) == -1)
+    cin >> _formatoProyeccion;
+    while (_formatoProyeccion <= 0 || archF.buscarPorID(_formatoProyeccion) == -1)
     {
-        if (cin.fail())
-        {
-            cin.clear();
-            cin.ignore(1000, '\n');
-            cout << "Error: Debe ingresar un numero valido." << endl;
-        }
-        else if (_idSala <= 0)
+        if (_formatoProyeccion <= 0)
         {
             cout << "Error, el ID no puede ser negativo o cero." << endl;
         }
@@ -71,6 +55,7 @@ void Sala::cargar()
             cout << "Error, el ID de formato no esta registrado." << endl;
         }
         cout << "Ingresar ID nuevamente: ";
+        cin >> _formatoProyeccion;
     }
 
     _estado = true;

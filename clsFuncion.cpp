@@ -131,7 +131,7 @@ void Funcion::cargar()
 
     cout << "Fecha de proyeccion (DD MM AAAA): ";
     _fecha.Cargar();
-    cout << "Horario de proyeccion... " <<endl;
+    cout << "Horario de proyeccion (HH MM): " <<endl;
     _horario.Cargar();
 
     _estado = true;
@@ -155,9 +155,10 @@ void Funcion::mostrar()
     cout << "ID Sala: " << _idSala << endl;
     cout << "FECHA: ";
     _fecha.Mostrar();
+    cout << endl;
     cout << "HORA: ";
     _horario.Mostrar();
-
+cout << endl;
     ArchivoSalas archS;
     int posS = archS.buscarRegistro(_idSala);
     if (posS != -1){

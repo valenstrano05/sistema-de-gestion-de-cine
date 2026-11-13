@@ -2,8 +2,6 @@
 #define DESCUENTO_H_INCLUDED
 #include <cstring>
 
-
-
 class Descuento
 {
 private:
@@ -23,7 +21,7 @@ public:
     void setPorcentaje (float);
     float getPorcentaje ();
     void setTipoDescuento (int);
-    int getTipoDescuento ();
+    int getIDDescuento ();
     void setEstado (bool);
     bool getEstado ();
 };

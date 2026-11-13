@@ -76,6 +76,7 @@ void Pelicula::mostrar()
         cout <<"SINOPSIS: " <<sinopsis <<endl;
         cout <<"FECHA DE ESTRENO: ";
         fechaEstreno.Mostrar();
+        cout << endl;
         cout <<"DURACION: " << duracion << " minutos"<<endl;
         cout <<"CLASIFICACION: ";
         switch(clasificacion)

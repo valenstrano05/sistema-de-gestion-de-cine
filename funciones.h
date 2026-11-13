@@ -8,42 +8,34 @@ int butacasOcupadas(int idFuncion);
 int butacasDisponibles(Funcion f);
 
 void cargarPelicula();
-void listarPeliculas();
 void modificarPelicula();
 void cambiarEstadoPelicula();
 bool confirmacionSalida();
 
 void cargarDescuento();
-void listarDescuentos();
 void modificarDescuento();
 void cambiarEstadoDescuento();
 
 void cargarSocio();
-void listarSocios();
 void modificarSocio();
 void cambiarEstadoSocio();
 
 void cargarFormato();
-void listarFormatos();
 void modificarFormato();
 void cambiarEstadoFormato();
 
 void cargarSala();
-void listarSalas();
 void modificarSala();
 void cambiarEstadoSala();
 
 void cargarButaca();
-void listarButacas();
 void cambiarEstadoButaca();
 
 void cargarFuncion();
-void listarFunciones();
 void modificarFuncion();
 void cambiarEstadoFuncion();
 
 void registrarCompra();
-void listarCompras();
 void consultarComprasPorSocio();
 void cambiarEstadoCompra();
 

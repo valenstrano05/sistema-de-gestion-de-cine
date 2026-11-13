@@ -10,7 +10,7 @@
 #include "clsArchivoFormato.h"
 #include "clsArchivoCompras.h"
 #include "clsArchivoDetalleEntradas.h"
-
+#include <vector>
 using namespace std;
 
 // ----------------------------------
@@ -50,6 +50,7 @@ int pedirEntero(const char * mensaje)
 }
 
 //-------------------------------------------
+// UTILIDADES PERO PARA BUTACAS
 
 int butacasOcupadas(int idFuncion)
 {
@@ -99,24 +100,6 @@ void cargarPelicula()
     {
         cout << "\n Error al guardar el archivo." << endl;
     }
-    system("pause");
-}
-
-void listarPeliculas()
-{
-    ArchivoPeliculas arch;
-    if (arch.contarRegistros() == 0)
-    {
-        cout << "No hay peliculas registradas." << endl << endl;
-        system("pause");
-        return;
-    }
-    for (int i = 0; i < arch.contarRegistros(); i++)
-    {
-        Pelicula obj = arch.leerRegistro(i);
-        obj.mostrar();
-    }
-    cout << endl;
     system("pause");
 }
 
@@ -216,25 +199,6 @@ void cargarDescuento()
     system("pause");
 }
 
-void listarDescuentos()
-{
-    ArchivoDescuento arch;
-    int cant = arch.cantidadRegistros();
-    if (cant == 0)
-    {
-        cout << "No hay registros activos." << endl;
-        system("pause");
-        return;
-    }
-    for (int i = 0; i < cant; i++)
-    {
-        Descuento obj = arch.leer(i);
-        obj.mostrar();
-    }
-    cout << endl;
-    system("pause");
-}
-
 void modificarDescuento()
 {
     int idBuscado;
@@ -314,25 +278,6 @@ void cargarSocio()
     else
     {
         cout << "Error al guardar el socio." << endl;
-    }
-    system("pause");
-}
-
-void listarSocios()
-{
-    ArchivoSocios arch;
-    int cantidad = arch.contarRegistros();
-
-    if (cantidad == 0)
-    {
-        cout << "No hay socios cargados." << endl;
-        system("pause");
-        return;
-    }
-    for (int i = 0; i < cantidad; i++)
-    {
-        Socio obj = arch.leerRegistro(i);
-        obj.mostrar();
     }
     system("pause");
 }
@@ -448,24 +393,6 @@ void cargarFormato()
     system("pause");
 }
 
-void listarFormatos()
-{
-    ArchivoFormato arch;
-    if (arch.contarRegistros() == 0)
-    {
-        cout << "No hay formatos registrados." << endl << endl;
-        system("pause");
-        return;
-    }
-    for (int i = 0; i < arch.contarRegistros(); i++)
-    {
-        Formato obj = arch.leerRegistro(i);
-        obj.mostrar();
-    }
-    cout << endl;
-    system("pause");
-}
-
 void modificarFormato()
 {
     int idBuscado;
@@ -553,25 +480,6 @@ void cargarSala()
     system("pause");
 }
 
-void listarSalas()
-{
-    ArchivoSalas arch;
-    int cantidad = arch.contarRegistros();
-
-    if (cantidad == 0)
-    {
-        cout << "No hay salas cargadas." << endl;
-        system("pause");
-        return;
-    }
-    for (int i = 0; i < cantidad; i++)
-    {
-        Sala obj = arch.leerRegistro(i);
-        obj.mostrar();
-    }
-    system("pause");
-}
-
 void modificarSala()
 {
     ArchivoSalas arch;
@@ -636,7 +544,7 @@ void cambiarEstadoSala()
     bool nuevoEstado = !obj.getEstado();
     obj.setEstado(nuevoEstado);
 
-    if (!arch.modificarRegistro(obj, pos))
+    if (arch.modificarRegistro(obj, pos)==false)
     {
         cout << "Error al modificar el estado de la sala." << endl;
         system("pause");
@@ -667,33 +575,6 @@ void cambiarEstadoSala()
 //-------------------------------------------
 //BUTACAS
 
-void listarButacas()
-{
-    ArchivoSalas archSalas;
-    ArchivoButacas arch;
-
-    int idSala = pedirEntero("ID de la sala: ");
-    if (archSalas.buscarRegistro(idSala) == -1)
-    {
-        cout << "No existe una sala con ese ID." << endl;
-        system("pause");
-        return;
-    }
-
-    int cantidad = arch.contarRegistros();
-    int mostradas = 0;
-    for (int i = 0; i < cantidad; i++)
-    {
-        Butaca obj = arch.leerRegistro(i);
-        if (obj.getIdSala() == idSala && obj.getEstado())
-        {
-            obj.mostrar();
-            mostradas++;
-        }
-    }
-    cout << "Total de butacas disponibles de la sala " << idSala << ": " << mostradas << endl;
-    system("pause");
-}
 
 void cambiarEstadoButaca()
 {
@@ -774,29 +655,7 @@ void cargarFuncion()
     system("pause");
 }
 
-void listarFunciones()
-{
-    ArchivoFunciones arch;
-    int cant = arch.contarRegistros();
-    if (cant == 0)
-    {
-        cout << "No hay funciones registradas." << endl;
-    }
-    else
-    {
-        for (int i = 0; i < cant; i++)
-        {
-            Funcion obj = arch.leerRegistro(i);
-            if(obj.getEstado()){
-            obj.mostrar();
-            cout << "BUTACAS DISPONIBLES: " << butacasDisponibles(obj) << endl;
-            cout << "=====================================" << endl;
-            }
-        }
-    }
-    cout << endl;
-    system("pause");
-}
+
 
 void modificarFuncion()
 {
@@ -865,37 +724,34 @@ void cambiarEstadoFuncion()
 //-------------------------------------------
 //COMPRAS
 void registrarCompra() {
-    ArchivoCompras arch;
-    Compra obj;
-    obj.cargar();
-    if (arch.grabarRegistro(obj))
+    ArchivoCompras archCompra;
+    ArchivoDetalleEntradas archDetalle;
+
+    Compra c;
+    DetalleEntrada d;
+
+    cout << "=======================================" << endl;
+    cout << "       REGISTRAR NUEVA VENTA           " << endl;
+    cout << "=======================================" << endl;
+
+    c.cargar();
+
+    if (archCompra.grabarRegistro(c)==false)
+    {
+        cout << "Error al guardar el archivo de compras." << endl;
+        system("pause");
+        return;
+    }
+    d.cargar(c.getIdCompra());
+    if (archDetalle.grabarRegistro(d))
     {
         cout << "\n Registro exitoso!" << endl;
     }
     else
     {
-        cout << "\n Error al guardar el archivo." << endl;
+        cout << "\n Error al guardar el detalle de la entrada." << endl;
     }
-    system("pause");
-}
-void listarCompras()
-{
-    ArchivoCompras arch;
-    int cant = arch.contarRegistros();
-    if (cant == 0)
-    {
-        cout << "No hay compras registradas." << endl;
-    }
-    else
-    {
-        for (int i = 0; i < cant; i++)
-        {
-            Compra obj = arch.leerRegistro(i);
-            obj.mostrar();
-            cout << "=====================================" << endl;
-        }
-    }
-    cout << endl;
+
     system("pause");
 }
 
@@ -938,9 +794,210 @@ void cambiarEstadoCompra()
 
 //-------------------------------------------
 //INFORMES
-void informeRankingRecaudacionPeliculas() {}
-void informeOcupacionPorFuncion() {}
-void informeEntradasPorFormato() {}
-void informeSociosMasFrecuentes() {}
-void informeImpactoDescuentos() {}
-void informeTicketsSuperanPromedio() {}
+void informeRankingRecaudacionPeliculas() {
+}
+
+void informeOcupacionPorFuncion()
+{
+    system("cls");
+    ArchivoFunciones archFunciones;
+    ArchivoSalas archSalas;
+    int cantFunciones = archFunciones.contarRegistros();
+
+    if (cantFunciones <= 0)
+    {
+        cout << "No hay funciones registradas en el sistema." << endl;
+        system("pause");
+        return;
+    }
+
+    cout << "=====================================================================" << endl;
+    cout << "                  PORCENTAJE DE OCUPACION POR FUNCION                " << endl;
+    cout << "=====================================================================" << endl;
+    cout << "FUNCION ID | FECHA      | HORA  | PELICULA ID | SALA ID | OCUPACION" << endl;
+    cout << "---------------------------------------------------------------------" << endl;
+
+    bool hayFuncionesActivas = false;
+
+    for (int i = 0; i < cantFunciones; i++)
+    {
+        Funcion f = archFunciones.leerRegistro(i);
+
+        if (f.getEstado() == true)
+        {
+            hayFuncionesActivas = true;
+            int posSala = archSalas.buscarRegistro(f.getIdSala());
+            int capacidadTotal = 0;
+
+            if (posSala != -1)
+            {
+                Sala s = archSalas.leerRegistro(posSala);
+                capacidadTotal = s.getCapacidadButacas();
+            }
+            int butacasVendidas = butacasOcupadas(f.getIdFuncion());
+
+            float porcentajeOcupacion = 0;
+            if (capacidadTotal > 0)
+            {
+                porcentajeOcupacion = ((float)butacasVendidas / capacidadTotal) * 100.0;
+            }
+
+            cout << f.getIdFuncion() << "          | ";
+            f.getFecha().Mostrar();
+            cout << " | ";
+            f.getHorario().Mostrar();
+            cout << " | " << f.getIdPelicula() << "           | " << f.getIdSala() << "       | ";
+            cout << porcentajeOcupacion << "% (" << butacasVendidas << "/" << capacidadTotal << ")" << endl;
+            cout << "---------------------------------------------------------------------" << endl;
+        }
+    }
+
+    if (hayFuncionesActivas == false)
+    {
+        cout << "No hay funciones activas para generar el informe." << endl;
+    }
+
+    system("pause");
+}
+
+void informeEntradasPorFormato() {
+}
+
+void informeSociosMasFrecuentes() {
+}
+void informeImpactoDescuentos()
+{
+    system("cls");
+    ArchivoDescuento archDesc;
+    ArchivoCompras archComp;
+    ArchivoDetalleEntradas archDet;
+    ArchivoFunciones archFunc;
+    ArchivoSalas archSalas;
+    ArchivoFormato archForm;
+
+    int cantDesc = archDesc.cantidadRegistros();
+    int cantComp = archComp.contarRegistros();
+    int cantDet = archDet.contarRegistros();
+
+    if (cantComp <= 0 || cantDet <= 0)
+    {
+        cout << "No hay compras registradas para generar el informe." << endl;
+        system("pause");
+        return;
+    }
+
+    int anioFiltro = pedirEntero("INGRESE ANIO A ANALIZAR (0 para anio actual 2026): ");
+    if (anioFiltro == 0)
+    {
+        anioFiltro = 2026;
+    }
+
+    vector<Descuento> vecDescuentos;
+    vector<int> vecOperaciones;
+    vector<float> vecTotalDescontado;
+
+    for (int i = 0; i < cantDesc; i++)
+    {
+        Descuento d = archDesc.leer(i);
+        vecDescuentos.push_back(d);
+        vecOperaciones.push_back(0);
+        vecTotalDescontado.push_back(0.0);
+    }
+
+    float valorBrutoTotal = 0;
+    float totalDescontadoGlobal = 0;
+    int totalOperacionesConDesc = 0;
+
+    for (int i = 0; i < cantDet; i++)
+    {
+        DetalleEntrada d = archDet.leerRegistro(i);
+        int posComp = archComp.buscarRegistro(d.getIdCompra());
+
+        if (posComp != -1)
+        {
+            Compra comp = archComp.leerRegistro(posComp);
+            if (comp.getEstado() && comp.getFecha().getAnio() == anioFiltro)
+            {
+                int posFunc = archFunc.buscarRegistro(d.getIdFuncion());
+                if (posFunc != -1)
+                {
+                    Funcion func = archFunc.leerRegistro(posFunc);
+                    int posSala = archSalas.buscarRegistro(func.getIdSala());
+
+                    if (posSala != -1)
+                    {
+                        Sala sala = archSalas.leerRegistro(posSala);
+                        int posForm = archForm.buscarPorID(sala.getFormatoProyeccion());
+
+                        if (posForm != -1)
+                        {
+                            Formato form = archForm.leerRegistro(posForm);
+                            float precioBase = form.getPrecio();
+                            valorBrutoTotal += precioBase;
+
+                            int idDesc = d.getIdDescuento();
+                            if (idDesc > 0)
+                            {
+                                int posD = archDesc.buscarPorID(idDesc);
+                                if (posD != -1)
+                                {
+                                    Descuento descObj = archDesc.leer(posD);
+                                    float montoDesc = precioBase * (descObj.getPorcentaje() / 100.0);
+
+                                    totalDescontadoGlobal += montoDesc;
+                                    totalOperacionesConDesc++;
+
+                                    for (int j = 0; j < (int)vecDescuentos.size(); j++)
+                                    {
+                                        if (vecDescuentos[j].getIDDescuento() == idDesc)
+                                        {
+                                            vecOperaciones[j]++;
+                                            vecTotalDescontado[j] += montoDesc;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    float montoNetoAbonado = valorBrutoTotal - totalDescontadoGlobal;
+
+    system("cls");
+    cout << "=====================================================================" << endl;
+    cout << "IMPACTO DE PROMOCIONES Y DESCUENTOS - ANIO " << anioFiltro << endl;
+    cout << "=====================================================================" << endl;
+    cout << "PROMOCION                          | OPERACIONES | TOTAL DESCONTADO" << endl;
+    cout << "---------------------------------------------------------------------" << endl;
+
+    for (int i = 0; i < (int)vecDescuentos.size(); i++)
+    {
+        if (vecDescuentos[i].getEstado() || vecOperaciones[i] > 0)
+        {
+            cout << vecDescuentos[i].getNombre();
+            int largo = strlen(vecDescuentos[i].getNombre());
+            for (int k = largo; k < 35; k++)
+            {
+                cout << " ";
+            }
+            cout << "| " << vecOperaciones[i] << "           | $" << (long long)vecTotalDescontado[i] << endl;
+        }
+    }
+
+    cout << "---------------------------------------------------------------------" << endl;
+    cout << "TOTAL                              | " << totalOperacionesConDesc << "           | $" << (long long)totalDescontadoGlobal << endl;
+    cout << "=====================================================================" << endl;
+    cout << "VALOR BRUTO (SIN DESCUENTOS): $" << (long long)valorBrutoTotal << endl;
+    cout << "TOTAL DESCONTADO:             $" << (long long)totalDescontadoGlobal << endl;
+    cout << "MONTO NETO ABONADO:           $" << (long long)montoNetoAbonado << endl;
+    cout << "=====================================================================" << endl;
+
+    system("pause");
+}
+
+void informeTicketsSuperanPromedio() {
+}

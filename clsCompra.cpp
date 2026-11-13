@@ -59,8 +59,6 @@ void Compra::cargar()
     ArchivoCompras arcCompras;
     ArchivoSocios arcSocios;
 
-    cout << "=== CARGAR NUEVA COMPRA ===" << endl;
-
     do
     {
         cout << "ID Compra: ";
@@ -95,10 +93,10 @@ void Compra::cargar()
     }
     while (_idSocio <= 0);
 
-    cout << "Fecha de la compra:" << endl;
+    cout << "Fecha de la compra (DD MM AAAA):";
     _fecha.Cargar();
 
-    cout << "Hora de la compra:" << endl;
+    cout << "Hora de la compra (HH MM):";
     _hora.Cargar();
 
     _estado = true;
@@ -106,12 +104,14 @@ void Compra::cargar()
 
 void Compra::mostrar()
 {
-    if (!_estado) return;
+    if (_estado==false) return;
 
     cout << "ID Compra: " << _idCompra << endl;
     cout << "ID Socio: " << _idSocio << endl;
     cout << "Fecha de Compra: ";
     _fecha.Mostrar();
+    cout << endl;
     cout << "Hora de Compra: ";
     _hora.Mostrar();
+    cout << endl;
 }

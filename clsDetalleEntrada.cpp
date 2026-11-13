@@ -34,34 +34,17 @@ int DetalleEntrada::getIdSala() { return _idSala; }
 const char * DetalleEntrada::getNumeroButaca() { return _numeroButaca; }
 int DetalleEntrada::getIdDescuento() { return _idDescuento; }
 
-void DetalleEntrada::cargar()
+void DetalleEntrada::cargar(int idCompra)
 {
-    ArchivoDetalleEntradas arcDetalle;
-    ArchivoFunciones arcFunciones;
-    ArchivoCompras arcCompras;
-    ArchivoSalas arcSalas;
-    ArchivoButacas arcButacas;
-    ArchivoDescuento arcDescuentos;
+    ArchivoDetalleEntradas archDetalle;
+    ArchivoFunciones archFunciones;
+    ArchivoButacas archButacas;
+    ArchivoDescuento archDescuentos;
 
-    cout << "=== CARGAR DETALLE DE ENTRADA ===" << endl;
+    _idDetalleEntrada = archDetalle.contarRegistros() + 1;
+    _idCompra = idCompra;
 
-    do
-    {
-        cout << "ID Detalle Entrada: ";
-        cin >> _idDetalleEntrada;
-
-        if (_idDetalleEntrada <= 0)
-        {
-            cout << "Error, el ID del detalle de entrada tiene que ser mayor a 0, intente de nuevo." << endl;
-        }
-        else if (arcDetalle.buscarRegistro(_idDetalleEntrada) != -1)
-        {
-            cout << "Error, ya existe un detalle de entrada registrado con ese ID, intente de nuevo." << endl;
-            _idDetalleEntrada = 0;
-        }
-    }
-    while (_idDetalleEntrada <= 0);
-
+    int posFuncion;
     do
     {
         cout << "ID Funcion: ";
@@ -69,53 +52,64 @@ void DetalleEntrada::cargar()
 
         if (_idFuncion <= 0)
         {
-            cout << "Error, el ID de la función tiene que ser mayor a 0, intente de nuevo." << endl;
+            cout << "Error, el ID de la funcion tiene que ser mayor a 0, intente de nuevo." << endl;
         }
-        else if (arcFunciones.buscarRegistro(_idFuncion) == -1)
+        else
         {
-            cout << "Error, no existe una función con ese ID, intente de nuevo." << endl;
-            _idFuncion = 0;
+            posFuncion = archFunciones.buscarRegistro(_idFuncion);
+            if (posFuncion == -1 || archFunciones.leerRegistro(posFuncion).getEstado()==false)
+            {
+                cout << "Error, no existe una funcion activa con ese ID, intente de nuevo." << endl;
+                _idFuncion = -1;
+            }
         }
     }
     while (_idFuncion <= 0);
 
+    Funcion f = archFunciones.leerRegistro(posFuncion);
+    _idSala = f.getIdSala();
+    cout << "ID de Sala encontrado automaticamente: " << _idSala << endl;
+
+    bool butacaValida = false;
     do
     {
-        cout << "ID Compra: ";
-        cin >> _idCompra;
+        cargarCadena("Numero de butaca (ej: F01B05): ", _numeroButaca, 7);
 
-        if (_idCompra <= 0)
+        int posButaca = archButacas.buscarRegistro(_idSala, _numeroButaca);
+        if (posButaca == -1 || archButacas.leerRegistro(posButaca).getEstado()==false)
         {
-            cout << "Error, el ID de la compra tiene que ser mayor a 0, intente de nuevo." << endl;
-        }
-        else if (arcCompras.buscarRegistro(_idCompra) == -1)
-        {
-            cout << "Error, no existe una compra con ese ID, intente de nuevo." << endl;
-            _idCompra = 0;
-        }
-    }
-    while (_idCompra <= 0);
-
-    do
-    {
-        cout << "ID de la Sala de la butaca: ";
-        cin >> _idSala;
-
-        if (_idSala <= 0 || arcSalas.buscarRegistro(_idSala) == -1)
-        {
-            cout << "Error, la sala no existe o el ID es invalido, intente de nuevo." << endl;
-            _idSala = 0;
+            cout << "Error, la butaca no existe o no esta habilitada en la sala " << _idSala << "." << endl;
             continue;
         }
-        cargarCadena("Numero de butaca (ej:F01B05:", _numeroButaca, 7);
 
-        if (arcButacas.buscarRegistro(_idSala, _numeroButaca) == -1)
+        bool yaVendida = false;
+        int cantD = archDetalle.contarRegistros();
+        ArchivoCompras archCompras;
+
+        for (int i = 0; i < cantD; i++)
         {
-            cout << "Error, no existe esa butaca en la sala indicada (o no esta disponible)." << endl;
-            _idSala = 0; // Forzar a repetir el ciclo
+            DetalleEntrada d = archDetalle.leerRegistro(i);
+            if (d.getIdFuncion() == _idFuncion && strcmp(d.getNumeroButaca(), _numeroButaca) == 0)
+            {
+                int posC = archCompras.buscarRegistro(d.getIdCompra());
+                if (posC != -1 && archCompras.leerRegistro(posC).getEstado())
+                {
+                    yaVendida = true;
+                    break;
+                }
+            }
+        }
+
+        if (yaVendida)
+        {
+            cout << "Error, esa butaca ya fue vendida para esta funcion. Elija otra." << endl;
+        }
+        else
+        {
+            butacaValida = true;
         }
     }
-    while (_idSala <= 0);
+    while (butacaValida==false);
 
     do
     {
@@ -126,10 +120,14 @@ void DetalleEntrada::cargar()
         {
             cout << "Error, el ID de descuento no puede ser negativo, intente de nuevo." << endl;
         }
-        else if (_idDescuento > 0 && arcDescuentos.buscarPorID(_idDescuento) == -1)
+        else if (_idDescuento > 0)
         {
-            cout << "Error, no existe un descuento con ese ID, intente de nuevo." << endl;
-            _idDescuento = -1;
+            int posDesc = archDescuentos.buscarPorID(_idDescuento);
+            if (posDesc == -1 || archDescuentos.leer(posDesc).getEstado()==false)
+            {
+                cout << "Error, no existe un descuento activo con ese ID, intente de nuevo." << endl;
+                _idDescuento = -1;
+            }
         }
     }
     while (_idDescuento < 0);

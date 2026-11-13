@@ -25,7 +25,7 @@ public:
     int getIdSala();
     const char * getNumeroButaca();
     int getIdDescuento();
-    void cargar();
+    void cargar(int idCompra);
     void mostrar();
 };
 

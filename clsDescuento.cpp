@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 #include "clsDescuento.h"
 #include "clsArchivoDescuento.h"
 #include "funciones.h"
@@ -8,23 +9,18 @@ Descuento::Descuento(int _id, const char* nombre, float _porcentaje, bool _estad
 {
     id = _id;
     strcpy(nombrePromo, nombre);
-    _porcentaje = porcentaje;
-    estado = false;
+    porcentaje = _porcentaje;
+    estado = _estado;
 }
 
 void Descuento::cargar()
 {
     ArchivoDescuento arch;
     cout << "ID: ";
-    while (!(cin >> id) || id <= 0 || arch.buscarPorID(id) != -1)
+    cin >> id;
+    while (id <= 0 || arch.buscarPorID(id) != -1)
     {
-        if (cin.fail())
-        {
-            cin.clear();
-            cin.ignore(1000, '\n');
-            cout << "Error: Debe ingresar un número válido." << endl;
-        }
-        else if (id <= 0)
+        if (id <= 0)
         {
             cout << "Error, el ID no puede ser negativo o cero." << endl;
         }
@@ -33,17 +29,18 @@ void Descuento::cargar()
             cout << "Error, el ID ya existe." << endl;
         }
         cout << "Ingresar ID nuevamente: ";
+        cin >> id;
     }
 
     cin.ignore();
     cargarCadena("NOMBRE PROMO: ", nombrePromo, 40);
 
-    cout <<"PORCENTAJE DE DESCUENTO (%): ";
-    cin>> porcentaje;
-    while (porcentaje<=0 ||  porcentaje>=100)
+    cout << "PORCENTAJE DE DESCUENTO (%): ";
+    cin >> porcentaje;
+    while (porcentaje <= 0 || porcentaje >= 100)
     {
-        cout <<"Porcentaje invalido, ingreselo nuevamente: ";
-        cin>> porcentaje;
+        cout << "Porcentaje invalido, ingreselo nuevamente: ";
+        cin >> porcentaje;
     }
 
     estado = true;
@@ -57,17 +54,22 @@ void Descuento::mostrar()
     cout << "============================="<<endl;
 }
 
-
 void Descuento::modificar()
 {
     cout <<"ACTUALIZAR PORCENTAJE DE DESCUENTO(%): ";
     cin >>porcentaje;
+    while (porcentaje <= 0 || porcentaje >= 100)
+    {
+        cout << "Porcentaje invalido, ingreselo nuevamente: ";
+        cin >> porcentaje;
+    }
 }
 
 void Descuento::setID(int _id)
 {
     if (_id>0) id=_id;
 }
+
 int Descuento::getID()
 {
     return id;
@@ -75,11 +77,12 @@ int Descuento::getID()
 
 void Descuento::setNombre(const char* _nombre)
 {
-    if (_nombre != nullptr && _nombre[0] != '\0')
+    if (_nombre != NULL && _nombre[0] != '\0')
     {
         strcpy(nombrePromo, _nombre);
     }
 }
+
 const char* Descuento::getNombre()
 {
     return nombrePromo;
@@ -89,16 +92,27 @@ void Descuento::setPorcentaje(float porc)
 {
     if (porc>0 && porc<100) porcentaje=porc;
 }
+
 float Descuento::getPorcentaje()
 {
     return porcentaje;
 }
 
+void Descuento::setTipoDescuento(int _tipo)
+{
+    if (_tipo > 0) id = _tipo;
+}
+
+int Descuento::getIDDescuento()
+{
+    return id;
+}
 
 void Descuento::setEstado(bool _estado)
 {
     estado=_estado;
 }
+
 bool Descuento::getEstado()
 {
     return estado;

@@ -45,7 +45,6 @@ void Formato::cargar()
     _estado=true;
 }
 
-
 void Formato::mostrar()
 {
     if (_estado)
