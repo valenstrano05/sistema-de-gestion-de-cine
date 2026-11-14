@@ -16,16 +16,16 @@ int menuPrincipal()
         system("cls");
         int opcion;
         cout << endl;
-        cout << "  * * * * * * * * * * * * * * * * * * * * * *" << endl;
-        cout << "  *                                         *" << endl;
-        cout << "  *      ██████╗  ██╗███╗   ██╗███████╗     *" << endl;
-        cout << "  *      ██╔════╝ ██║████╗  ██║██╔════╝     *" << endl;
-        cout << "  *      ██║      ██║██╔██╗ ██║█████╗       *" << endl;
-        cout << "  *      ██║      ██║██║╚██╗██║██╔══╝       *" << endl;
-        cout << "  *      ╚██████╗ ██║██║ ╚████║███████╗     *" << endl;
-        cout << "  *       ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝     *" << endl;
-        cout << "  *                                         *" << endl;
-        cout << "  * * * * * * * * * * * * * * * * * * * * * *" << endl;
+        cout << "  * * * * * * * * * * * * * * * * * * * * * * *" << endl;
+        cout << "  *                                           *" << endl;
+        cout << "  *      ██████╗  ██╗███╗   ██╗███████╗       *" << endl;
+        cout << "  *      ██╔════╝ ██║████╗  ██║██╔════╝       *" << endl;
+        cout << "  *      ██║      ██║██╔██╗ ██║█████╗         *" << endl;
+        cout << "  *      ██║      ██║██║╚██╗██║██╔══╝         *" << endl;
+        cout << "  *      ╚██████╗ ██║██║ ╚████║███████╗       *" << endl;
+        cout << "  *       ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝       *" << endl;
+        cout << "  *                                           *" << endl;
+        cout << "  * * * * * * * * * * * * * * * * * * * * * * *" << endl;
         cout << endl;
         cout << "     1. PELICULAS" << endl;
         cout << "     2. DESCUENTOS" << endl;
@@ -89,11 +89,11 @@ void menuPeliculas()
     {
         system("cls");
         int opcion;
-        cout << "||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                               |" << endl;
         cout << "|                    PELICULAS                  |" << endl;
         cout << "|                                               |" << endl;
-        cout << "||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
         cout << "     1. CARGAR PELICULAS" << endl;
         cout << "     2. LISTAR PELICULAS" << endl;
@@ -141,11 +141,11 @@ void menuDescuentos()
     {
         system("cls");
         int opcion;
-        cout << "||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                               |" << endl;
         cout << "|                   DESCUENTOS                  |" << endl;
         cout << "|                                               |" << endl;
-        cout << "||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
         cout << "     1. CARGAR DESCUENTOS" << endl;
         cout << "     2. LISTAR DESCUENTOS" << endl;
@@ -421,11 +421,11 @@ void menuCompras()
     while (true)
     {
         system("cls");
-        cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
-        cout << "|                                               |" << endl;
-        cout << "|                 COMPRAS / VENTAS              |" << endl;
-        cout << "|                                               |" << endl;
-        cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << "|||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << "|                                                   |" << endl;
+        cout << "|                   COMPRAS / VENTAS                |" << endl;
+        cout << "|                                                   |" << endl;
+        cout << "|||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
         cout << "     1. NUEVA COMPRA (REGISTRAR VENTA)" << endl;
         cout << "     2. LISTAR COMPRAS" << endl;
@@ -433,9 +433,9 @@ void menuCompras()
         cout << "     4. DAR DE BAJA / REACTIVAR COMPRA" << endl;
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
-        cout << "------------------------------------------------" << endl;
+        cout << "----------------------------------------------------" << endl;
         int opcion = pedirEntero("Ingrese una opcion: ");
-        cout << "------------------------------------------------" << endl;
+        cout << "----------------------------------------------------" << endl;
         system("cls");
 
         switch (opcion)
@@ -467,11 +467,11 @@ void menuInformes()
     while (true)
     {
         system("cls");
-        cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
-        cout << "|                                               |" << endl;
-        cout << "|               INFORMES Y ESTADISTICAS         |" << endl;
-        cout << "|                                               |" << endl;
-        cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << "|                                                        |" << endl;
+        cout << "|                  INFORMES Y ESTADISTICAS               |" << endl;
+        cout << "|                                                        |" << endl;
+        cout << "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
         cout << "     1. RANKING DE RECAUDACION POR PELICULA" << endl;
         cout << "     2. PORCENTAJE DE OCUPACION POR FUNCION" << endl;
@@ -481,9 +481,9 @@ void menuInformes()
         cout << "     6. TICKETS QUE SUPERAN EL GASTO PROMEDIO" << endl;
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
-        cout << "------------------------------------------------" << endl;
+        cout << "---------------------------------------------------------" << endl;
         int opcion = pedirEntero("Ingrese una opcion: ");
-        cout << "------------------------------------------------" << endl;
+        cout << "---------------------------------------------------------" << endl;
         system("cls");
 
         switch (opcion)

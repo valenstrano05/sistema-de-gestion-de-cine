@@ -19,17 +19,132 @@ using namespace std;
 
 void informeRankingRecaudacionPeliculas()
 {
-//    ArchivoDetalleEntradas archD;
-//    ArchivoFunciones archF;
-//    int ventas = archD.contarRegistros();
-//    if (ventas <= 0){
-//        cout <<"No se registraron ventas." <<endl;
-//        system ("pause");
-//        return;
-//    }
-//
-//    for (int i=0; i<ventas; i++){
-//        Funcion funcion = archF.leerRegistro(i);
+    ArchivoDetalleEntradas archD;
+    ArchivoCompras archC;
+    ArchivoFunciones archF;
+    ArchivoPeliculas archP;
+    ArchivoSalas archS;
+    ArchivoFormato archFor;
+    ArchivoDescuento archDesc;
+    vector<Pelicula> pelicula;
+    vector<int> vCant;
+    vector<double> vPrecios;
+    int cantTotal = 0;
+    double precioTotal = 0.0;
+
+    int ventas = archD.contarRegistros();
+    if (ventas <= 0){
+        cout <<"No se registraron ventas." <<endl;
+        system ("pause");
+        return;
+    }
+
+    int cantPeliculas = archP.contarRegistros();
+    for (int i = 0; i < cantPeliculas; i++)
+    {
+        Pelicula p = archP.leerRegistro(i);
+        pelicula.push_back(p);
+        vCant.push_back(0);
+        vPrecios.push_back(0.0);
+        }
+
+    int anio;
+    cout <<"INGRESE ANIO A ANALIZAR (0 PARA ANIO ACTUAL): "; cin>>anio;
+        if (anio == 0){
+        time_t t = time(nullptr);
+        anio = localtime(&t)->tm_year + 1900;
+    }
+
+    for (int i=0; i<ventas; i++){
+        DetalleEntrada entrada = archD.leerRegistro(i);
+        int idCompra = entrada.getIdCompra();
+        int posCompra = archC.buscarRegistro(idCompra);
+        if (posCompra == -1) continue;
+        Compra compra = archC.leerRegistro(posCompra);
+        if (!compra.getEstado() || compra.getFecha().getAnio() != anio) continue;
+        int idFuncion = entrada.getIdFuncion();
+        int posFuncion = archF.buscarRegistro(idFuncion);
+        if (posFuncion == -1) continue;
+        Funcion funcion = archF.leerRegistro(posFuncion);
+        int idPelicula = funcion.getIdPelicula();
+        int posPelicula = archP.buscarPorID(idPelicula);
+        if (posPelicula == -1) continue;
+        int idSala = funcion.getIdSala();
+        int posSala = archS.buscarRegistro(idSala);
+        if (posSala == -1) continue;
+        Sala sala = archS.leerRegistro(posSala);
+        int idFormato = sala.getFormatoProyeccion();
+        int posFormato = archFor.buscarPorID(idFormato);
+        if (posFormato == -1) continue;
+        Formato formato = archFor.leerRegistro(posFormato);
+        double precioInicial = formato.getPrecio();
+        double precioFinal = precioInicial;
+
+        int idDesc = entrada.getIdDescuento();
+        if (idDesc != 0){
+            int posDesc = archDesc.buscarPorID(idDesc);
+            if (posDesc != -1){
+                Descuento descuento = archDesc.leer(posDesc);
+                float porcDesc = descuento.getPorcentaje();
+                precioFinal = precioInicial * (1.0 - (porcDesc / 100.0));
+            }
+        }
+        vCant[posPelicula]++;
+        vPrecios[posPelicula] += precioFinal;
+        cantTotal ++;
+        precioTotal += precioFinal;
+    }
+    if (cantTotal == 0){
+        cout << "No hay entradas vendidas en el anio " << anio << "." << endl;
+        system("pause");
+        return;
+    }
+    vector<int> orden(cantPeliculas);
+    for (int i = 0; i < cantPeliculas; i++){
+        orden[i] = i;
+    }
+    for (int i = 0; i < cantPeliculas - 1; i++){
+        for (int j = 0; j < cantPeliculas - 1 - i; j++){
+            if (vPrecios[orden[j]] < vPrecios[orden[j + 1]]){
+                int aux = orden[j];
+                orden[j] = orden[j + 1];
+                orden[j + 1] = aux;
+            }
+        }
+    }
+    system("cls");
+    cout << fixed << setprecision(2);
+    cout <<"======================================================================================================================" <<endl;
+    cout <<"\n";
+    cout <<"                               RECAUDACION POR PELICULA DURANTE EL ANIO " <<anio <<endl;
+    cout <<"\n";
+    cout <<"======================================================================================================================" <<endl;
+    cout << left
+         << setw(48) << "PELICULA" << " | "
+         << setw(18) << "GENERO" << " | "
+         << setw(19) << "ENTRADAS VENDIDAS" << " | "
+         << setw(17) << "TOTAL RECAUDADO" << endl;
+
+    cout <<"----------------------------------------------------------------------------------------------------------------------" << endl;
+
+    for (int k = 0; k < cantPeliculas; k++){
+        int i = orden[k];
+        cout << left
+             << setw(48) << pelicula[i].getTitulo() << " | "
+             << setw(18) << pelicula[i].getGenero() << " | "
+             << setw(19) << vCant[i] << " | $"
+             << setw(15) << vPrecios[i] << endl;
+    }
+    cout <<"----------------------------------------------------------------------------------------------------------------------" << endl;
+
+    cout << left
+         << setw(48) << "TOTAL"
+         << setw(21) << "" << " | "
+         << setw(19) << cantTotal << " | $"
+         << setw(15) << precioTotal << endl;
+
+    system("pause");
+
 }
 
 
