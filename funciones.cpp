@@ -395,6 +395,7 @@ void cargarFormato()
     system("pause");
 }
 
+
 void modificarFormato()
 {
     int idBuscado;
@@ -424,39 +425,43 @@ void modificarFormato()
     system("pause");
 }
 
+
 void cambiarEstadoFormato()
 {
     int idBuscado;
-    cout << "Ingrese el ID a modificar su estado: ";
+    cout <<"Ingrese el ID del formato a modificar estado: ";
     cin >> idBuscado;
-
     ArchivoFormato arch;
-    int pos = arch.buscarPorIDInactivo(idBuscado);
-    if (pos == -1)
-    {
-        cout << "No se encontro un registro con el ID " << idBuscado << "." << endl;
+    int pos = arch.buscarPorID(idBuscado);
+    if (pos == -1) {
+        pos = arch.buscarPorIDInactivo(idBuscado);
+    }
+    if (pos == -1){
+        cout <<"Error, no se registro un formato con el ID " <<idBuscado << "." <<endl;
         system("pause");
         return;
     }
     Formato obj = arch.leerRegistro(pos);
     if (obj.getEstado() == false)
     {
-        cout << "El formato previamente dado de baja ha vuelto a ser activado." << endl;
+        cout <<"El formato previamente dado de baja ha vuelto a ser activado." <<endl;
         obj.setEstado(true);
     }
     else
     {
+        cout <<"El formato ha sido dado de baja." <<endl;
         obj.setEstado(false);
     }
 
     if (arch.modificarRegistro(obj, pos))
     {
-        cout << "Estado de formato " << idBuscado << " modificado correctamente." << endl;
+        cout <<"Estado de formato " << idBuscado << " modificado correctamente." <<endl <<endl;
     }
     else
     {
-        cout << "Error al intentar actualizar el archivo." << endl;
+        cout <<"Error al cambiar el estado." <<endl <<endl;
     }
+
     system("pause");
 }
 
@@ -481,6 +486,7 @@ void cargarSala()
     }
     system("pause");
 }
+
 
 void modificarSala()
 {
@@ -528,15 +534,19 @@ void modificarSala()
     system("pause");
 }
 
+
 void cambiarEstadoSala()
 {
     ArchivoSalas arch;
     ArchivoButacas archButacas;
 
     int id = pedirEntero("ID de la sala a cambiar de estado: ");
-    int pos = arch.buscarRegistroInactivo(id);
+    int pos = arch.buscarRegistro(id);
     if (pos == -1)
     {
+        pos = arch.buscarRegistroInactivo(id);
+    }
+    if (pos == -1){
         cout << "No existe una sala con ese ID." << endl;
         system("pause");
         return;
@@ -687,41 +697,53 @@ void modificarFuncion()
     system("pause");
 }
 
+
+
 void cambiarEstadoFuncion()
 {
     int idBuscado;
-    cout << "Ingrese el ID de la funcion a modificar estado: ";
+    cout <<"Ingrese el ID de la funcion a modificar estado: ";
     cin >> idBuscado;
     ArchivoFunciones arch;
-    int pos = arch.buscarRegistroInactivo(idBuscado);
-    if (pos == -1)
-    {
-        cout << "Error, no se registro una funcion con el ID " << idBuscado << "." << endl;
+    int pos = arch.buscarRegistro(idBuscado);
+    if (pos == -1) {
+        pos = arch.buscarRegistroInactivo(idBuscado);
+    }
+    if (pos == -1){
+        cout <<"Error, no se registro una funcion con el ID " <<idBuscado << "." <<endl;
         system("pause");
         return;
     }
-
     Funcion obj = arch.leerRegistro(pos);
     if (obj.getEstado() == false)
     {
-        cout << "La funcion previamente dada de baja ha vuelto a ser activada." << endl;
+        cout <<"La funcion previamente dada de baja ha vuelto a ser activada." <<endl;
         obj.setEstado(true);
     }
     else
     {
+        cout <<"La funcion ha sido dada de baja." <<endl;
         obj.setEstado(false);
     }
 
     if (arch.modificarRegistro(obj, pos))
     {
-        cout << "Estado de funcion " << idBuscado << " modificado correctamente." << endl;
+        cout <<"Estado de funcion " << idBuscado << " modificado correctamente." <<endl <<endl;
     }
     else
     {
-        cout << "Error al cambiar el estado de la funcion." << endl;
+        cout <<"Error al cambiar el estado de la funcion." <<endl <<endl;
     }
+
     system("pause");
 }
+
+
+
+
+
+
+
 
 //-------------------------------------------
 //COMPRAS
@@ -757,39 +779,43 @@ void registrarCompra() {
     system("pause");
 }
 
+
 void cambiarEstadoCompra()
 {
     int idBuscado;
-    cout << "Ingrese el ID de la compra a modificar su estado: ";
+    cout <<"Ingrese el ID de la compra a modificar estado: ";
     cin >> idBuscado;
-
     ArchivoCompras arch;
-    int pos = arch.buscarRegistroInactivo(idBuscado);
-    if (pos == -1)
-    {
-        cout << "No se encontro una compra con el ID " << idBuscado << "." << endl;
+    int pos = arch.buscarRegistro(idBuscado);
+    if (pos == -1) {
+        pos = arch.buscarRegistroInactivo(idBuscado);
+    }
+    if (pos == -1){
+        cout <<"Error, no se registro una compra con el ID " <<idBuscado << "." <<endl;
         system("pause");
         return;
     }
-
     Compra obj = arch.leerRegistro(pos);
     if (obj.getEstado() == false)
     {
-        cout << "La compra previamente dada de baja ha vuelto a ser activada." << endl;
+        cout <<"La compra previamente dada de baja ha vuelto a ser activada." <<endl;
         obj.setEstado(true);
     }
     else
     {
+        cout <<"La compra ha sido dada de baja." <<endl;
         obj.setEstado(false);
     }
 
     if (arch.modificarRegistro(obj, pos))
     {
-        cout << "Estado de compra " << idBuscado << " modificado correctamente." << endl;
+        cout <<"Estado de compra " << idBuscado << " modificado correctamente." <<endl <<endl;
     }
     else
     {
-        cout << "Error al intentar actualizar el archivo de compras." << endl;
+        cout <<"Error al cambiar el estado de la compra." <<endl <<endl;
     }
+
     system("pause");
 }
+

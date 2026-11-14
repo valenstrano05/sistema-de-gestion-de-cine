@@ -165,6 +165,8 @@ cout << endl;
         Sala objS = archS.leerRegistro(pos);
         cout << "PRECIO: " <<objS.getPrecio() <<endl;
     }
+    //cout << "-------------------------------------------" <<endl;
+
 }
 
 

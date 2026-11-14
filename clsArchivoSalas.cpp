@@ -66,7 +66,7 @@ int ArchivoSalas::buscarRegistroInactivo(int idSala)
     for(int i = 0; i < cantidad; i++)
     {
         Sala reg = leerRegistro(i);
-        if(reg.getIdSala() == idSala)
+        if(reg.getIdSala() == idSala && !reg.getEstado())
         {
             return i;
         }

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <iomanip>
 #include "clsDetalleEntrada.h"
 #include "clsArchivoDetalleEntradas.h"
 #include "clsArchivoFunciones.h"
@@ -7,6 +8,8 @@
 #include "clsArchivoButacas.h"
 #include "clsArchivoDescuento.h"
 #include "clsArchivoSalas.h"
+#include "clsArchivoFormato.h"
+#include "clsArchivoPeliculas.h"
 #include "funciones.h"
 using namespace std;
 
@@ -18,6 +21,8 @@ DetalleEntrada::DetalleEntrada()
     _idSala = 0;
     strcpy(_numeroButaca, "S/N");
     _idDescuento = 0;
+    _precioBase = 0.0;
+    _precioFinal - 0.0;
 }
 
 void DetalleEntrada::setIdDetalleEntrada(int ID) { _idDetalleEntrada = ID; }
@@ -131,14 +136,59 @@ void DetalleEntrada::cargar(int idCompra)
         }
     }
     while (_idDescuento < 0);
+
+    ArchivoSalas archS;
+    int posS = archS.buscarRegistro(_idSala);
+    ArchivoFormato archF;
+    int posF = -1;
+    if (posS != -1){
+        Sala sala = archS.leerRegistro(posS);
+        posF = archF.buscarPorID(sala.getFormatoProyeccion());
+    }
+    if (posS == -1 || posF == -1){
+        cout << "Error, no se pudo determinar el precio de la entrada." << endl;
+        _precioBase = 0;
+        _precioFinal = 0;
+        return;
+    }
+
+    Formato formato = archF.leerRegistro(posF);
+    _precioBase = formato.getPrecio();
+    _precioFinal = _precioBase;
+
+    if (_idDescuento > 0){
+        int posD = archDescuentos.buscarPorID(_idDescuento);
+        if (posD != -1){
+            Descuento descuento = archDescuentos.leer(posD);
+            _precioFinal = _precioBase * (1.0 - descuento.getPorcentaje() / 100.0);
+        }
+    }
 }
+
 
 void DetalleEntrada::mostrar()
 {
-    cout << "ID Detalle Entrada: " << _idDetalleEntrada << endl;
     cout << "ID Funcion: " << _idFuncion << endl;
-    cout << "ID Compra: " << _idCompra << endl;
-    cout << "Sala: " << _idSala << " | Butaca: " << _numeroButaca << endl;
-    cout << "ID Descuento: " << _idDescuento << endl;
-    cout << "===========================================" << endl;
+    ArchivoFunciones archF;
+    int posF = archF.buscarRegistro(_idFuncion);
+    Funcion funcion = archF.leerRegistro(posF);
+    int idPelicula = funcion.getIdPelicula();
+    ArchivoPeliculas archP;
+    int posP = archP.buscarPorID(idPelicula);
+    Pelicula pelicula = archP.leerRegistro(posP);
+    cout <<"Pelicula: " <<pelicula.getTitulo() <<endl;
+    cout << left << setw(12) << "Sala:" << setw(6) << _idSala
+         << " | Butaca: " << _numeroButaca << endl;
+    cout <<"  ---------------------------------------------  " <<endl;
+    cout << "Precio: $" <<_precioBase <<endl;
+    if (_idDescuento>0){
+        cout <<"ID descuento aplicado: " <<_idDescuento <<endl;
+        ArchivoDescuento archD;
+        int posD = archD.buscarPorID(_idDescuento);
+        Descuento desc = archD.leer(posD);
+        cout <<"Porcentaje desconteado: -" <<desc.getPorcentaje() <<"%" <<endl;
+            cout << fixed << setprecision(2);
+        cout <<"Precio final: " <<_precioFinal <<endl;
+    }
+    cout <<"-------------------------------------------------" <<endl;
 }

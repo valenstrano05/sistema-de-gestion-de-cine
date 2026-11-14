@@ -10,7 +10,8 @@ private:
     int _idSala;
     char _numeroButaca[7];
     int _idDescuento;
-
+    float _precioBase;
+    double _precioFinal;
 public:
     DetalleEntrada();
     void setIdDetalleEntrada(int ID);

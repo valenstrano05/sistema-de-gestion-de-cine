@@ -48,10 +48,12 @@ void Descuento::cargar()
 
 void Descuento::mostrar()
 {
-    cout <<"ID: "<<id <<endl;
-    cout <<"NOMBRE: "<<nombrePromo <<endl;
-    cout <<"PORCENTAJE DESCONTADO: " <<porcentaje <<"%" <<endl;
-    cout << "============================="<<endl;
+    if (estado){
+        cout <<"ID: "<<id <<endl;
+        cout <<"NOMBRE: "<<nombrePromo <<endl;
+        cout <<"PORCENTAJE DESCONTADO: " <<porcentaje <<"%" <<endl;
+        cout << "============================="<<endl;
+    }
 }
 
 void Descuento::modificar()

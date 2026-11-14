@@ -9,6 +9,7 @@
 #include "clsArchivoSocios.h"
 #include "clsArchivoCompras.h"
 #include "clsArchivoSalas.h"
+#include "clsArchivoDetalleEntradas.h"
 using namespace std;
 
 //PELICULAS
@@ -85,11 +86,12 @@ void peliculasPorGenero()
         return;
     }
     system("cls");
-    cout << "=======================================" << endl;
-    cout <<"   PELICULAS DEL GENERO " <<genero <<endl;
-    cout << "=======================================" << endl;
+    cout <<"  ===============================================================================================================" <<endl;
+    cout <<"                             PELICULAS DEL GENERO: " <<genero <<endl;
+    cout <<"  ===============================================================================================================" <<endl;
     for (int i=0; i<encontrado; i++){
         vecPeliculas[i].mostrar();
+        cout <<"  ===============================================================================================================" <<endl;
     }
 
     system ("pause");
@@ -143,11 +145,12 @@ void peliculasPorClasificacion()
     }
 
     const char* clasificaciones[3]={"ATP", "+14", "+18"};
-    cout << "=======================================" << endl;
-    cout <<"   PELICULAS CON LA CLASIFICACION " <<clasificaciones[clasificacion-1] <<endl;
-    cout << "=======================================" << endl;
+    cout <<"  ===============================================================================================================" <<endl;
+    cout <<"                         PELICULAS CON LA CLASIFICACION " <<clasificaciones[clasificacion-1] <<endl;
+    cout <<"  ===============================================================================================================" <<endl;
     for (int i=0; i<encontradas; i++){
         vecPeliculas[i].mostrar();
+        cout <<"  ===============================================================================================================" <<endl;
     }
     system ("pause");
 
@@ -189,11 +192,12 @@ void peliculasPorDirector()
         return;
     }
     system ("cls");
-    cout << "=======================================" << endl;
-    cout <<"   PELICULAS DEL DIRECTOR/A " <<directorBuscado <<endl;
-    cout << "=======================================" << endl;
+    cout <<"  ===============================================================================================================" <<endl;
+    cout <<"                        PELICULAS DEL DIRECTOR/A: " <<directorBuscado <<endl;
+    cout <<"  ===============================================================================================================" <<endl;
     for (int i=0; i<encontrado; i++){
         vecPeliculas[i].mostrar();
+        cout <<"  ===============================================================================================================" <<endl;
         system("pause");
     }
 }
@@ -292,11 +296,12 @@ void funcionesPorPelicula()
         return;
     }
     system ("cls");
-    cout << "=======================================" << endl;
-    cout <<"   FUNCIONES DE LA PELICULA " <<titulo <<endl;
-    cout << "=======================================" << endl;
+    cout << "====================================================" << endl;
+    cout <<"   FUNCIONES DE LA PELICULA:" <<titulo <<endl;
+    cout << "====================================================" << endl;
     for (int i=0; i<encontrados; i++){
         vecFunciones[i].mostrar();
+        cout << "====================================================" << endl;
     }
     system ("pause");
 
@@ -329,10 +334,10 @@ void funcionesPorFecha()
         mes = pedirEntero("Error, mes invalido (1-12). Ingrese nuevamente: ");
     }
 
-    int anio = pedirEntero("Ingrese el año: ");
+    int anio = pedirEntero("Ingrese el anio: ");
     while (anio <= 0)
     {
-        anio = pedirEntero("Error, año invalido. Ingrese nuevamente: ");
+        anio = pedirEntero("Error, anio invalido. Ingrese nuevamente: ");
     }
 
     vector<Funcion> vecFunciones;
@@ -358,13 +363,13 @@ void funcionesPorFecha()
     }
 
     system("cls");
-    cout << "=======================================" << endl;
-    cout << "     FUNCIONES DE LA FECHA" << dia<<"/"<<mes<<"/"<<anio<<endl;
-    cout << "=======================================" << endl;
+    cout << "===========================================" << endl;
+    cout << "     FUNCIONES DE LA FECHA " << dia<<"/"<<mes<<"/"<<anio<<endl;
+    cout << "===========================================" << endl;
     for (int i = 0; i < encontrados; i++)
     {
         vecFunciones[i].mostrar();
-        cout << "=======================================" << endl;
+        cout << "===========================================" << endl;
     }
     system("pause");
 }
@@ -495,6 +500,7 @@ void sociosPorDni()
     for (int i = 0; i < encontrados; i++)
     {
         vecSocios[i].mostrar();
+        cout << "=======================================" << endl;
     }
     system("pause");
 }
@@ -539,6 +545,7 @@ void sociosPorApellido()
     for (int i = 0; i < encontrados; i++)
     {
         vecSocios[i].mostrar();
+        cout << "=======================================" << endl;
     }
     system ("pause");
 }
@@ -558,9 +565,10 @@ void comprasPorSocio() {
     }
     socio = archS.leerRegistro(pos);
     cout << endl;
-    cout << "---------------------------------------" << endl;
+    system("cls");
+    cout << "================================================" <<endl;
     cout << " SOCIO: " << socio.getNombre() << " " << socio.getApellido() << " (ID: " << id << ")" << endl;
-    cout << "---------------------------------------" << endl;
+    cout << "================================================" << endl;
     int cantCompras = arcC.contarRegistros();
     if (cantCompras <= 0)
     {
@@ -573,7 +581,16 @@ void comprasPorSocio() {
         if (c.getEstado() == true && c.getIdSocio() == id)
         {
             c.mostrar();
-            cout << "---------------------------------------" << endl;
+
+            ArchivoDetalleEntradas archDetalle;
+            int cantDetalles = archDetalle.contarRegistros();
+            for (int d = 0; d < cantDetalles; d++)
+            {
+                DetalleEntrada det = archDetalle.leerRegistro(d);
+                if (det.getIdCompra() == c.getIdCompra()){
+                    det.mostrar();
+                }
+            }
             encontro = true;
         }
     }

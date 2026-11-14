@@ -169,14 +169,15 @@ void listarPeliculasPorNombre()
             }
         }
     }
-    cout << "=======================================" << endl;
-    cout << "     PELICULAS ORDENADAS POR NOMBRE     " << endl;
-    cout << "=======================================" << endl;
+    cout <<"  ===============================================================================================================" <<endl;
+    cout << "                                       PELICULAS ORDENADAS POR NOMBRE     " << endl;
+    cout <<"  ===============================================================================================================" <<endl;
 
     for (int i = 0; i < activas; i++)
     {
         vecPeliculas[i].mostrar();
     }
+    system("pause");
 }
 
 void listarPeliculasCronologico()
@@ -220,14 +221,16 @@ void listarPeliculasCronologico()
         }
     }
 
-    cout << "=======================================" << endl;
-    cout << "PELICULAS ORDENADAS POR FECHA DE ESTRENO" << endl;
-    cout << "=======================================" << endl;
+    cout <<"  ===============================================================================================================" <<endl;
+    cout << "                              PELICULAS ORDENADAS POR FECHA DE ESTRENO" << endl;
+    cout <<"  ===============================================================================================================" <<endl;
 
     for (int i = 0; i < activas; i++)
     {
         vecPeliculas[i].mostrar();
     }
+
+    system("pause");
 }
 
 void listarPeliculasPorDuracion()
@@ -271,14 +274,16 @@ void listarPeliculasPorDuracion()
         }
     }
 
-    cout << "=======================================" << endl;
-    cout << "   PELICULAS ORDENADAS POR DURACION" << endl;
-    cout << "=======================================" << endl;
+    cout <<"  ===============================================================================================================" <<endl;
+    cout << "                                  PELICULAS ORDENADAS POR DURACION" << endl;
+    cout <<"  ===============================================================================================================" <<endl;
 
     for (int i = 0; i < activas; i++)
     {
         vecPeliculas[i].mostrar();
     }
+
+    system("pause");
 }
 
 void listarDescuentos()
@@ -351,6 +356,8 @@ void listarSocios()
         Socio obj = arch.leerRegistro(i);
         obj.mostrar();
     }
+
+    system("pause");
 }
 
 void listarSociosAlfabetico()
@@ -408,13 +415,15 @@ void listarSociosAlfabetico()
         }
     }
     cout << "=======================================" << endl;
-    cout << "SOCIOS ORDENADOS DE FORMA ALFABÉTICA" << endl;
+    cout << "SOCIOS ORDENADOS DE FORMA ALFABETICA" << endl;
     cout << "=======================================" << endl;
 
     for (int i = 0; i < activos; i++)
     {
         vecSocios[i].mostrar();
     }
+
+    system("pause");
 }
 
 void listarFormatos()
@@ -487,19 +496,19 @@ void listadosFunciones()
     while (true)
     {
         system("cls");
-        cout << "||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
-        cout << "|                                              |" << endl;
-        cout << "|               LISTADOS DE FUNCIONES          |" << endl;
-        cout << "|                                              |" << endl;
-        cout << "||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << "||||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << "|                                                    |" << endl;
+        cout << "|               LISTADOS DE FUNCIONES                |" << endl;
+        cout << "|                                                    |" << endl;
+        cout << "||||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
         cout << "     1. LISTADO GENERAL" << endl;
         cout << "     2. ORDENADAS POR FECHA Y HORA DE PROYECCION" << endl;
         cout << "     0. VOLVER" << endl;
         cout << endl;
-        cout << "------------------------------------------------" << endl;
+        cout << "-----------------------------------------------------" << endl;
         int opcion = pedirEntero("Ingrese una opcion: ");
-        cout << "------------------------------------------------" << endl;
+        cout << "-----------------------------------------------------" << endl;
         system("cls");
         switch (opcion)
         {
@@ -523,6 +532,8 @@ void listarFunciones()
     if (cant == 0)
     {
         cout << "No hay funciones registradas." << endl;
+        system("pause");
+        return;
     }
     else
     {
@@ -538,6 +549,7 @@ void listarFunciones()
         }
     }
     cout << endl;
+    system("pause");
 }
 
 void listarFuncionesCronologico()
@@ -548,6 +560,7 @@ void listarFuncionesCronologico()
     if (cant <= 0)
     {
         cout << "No hay funciones registradas en el archivo." << endl;
+        system("pause");
         return;
     }
     vector<Funcion> vecFunciones;
@@ -564,6 +577,7 @@ void listarFuncionesCronologico()
     if (activas == 0)
     {
         cout << "No hay funciones activas para ordenar." << endl;
+        system("pause");
         return;
     }
 
@@ -595,14 +609,16 @@ void listarFuncionesCronologico()
             }
         }
     }
-    cout << "=======================================" << endl;
-    cout << "FUNCIONES ORDENADAS DE FORMA CRONOLÓGICA" << endl;
-    cout << "=======================================" << endl;
+    cout << "===========================================" << endl;
+    cout << " FUNCIONES ORDENADAS DE FORMA CRONOLOGICA" << endl;
+    cout << "===========================================" << endl;
 
     for (int i = 0; i < activas; i++)
     {
         vecFunciones[i].mostrar();
+        cout << "===========================================" << endl;
     }
+    system("pause");
 }
 
 void listadosCompras()
@@ -648,6 +664,7 @@ void listarCompras()
     if (cant == 0)
     {
         cout << "No hay compras registradas." << endl;
+        system("pause");
         return;
     }
     else
@@ -665,15 +682,17 @@ void listarCompras()
                     DetalleEntrada d = archDetalle.leerRegistro(j);
                     if (d.getIdCompra() == obj.getIdCompra())
                     {
-                        cout << "Sala: " << d.getIdSala() << " | Butaca: " << d.getNumeroButaca() << endl;
-                        break;
+                        d.mostrar();
+                        cout <<endl <<endl;
+//                        cout << "Sala: " << d.getIdSala() << " | Butaca: " << d.getNumeroButaca() << endl;
+//                        break;
                     }
                 }
-                cout << "=====================================" << endl;
             }
         }
     }
     cout << endl;
+    system("pause");
 }
 
 void listarComprasPorFecha()
@@ -740,9 +759,9 @@ void listarComprasPorFecha()
     }
 
     system("cls");
-    cout << "=======================================" << endl;
-    cout << "COMPRAS ORDENADAS DE FORMA CRONOLOGICA" << endl;
-    cout << "=======================================" << endl;
+    cout << "================================================" << endl;
+    cout << "    COMPRAS ORDENADAS DE FORMA CRONOLOGICA" << endl;
+    cout << "================================================" << endl;
 
     int cantDetalles = archDetalle.contarRegistros();
     for (int i = 0; i < activas; i++)
@@ -754,10 +773,10 @@ void listarComprasPorFecha()
             DetalleEntrada d = archDetalle.leerRegistro(j);
             if (d.getIdCompra() == vecCompras[i].getIdCompra())
             {
-                cout << "Sala: " << d.getIdSala() << " | Butaca: " << d.getNumeroButaca() << endl;
-                break;
+                d.mostrar();
+                cout <<endl <<endl;
             }
         }
-        cout << "=======================================" << endl;
     }
+    system("pause");
 }

@@ -332,20 +332,20 @@ void menuButacas()
     while (true)
     {
         system("cls");
-        cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
-        cout << "|                                               |" << endl;
-        cout << "|                    BUTACAS                    |" << endl;
-        cout << "|                                               |" << endl;
-        cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << "|||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
+        cout << "|                                                   |" << endl;
+        cout << "|                       BUTACAS                     |" << endl;
+        cout << "|                                                   |" << endl;
+        cout << "|||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
         cout << endl;
         cout << "     1. LISTAR BUTACAS DISPONIBLES DE UNA SALA" << endl;
         cout << "     2. DAR DE BAJA / REACTIVAR BUTACA" << endl;
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
-        cout << "------------------------------------------------" << endl;
+        cout << "----------------------------------------------------" << endl;
         int opcion = pedirEntero("Ingrese una opcion: ");
-        cout << "------------------------------------------------" << endl;
+        cout << "----------------------------------------------------" << endl;
         system("cls");
 
         switch (opcion)

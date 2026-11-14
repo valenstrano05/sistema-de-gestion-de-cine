@@ -91,7 +91,7 @@ int ArchivoFunciones::buscarRegistroInactivo(int idFuncion)
     for (int i = 0; i < cant; i++)
     {
         Funcion obj = leerRegistro(i);
-        if (obj.getIdFuncion() == idFuncion&&obj.getEstado())
+        if (obj.getIdFuncion() == idFuncion && !obj.getEstado())
         {
             return i;
         }
