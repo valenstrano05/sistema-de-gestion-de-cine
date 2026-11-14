@@ -78,6 +78,8 @@
 		<Unit filename="consultas.h" />
 		<Unit filename="funciones.cpp" />
 		<Unit filename="funciones.h" />
+		<Unit filename="informes.cpp" />
+		<Unit filename="informes.h" />
 		<Unit filename="listados.cpp" />
 		<Unit filename="listados.h" />
 		<Unit filename="main.cpp" />

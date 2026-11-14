@@ -39,11 +39,5 @@ void registrarCompra();
 void consultarComprasPorSocio();
 void cambiarEstadoCompra();
 
-void informeRankingRecaudacionPeliculas();
-void informeOcupacionPorFuncion();
-void informeEntradasPorFormato();
-void informeSociosMasFrecuentes();
-void informeImpactoDescuentos();
-void informeTicketsSuperanPromedio();
 
 #endif // FUNCIONES_H_INCLUDED

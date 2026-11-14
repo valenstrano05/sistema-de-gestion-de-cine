@@ -6,6 +6,7 @@
 #include "submenues.h"
 #include "listados.h"
 #include "consultas.h"
+#include "informes.h"
 using namespace std;
 
 int menuPrincipal()
