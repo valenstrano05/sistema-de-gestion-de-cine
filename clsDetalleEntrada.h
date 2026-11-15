@@ -11,7 +11,7 @@ private:
     char _numeroButaca[7];
     int _idDescuento;
     float _precioBase;
-    double _precioFinal;
+    float _precioFinal;
 public:
     DetalleEntrada();
     void setIdDetalleEntrada(int ID);

@@ -747,6 +747,37 @@ void cambiarEstadoFuncion()
 
 //-------------------------------------------
 //COMPRAS
+//void registrarCompra() {
+//    ArchivoCompras archCompra;
+//    ArchivoDetalleEntradas archDetalle;
+//
+//    Compra c;
+//    DetalleEntrada d;
+//
+//    cout << "=======================================" << endl;
+//    cout << "       REGISTRAR NUEVA VENTA           " << endl;
+//    cout << "=======================================" << endl;
+//
+//    c.cargar();
+//
+//    if (archCompra.grabarRegistro(c)==false)
+//    {
+//        cout << "Error al guardar el archivo de compras." << endl;
+//        system("pause");
+//        return;
+//    }
+//    d.cargar(c.getIdCompra());
+//    if (archDetalle.grabarRegistro(d))
+//    {
+//        cout << "\n Registro exitoso!" << endl;
+//    }
+//    else
+//    {
+//        cout << "\n Error al guardar el detalle de la entrada." << endl;
+//    }
+//
+//    system("pause");
+//}
 void registrarCompra() {
     ArchivoCompras archCompra;
     ArchivoDetalleEntradas archDetalle;
@@ -755,30 +786,29 @@ void registrarCompra() {
     DetalleEntrada d;
 
     cout << "=======================================" << endl;
-    cout << "       REGISTRAR NUEVA VENTA           " << endl;
+    cout << "   CARGA MASIVA DE 50 VENTAS (TEST)    " << endl;
     cout << "=======================================" << endl;
+    cout << "Pega los datos y presiona Enter..." << endl;
 
-    c.cargar();
+    for (int i = 0; i < 50; i++) {
+        c.cargar();
 
-    if (archCompra.grabarRegistro(c)==false)
-    {
-        cout << "Error al guardar el archivo de compras." << endl;
-        system("pause");
-        return;
-    }
-    d.cargar(c.getIdCompra());
-    if (archDetalle.grabarRegistro(d))
-    {
-        cout << "\n Registro exitoso!" << endl;
-    }
-    else
-    {
-        cout << "\n Error al guardar el detalle de la entrada." << endl;
+        if (archCompra.grabarRegistro(c) == false) {
+            cout << "Error al guardar la compra #" << i + 1 << endl;
+            break;
+        }
+
+        d.cargar(c.getIdCompra());
+
+        if (archDetalle.grabarRegistro(d) == false) {
+            cout << "Error al guardar el detalle #" << i + 1 << endl;
+            break;
+        }
     }
 
+    cout << "\nCarga masiva finalizada!" << endl;
     system("pause");
 }
-
 
 void cambiarEstadoCompra()
 {

@@ -107,15 +107,13 @@ void Compra::mostrar()
 {
     if (_estado==false) return;
     cout <<"-------------------------------------------------" <<endl;
-    cout << "               ID Compra: " << _idCompra << endl;
-    ArchivoSocios archs;
+    cout << "ID Compra: " << _idCompra << endl;
+   ArchivoSocios archs;
     int posS = archs.buscarRegistro(_idSocio);
-    if (posS != -1){
+    if (posS != -1) {
         Socio s = archs.leerRegistro(posS);
-        cout << left << setw(12) << "ID Socio:" << setw(6) << _idSocio
-             << " | Nombre socio: " << s.getNombre() << " " << s.getApellido() << endl;
-       // cout << "| Nombre socio: " << s.getNombre() <<" " <<s.getApellido() <<endl;
-        }
+        cout << "ID Socio: " << _idSocio << " | Socio: " << s.getNombre() << " " << s.getApellido() << endl;
+    }
     cout << "Fecha de Compra: ";
     _fecha.Mostrar();
     cout << endl;

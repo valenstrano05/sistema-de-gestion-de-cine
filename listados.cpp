@@ -109,6 +109,7 @@ void listadosPeliculas()
         case 0:
             return;
         }
+        system("pause");
     }
 }
 
@@ -127,7 +128,6 @@ void listarPeliculas()
         obj.mostrar();
     }
     cout << endl;
-    system("pause");
 }
 
 void listarPeliculasPorNombre()
@@ -177,8 +177,7 @@ void listarPeliculasPorNombre()
     {
         vecPeliculas[i].mostrar();
     }
-    system("pause");
-}
+    }
 
 void listarPeliculasCronologico()
 {
@@ -229,8 +228,6 @@ void listarPeliculasCronologico()
     {
         vecPeliculas[i].mostrar();
     }
-
-    system("pause");
 }
 
 void listarPeliculasPorDuracion()
@@ -282,8 +279,6 @@ void listarPeliculasPorDuracion()
     {
         vecPeliculas[i].mostrar();
     }
-
-    system("pause");
 }
 
 void listarDescuentos()
@@ -356,8 +351,6 @@ void listarSocios()
         Socio obj = arch.leerRegistro(i);
         obj.mostrar();
     }
-
-    system("pause");
 }
 
 void listarSociosAlfabetico()
@@ -422,8 +415,6 @@ void listarSociosAlfabetico()
     {
         vecSocios[i].mostrar();
     }
-
-    system("pause");
 }
 
 void listarFormatos()
@@ -460,7 +451,7 @@ void listarSalas()
         Sala obj = arch.leerRegistro(i);
         obj.mostrar();
     }
-    system("pause");
+        system("pause");
 }
 
 void listarButacas()
@@ -535,21 +526,22 @@ void listarFunciones()
         system("pause");
         return;
     }
-    else
+
+    cout << "===========================================" << endl;
+    cout << "       LISTADO GENERAL DE FUNCIONES        " << endl;
+    cout << "===========================================" << endl;
+
+    for (int i = 0; i < cant; i++)
     {
-        for (int i = 0; i < cant; i++)
+        Funcion obj = arch.leerRegistro(i);
+        if (obj.getEstado())
         {
-            Funcion obj = arch.leerRegistro(i);
-            if (obj.getEstado())
-            {
-                obj.mostrar();
-                cout << "BUTACAS DISPONIBLES: " << butacasDisponibles(obj) << endl;
-                cout << "=====================================" << endl;
-            }
+            obj.mostrar();
+            cout << "BUTACAS DISPONIBLES: " << butacasDisponibles(obj) << endl;
+            cout << "===========================================" << endl;
         }
     }
     cout << endl;
-    system("pause");
 }
 
 void listarFuncionesCronologico()
@@ -580,45 +572,44 @@ void listarFuncionesCronologico()
         system("pause");
         return;
     }
-
     Funcion aux;
-    for (int i = 0; i < activas-1; i++)
+    for (int i = 0; i < activas - 1; i++)
     {
-        for (int j = 0; j < activas-1 - i; j++)
+        for (int j = 0; j < activas - 1 - i; j++)
         {
-            if (vecFunciones[j].getFecha() > vecFunciones[j+1].getFecha())
+            bool intercambiar = false;
+            if (vecFunciones[j].getFecha() > vecFunciones[j + 1].getFecha())
             {
-                aux = vecFunciones[j];
-                vecFunciones[j] = vecFunciones[j+1];
-                vecFunciones[j+1] = aux;
+                intercambiar = true;
             }
-        }
-    }
-    for (int i = 0; i < activas-1; i++)
-    {
-        for (int j = 0; j < activas-1 - i; j++)
-        {
-            if (vecFunciones[j].getFecha() == vecFunciones[j+1].getFecha())
+            else if (vecFunciones[j].getFecha() == vecFunciones[j + 1].getFecha())
             {
-                if (vecFunciones[j].getHorario() > vecFunciones[j+1].getHorario())
+                if (vecFunciones[j].getHorario() > vecFunciones[j + 1].getHorario())
                 {
-                    aux = vecFunciones[j];
-                    vecFunciones[j] = vecFunciones[j+1];
-                    vecFunciones[j+1] = aux;
+                    intercambiar = true;
                 }
             }
+
+            if (intercambiar)
+            {
+                aux = vecFunciones[j];
+                vecFunciones[j] = vecFunciones[j + 1];
+                vecFunciones[j + 1] = aux;
+            }
         }
     }
+
+    system("cls");
     cout << "===========================================" << endl;
-    cout << " FUNCIONES ORDENADAS DE FORMA CRONOLOGICA" << endl;
+    cout << "  FUNCIONES ORDENADAS DE FORMA CRONOLOGICA " << endl;
     cout << "===========================================" << endl;
 
     for (int i = 0; i < activas; i++)
     {
         vecFunciones[i].mostrar();
+        cout << "BUTACAS DISPONIBLES: " << butacasDisponibles(vecFunciones[i]) << endl;
         cout << "===========================================" << endl;
     }
-    system("pause");
 }
 
 void listadosCompras()
@@ -683,16 +674,14 @@ void listarCompras()
                     if (d.getIdCompra() == obj.getIdCompra())
                     {
                         d.mostrar();
-                        cout <<endl <<endl;
-//                        cout << "Sala: " << d.getIdSala() << " | Butaca: " << d.getNumeroButaca() << endl;
-//                        break;
+                        break;
                     }
                 }
+                cout << endl;
             }
         }
     }
     cout << endl;
-    system("pause");
 }
 
 void listarComprasPorFecha()
@@ -774,9 +763,8 @@ void listarComprasPorFecha()
             if (d.getIdCompra() == vecCompras[i].getIdCompra())
             {
                 d.mostrar();
-                cout <<endl <<endl;
+                cout <<endl;
             }
         }
     }
-    system("pause");
 }

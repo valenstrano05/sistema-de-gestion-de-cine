@@ -67,18 +67,18 @@ void Pelicula::mostrar()
 {
     if (estado)
     {
-        cout <<"  ===============================================================================================================" <<endl;
-        cout <<"                                  " <<titulo <<endl;
-        cout <<"  ===============================================================================================================" <<endl;
-        cout <<"\tID: " <<id <<endl;
-        cout <<"\tGENERO: " <<genero <<endl;
-        cout <<"\tDIRECTOR: " <<director <<endl;
-        cout <<"\tSINOPSIS: " <<sinopsis <<endl;
-        cout <<"\tFECHA DE ESTRENO: ";
+        cout <<"===============================================================================================================" <<endl;
+        cout <<"                                " <<titulo <<endl;
+        cout <<"===============================================================================================================" <<endl;
+        cout <<"ID: " <<id <<endl;
+        cout <<"GENERO: " <<genero <<endl;
+        cout <<"DIRECTOR: " <<director <<endl;
+        cout <<"SINOPSIS: " <<sinopsis <<endl;
+        cout <<"FECHA DE ESTRENO: ";
         fechaEstreno.Mostrar();
         cout << endl;
-        cout <<"\tDURACION: " << duracion << " minutos"<<endl;
-        cout <<"\tCLASIFICACION: ";
+        cout <<"DURACION: " << duracion << " minutos"<<endl;
+        cout <<"CLASIFICACION: ";
         switch(clasificacion)
         {
         case 1:

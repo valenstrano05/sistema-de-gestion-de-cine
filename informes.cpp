@@ -16,7 +16,6 @@
 #include <vector>
 using namespace std;
 
-
 void informeRankingRecaudacionPeliculas()
 {
     ArchivoDetalleEntradas archD;
@@ -28,9 +27,9 @@ void informeRankingRecaudacionPeliculas()
     ArchivoDescuento archDesc;
     vector<Pelicula> pelicula;
     vector<int> vCant;
-    vector<double> vPrecios;
+    vector<float> vPrecios;
     int cantTotal = 0;
-    double precioTotal = 0.0;
+    float precioTotal = 0.0;
 
     int ventas = archD.contarRegistros();
     if (ventas <= 0){
@@ -146,11 +145,6 @@ void informeRankingRecaudacionPeliculas()
     system("pause");
 
 }
-
-
-
-
-
 
 void informeOcupacionPorFuncion()
 {
