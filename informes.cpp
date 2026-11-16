@@ -134,7 +134,7 @@ void informeRankingRecaudacionPeliculas()
          << setw(19) << "ENTRADAS VENDIDAS" << " | "
          << setw(17) << "TOTAL RECAUDADO" << endl;
 
-    cout << "----------------------------------------------------------------------------------------------------------------------" << endl;
+    cout << "======================================================================================================================" << endl;
 
     for (int k = 0; k < cantP; k++)
     {
@@ -145,8 +145,7 @@ void informeRankingRecaudacionPeliculas()
              << setw(19) << vCant[i] << " | $"
              << setw(15) << (long long)vPrecios[i] << endl;
     }
-    cout << "----------------------------------------------------------------------------------------------------------------------" << endl;
-
+    cout << "======================================================================================================================" << endl;
     cout << left
          << setw(48) << "TOTAL"
          << setw(21) << "" << " | "
@@ -182,8 +181,7 @@ void informeOcupacionPorFuncion()
          << " | " << setw(13) << "PELICULA ID"
          << " | " << setw(9)  << "SALA ID"
          << " | " << "OCUPACION" << endl;
-    cout << "------------------------------------------------------------------------------" << endl;
-
+    cout << "==============================================================================" << endl;
     bool hayFuncionesActivas = false;
 
     for (int i = 0; i < cantFunciones; i++)
@@ -228,7 +226,7 @@ void informeOcupacionPorFuncion()
             cout << fixed << setprecision(2) << porcentajeOcupacion << "% ("
                  << butacasVendidas << "/" << capacidadTotal << ")" << endl;
 
-            cout << "------------------------------------------------------------------------------" << endl;
+            cout << "==============================================================================" << endl;
         }
     }
 
@@ -324,7 +322,7 @@ void informeEntradasPorFormato()
          << " | " << right << setw(18) << "ENTRADAS VENDIDAS"
          << " | " << right << setw(22) << "PORCENTAJE DEL TOTAL" << endl;
 
-    cout << "--------------------------------------------------------------------------" << endl;
+    cout << "==========================================================================" << endl;
 
     for (size_t i = 0; i < entradasXformato.size(); i++)
     {
@@ -334,7 +332,7 @@ void informeEntradasPorFormato()
              << " | " << right << setw(21) << porcentaje << " %" << endl;
     }
 
-    cout << "--------------------------------------------------------------------------" << endl;
+    cout << "==========================================================================" << endl;
 
     cout << left  << setw(25) << "TOTAL"
          << " | " << right << setw(18) << totalEntradas
@@ -427,7 +425,7 @@ void informeSociosMasFrecuentes()
          << setw(30) << "NOMBRE Y APELLIDO" << " | "
          << right << setw(14) << "CANTIDAD COMPRAS" << endl;
 
-    cout << "--------------------------------------------------------------------------" << endl;
+    cout << "==========================================================================" << endl;
 
     int puesto = 1;
     for (int i = 0; i < SociosActivos; i++)
@@ -445,7 +443,7 @@ void informeSociosMasFrecuentes()
                  << setw(30) << nombreCompleto << " | "
                  << vecCantidadCompras[i] << endl;
 
-            cout << "--------------------------------------------------------------------------" << endl;
+            cout << "==========================================================================" << endl;
             puesto++;
         }
     }
@@ -572,7 +570,7 @@ void informeImpactoDescuentos()
     cout << endl;
     cout << "=====================================================================" << endl;
     cout << "PROMOCION                         | OPERACIONES  | TOTAL DESCONTADO" << endl;
-    cout << "---------------------------------------------------------------------" << endl;
+    cout << "=====================================================================" << endl;
 
     for (int i = 0; i < (int)vecDescuentos.size(); i++)
     {
@@ -588,7 +586,7 @@ void informeImpactoDescuentos()
         }
     }
 
-    cout << "---------------------------------------------------------------------" << endl;
+    cout << "=====================================================================" << endl;
     cout << "TOTAL                             | " << totalOperacionesConDesc << "          | $" << (long long)totalDescontadoGlobal << endl;
     cout << "=====================================================================" << endl;
     cout << "VALOR BRUTO (SIN DESCUENTOS): $" << (long long)valorBrutoTotal << endl;
@@ -668,7 +666,6 @@ void informeTicketsSuperanPromedio()
                             }
                         }
                     }
-                    break;
                 }
             }
             sumaTotal += precioFinal;
@@ -692,14 +689,14 @@ void informeTicketsSuperanPromedio()
     cout << endl;
     cout << "==========================================================================" << endl;
     cout << "GASTO PROMEDIO GENERAL: $" << (long long)gastoPromedio << endl;
-    cout << "--------------------------------------------------------------------------" << endl;
+    cout << "==========================================================================" << endl;
     cout << left
          << setw(12) << "ID COMPRA" << " | "
          << setw(10) << "ID SOCIO" << " | "
          << setw(12) << "FECHA" << " | "
          << setw(7)  << "HORA" << " | "
          << setw(13) << "MONTO PAGADO" << endl;
-    cout << "--------------------------------------------------------------------------" << endl;
+    cout << "==========================================================================" << endl;
 
     bool haySuperiores = false;
 
@@ -749,7 +746,6 @@ void informeTicketsSuperanPromedio()
                             }
                         }
                     }
-                    break;
                 }
             }
 
@@ -763,7 +759,7 @@ void informeTicketsSuperanPromedio()
                 cout << " | ";
                 c.getHorario().Mostrar();
                 cout << " | $" << setw(10) << (long long)precioFinal << endl;
-                cout << "--------------------------------------------------------------------------" << endl;
+                cout << "==========================================================================" << endl;
             }
         }
     }
@@ -771,7 +767,7 @@ void informeTicketsSuperanPromedio()
     if (haySuperiores == false)
     {
         cout << "No hay tickets que superen el gasto promedio." << endl;
-        cout << "--------------------------------------------------------------------------" << endl;
+        cout << "==========================================================================" << endl;
     }
 
     system("pause");

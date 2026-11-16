@@ -105,10 +105,9 @@ void Compra::cargar()
 
 void Compra::mostrar()
 {
-    if (_estado==false) return;
-    cout <<"-------------------------------------------------" <<endl;
+    if (_estado == false) return;
     cout << "ID Compra: " << _idCompra << endl;
-   ArchivoSocios archs;
+    ArchivoSocios archs;
     int posS = archs.buscarRegistro(_idSocio);
     if (posS != -1) {
         Socio s = archs.leerRegistro(posS);

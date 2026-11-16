@@ -14,65 +14,6 @@
 #include "clsArchivoDetalleEntradas.h"
 using namespace std;
 
-void listados()
-{
-    int opcion;
-    while (true)
-    {
-        system("cls");
-        cout << "||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
-        cout << "|                                              |" << endl;
-        cout << "|                MENU DE LISTADOS              |" << endl;
-        cout << "|                                              |" << endl;
-        cout << "||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
-        cout << endl;
-        cout << "     1. PELICULAS" << endl;
-        cout << "     2. DESCUENTOS" << endl;
-        cout << "     3. SOCIOS" << endl;
-        cout << "     4. FORMATOS" << endl;
-        cout << "     5. SALAS" << endl;
-        cout << "     6. BUTACAS" << endl;
-        cout << "     7. FUNCIONES" << endl;
-        cout << "     8. COMPRAS" << endl;
-        cout << "     0. VOLVER" << endl;
-        cout << endl;
-        cout << "------------------------------------------------" << endl;
-        cout << "Ingrese una opcion: ";
-        cin >> opcion;
-        cout << "------------------------------------------------" << endl;
-        system("cls");
-        switch (opcion)
-        {
-        case 1:
-            listadosPeliculas();
-            break;
-        case 2:
-            listarDescuentos();
-            break;
-        case 3:
-            listadosSocios();
-            break;
-        case 4:
-            listarFormatos();
-            break;
-        case 5:
-            listarSalas();
-            break;
-        case 6:
-            listarButacas();
-            break;
-        case 7:
-            listadosFunciones();
-            break;
-        case 8:
-            listadosCompras();
-            break;
-        case 0:
-            return;
-        }
-    }
-}
-
 void listadosPeliculas()
 {
     int opcion;
@@ -91,10 +32,10 @@ void listadosPeliculas()
         cout << "     4. ORDENADAS POR DURACION" << endl;
         cout << "     0. VOLVER" << endl;
         cout << endl;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         cout << "Ingrese una opcion: ";
         cin >> opcion;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         system("cls");
         switch (opcion)
         {
@@ -225,7 +166,7 @@ void listarPeliculasCronologico()
     }
 
     cout << " ===============================================================================================================" << endl;
-    cout << "                             PELICULAS ORDENADAS POR FECHA DE ESTRENO" << endl;
+    cout << "                             PELICULAS ORDENADAS POR FECHA DE ESTRENO"                                            << endl;
     cout << " ===============================================================================================================" << endl;
 
     for (int i = 0; i < activas; i++)
@@ -320,10 +261,10 @@ void listadosSocios()
         cout << "     2. ORDENADOS DE FORMA ALFABETICA" << endl;
         cout << "     0. VOLVER" << endl;
         cout << endl;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         cout << "Ingrese una opcion: ";
         cin >> opcion;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         system("cls");
         switch (opcion)
         {
@@ -357,6 +298,7 @@ void listarSocios()
         Socio obj = arch.leerRegistro(i);
         obj.mostrar();
     }
+    cout << endl;
 }
 
 void listarSociosAlfabetico()
@@ -457,37 +399,80 @@ void listarSalas()
         Sala obj = arch.leerRegistro(i);
         obj.mostrar();
     }
+    cout<<endl;
     system("pause");
 }
 
 void listarButacas()
 {
+    ArchivoFunciones archFunciones;
     ArchivoSalas archSalas;
-    ArchivoButacas arch;
-    int idSala;
+    ArchivoButacas archButacas;
+    ArchivoDetalleEntradas archDetalle;
+    ArchivoCompras archCompras;
+    int idFuncion;
 
-    cout << "ID de la sala: ";
-    cin >> idSala;
-
-    if (archSalas.buscarRegistro(idSala) == -1)
+    cout << "Ingrese el ID de la funcion: ";
+    cin >> idFuncion;
+    int posF = archFunciones.buscarRegistro(idFuncion);
+    if (posF == -1)
     {
-        cout << "No existe una sala con ese ID." << endl;
+        cout << "No existe una funcion con ese ID." << endl;
         system("pause");
         return;
     }
 
-    int cantidad = arch.contarRegistros();
-    int mostradas = 0;
-    for (int i = 0; i < cantidad; i++)
+    Funcion funcion = archFunciones.leerRegistro(posF);
+    if (!funcion.getEstado())
     {
-        Butaca obj = arch.leerRegistro(i);
-        if (obj.getIdSala() == idSala && obj.getEstado())
+        cout << "La funcion seleccionada no esta activa." << endl;
+        system("pause");
+        return;
+    }
+
+    int idSala = funcion.getIdSala();
+
+    system("cls");
+    cout << "=================================================" << endl;
+    cout << "   BUTACAS DISPONIBLES PARA LA FUNCION " << idFuncion << endl;
+    cout << "=================================================" << endl;
+
+    int cantidadButacas = archButacas.contarRegistros();
+    int cantDetalles = archDetalle.contarRegistros();
+    int mostradas = 0;
+
+    for (int i = 0; i < cantidadButacas; i++)
+    {
+        Butaca b = archButacas.leerRegistro(i);
+        if (b.getIdSala() == idSala && b.getEstado())
         {
-            obj.mostrar();
-            mostradas++;
+            bool ocupada = false;
+            for (int j = 0; j < cantDetalles; j++)
+            {
+                DetalleEntrada d = archDetalle.leerRegistro(j);
+                if (d.getIdFuncion() == idFuncion)
+                {
+                    int posC = archCompras.buscarRegistro(d.getIdCompra());
+                    if (posC != -1 && archCompras.leerRegistro(posC).getEstado())
+                    {
+                        if (strcmp(d.getNumeroButaca(), b.getNumeroButaca()) == 0)
+                        {
+                            ocupada = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            if (ocupada==false)
+            {
+                b.mostrar();
+                mostradas++;
+            }
         }
     }
-    cout << "Total de butacas disponibles de la sala " << idSala << ": " << mostradas << endl;
+
+    cout << "=================================================" << endl;
+    cout << "Total de butacas disponibles: " << mostradas << endl;
     system("pause");
 }
 
@@ -507,10 +492,10 @@ void listadosFunciones()
         cout << "     2. ORDENADAS POR FECHA Y HORA DE PROYECCION" << endl;
         cout << "     0. VOLVER" << endl;
         cout << endl;
-        cout << "-----------------------------------------------------" << endl;
+        cout << "=====================================================" << endl;
         cout << "Ingrese una opcion: ";
         cin >> opcion;
-        cout << "-----------------------------------------------------" << endl;
+        cout << "=====================================================" << endl;
         system("cls");
         switch (opcion)
         {
@@ -639,10 +624,10 @@ void listadosCompras()
         cout << "     2. ORDENADAS POR FECHA Y HORA" << endl;
         cout << "     0. VOLVER" << endl;
         cout << endl;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         cout << "Ingrese una opcion: ";
         cin >> opcion;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         system("cls");
         switch (opcion)
         {
@@ -656,7 +641,6 @@ void listadosCompras()
             return;
             break;
         }
-        system("pause");
     }
 }
 
@@ -671,30 +655,33 @@ void listarCompras()
         system("pause");
         return;
     }
-    else
-    {
-        for (int i = 0; i < cant; i++)
-        {
-            Compra obj = arch.leerRegistro(i);
-            if (obj.getEstado())
-            {
-                obj.mostrar();
 
-                int cantDetalles = archDetalle.contarRegistros();
-                for (int j = 0; j < cantDetalles; j++)
+    cout << "================================================" << endl;
+    cout << "           LISTADO GENERAL DE COMPRAS           " << endl;
+    cout << "================================================" << endl;
+
+    for (int i = 0; i < cant; i++)
+    {
+        Compra obj = arch.leerRegistro(i);
+        if (obj.getEstado())
+        {
+            obj.mostrar();
+
+            int cantDetalles = archDetalle.contarRegistros();
+            for (int j = 0; j < cantDetalles; j++)
+            {
+                DetalleEntrada d = archDetalle.leerRegistro(j);
+                if (d.getIdCompra() == obj.getIdCompra())
                 {
-                    DetalleEntrada d = archDetalle.leerRegistro(j);
-                    if (d.getIdCompra() == obj.getIdCompra())
-                    {
-                        d.mostrar();
-                        break;
-                    }
+                    d.mostrar();
+                    break;
                 }
-                cout << endl;
             }
+            cout << "================================================" << endl;
         }
     }
     cout << endl;
+    system("pause");
 }
 
 void listarComprasPorFecha()
@@ -732,20 +719,14 @@ void listarComprasPorFecha()
     {
         for (int j = 0; j < activas - 1 - i; j++)
         {
-            Fecha f1 = vecCompras[j].getFecha();
-            Fecha f2 = vecCompras[j + 1].getFecha();
-            Hora h1 = vecCompras[j].getHorario();
-            Hora h2 = vecCompras[j + 1].getHorario();
-
             bool intercambiar = false;
-
-            if (f1 > f2)
+            if (vecCompras[j].getFecha() > vecCompras[j + 1].getFecha())
             {
                 intercambiar = true;
             }
-            else if (f1 == f2)
+            else if (vecCompras[j].getFecha() == vecCompras[j + 1].getFecha())
             {
-                if (h1 > h2)
+                if (vecCompras[j].getHorario() > vecCompras[j + 1].getHorario())
                 {
                     intercambiar = true;
                 }
@@ -762,7 +743,7 @@ void listarComprasPorFecha()
 
     system("cls");
     cout << "================================================" << endl;
-    cout << "    COMPRAS ORDENADAS DE FORMA CRONOLOGICA" << endl;
+    cout << "     COMPRAS ORDENADAS DE FORMA CRONOLOGICA     " << endl;
     cout << "================================================" << endl;
 
     int cantDetalles = archDetalle.contarRegistros();
@@ -776,8 +757,10 @@ void listarComprasPorFecha()
             if (d.getIdCompra() == vecCompras[i].getIdCompra())
             {
                 d.mostrar();
-                cout << endl;
+                break;
             }
         }
+        cout << "================================================" << endl;
     }
+    system("pause");
 }

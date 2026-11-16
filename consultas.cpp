@@ -30,10 +30,10 @@ void consultarPeliculas()
         cout << "     3. POR DIRECTOR" << endl;
         cout << "     0. VOLVER" << endl;
         cout << endl;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         cout << "Ingrese una opcion: ";
         cin >> opcion;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         system("cls");
         switch (opcion)
         {
@@ -60,6 +60,7 @@ void peliculasPorGenero()
 
     if (cant == 0){
         cout << "No hay peliculas registradas." << endl;
+        system("pause");
         return;
     }
 
@@ -82,12 +83,13 @@ void peliculasPorGenero()
     }
 
     int encontrado = vecPeliculas.size();
+    system("cls");
     if (encontrado == 0){
         cout << "No hay peliculas registradas del genero " << genero << "." << endl;
-        system ("pause");
+        system("pause");
         return;
     }
-    system("cls");
+
     cout << " ===============================================================================================================" << endl;
     cout << "                                PELICULAS DEL GENERO: " << genero << endl;
     cout << " ===============================================================================================================" << endl;
@@ -95,9 +97,7 @@ void peliculasPorGenero()
         vecPeliculas[i].mostrar();
         cout << " ===============================================================================================================" << endl;
     }
-
-    system ("pause");
-
+    system("pause");
 }
 
 
@@ -107,7 +107,8 @@ void peliculasPorClasificacion()
     int cant = arch.contarRegistros();
 
     if (cant <= 0){
-        cout << "No hay peliculas registradas. " << endl << endl;
+        cout << "No hay peliculas registradas." << endl;
+        system("pause");
         return;
     }
 
@@ -115,20 +116,18 @@ void peliculasPorClasificacion()
     cout << "=============================================" << endl;
     cout << "    CONSULTAR PELICULAS POR CLASIFICACION" << endl;
     cout << "=============================================" << endl;
-    cout << "\t1. ATP" << endl;
-    cout << "\t2. +14" << endl;
-    cout << "\t3. +18" << endl;
-    cout << "---------------------------------------" << endl;
-    cout << "Ingrese la opcion deseada: ";
+    cout << "1. ATP" << endl;
+    cout << "2. +14" << endl;
+    cout << "3. +18" << endl;
+    cout << "=======================================" << endl;
+    cout << "Ingrese una opcion: ";
     cin >> clasificacion;
 
-    if (clasificacion < 1 || clasificacion > 3){
-        cout << "Opcion invalida." << endl;
-        return;
+    while (clasificacion < 1 || clasificacion > 3){
+        cout << "Opcion invalida. Intente de nuevo: ";
+        cin >> clasificacion;
     }
-
-    system ("cls");
-
+    system("cls");
     vector<Pelicula> vecPeliculas;
 
     for (int i=0; i<cant; i++){
@@ -143,7 +142,7 @@ void peliculasPorClasificacion()
     int encontradas = vecPeliculas.size();
     if (encontradas == 0){
         cout << "No hay peliculas registradas con esta clasificacion." << endl;
-        system ("pause");
+        system("pause");
         return;
     }
 
@@ -155,8 +154,7 @@ void peliculasPorClasificacion()
         vecPeliculas[i].mostrar();
         cout << " ===============================================================================================================" << endl;
     }
-    system ("pause");
-
+    system("pause");
 }
 
 void peliculasPorDirector()
@@ -165,7 +163,8 @@ void peliculasPorDirector()
     int cant = arch.contarRegistros();
 
     if (cant <= 0){
-        cout << "No hay peliculas registradas. " << endl;
+        cout << "No hay peliculas registradas." << endl;
+        system("pause");
         return;
     }
 
@@ -189,20 +188,21 @@ void peliculasPorDirector()
     }
 
     int encontrado = vecPeliculas.size();
+    system("cls");
     if (encontrado == 0){
         cout << "No hay peliculas registradas del director/a " << directorBuscado << "." << endl;
-        system ("pause");
+        system("pause");
         return;
     }
-    system ("cls");
+
     cout << " ===============================================================================================================" << endl;
     cout << "                         PELICULAS DEL DIRECTOR/A: " << directorBuscado << endl;
     cout << " ===============================================================================================================" << endl;
     for (int i=0; i<encontrado; i++){
         vecPeliculas[i].mostrar();
         cout << " ===============================================================================================================" << endl;
-        system("pause");
     }
+    system("pause");
 }
 
 //FUNCIONES
@@ -223,10 +223,10 @@ void consultarFunciones()
         cout << "     3. POR SALA" << endl;
         cout << "     0. VOLVER" << endl;
         cout << endl;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         cout << "Ingrese una opcion: ";
         cin >> opcion;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         system("cls");
         switch (opcion)
         {
@@ -242,7 +242,6 @@ void consultarFunciones()
         case 0:
             return;
         }
-        system("pause");
     }
 }
 
@@ -252,36 +251,49 @@ void funcionesPorPelicula()
     int cant = arch.contarRegistros();
     if (cant == 0){
         cout << "No hay funciones cargadas." << endl;
+        system("pause");
         return;
     }
-
-    int id;
-    cout << "=======================================" << endl;
-    cout << "   CONSULTAR FUNCIONES POR PELICULA    " << endl;
-    cout << "=======================================" << endl;
-    cout << "Ingrese el ID de la pelicula a consultar: ";
-    cin >> id;
 
     ArchivoPeliculas archP;
     int cantP = archP.contarRegistros();
     if (cantP == 0){
-        cout << "No hay peliculas registradas. " << endl;
+        cout << "No hay peliculas registradas." << endl;
+        system("pause");
         return;
     }
+
+    int id;
     bool existePelicula = false;
     char titulo[50]{};
 
-    for (int i=0; i<cantP; i++){
-        Pelicula obj = archP.leerRegistro(i);
-        if (obj.getEstado() && obj.getID() == id){
-            existePelicula = true;
-            strcpy(titulo, obj.getTitulo());
+    while (true)
+    {
+        system("cls");
+        cout << "=======================================" << endl;
+        cout << "   CONSULTAR FUNCIONES POR PELICULA    " << endl;
+        cout << "=======================================" << endl;
+        cout << "Ingrese el ID de la pelicula a consultar (o 0 para volver): ";
+        cin >> id;
+
+        if (id == 0) return;
+
+        existePelicula = false;
+        for (int i = 0; i < cantP; i++){
+            Pelicula obj = archP.leerRegistro(i);
+            if (obj.getEstado() && obj.getID() == id){
+                existePelicula = true;
+                strcpy(titulo, obj.getTitulo());
+                break;
+            }
+        }
+
+        if (existePelicula) {
             break;
         }
-    }
-    if (existePelicula == false){
-        cout << "No se registro una pelicula con el ID " << id << "." << endl;
-        return;
+
+        cout << endl << "No se registro una pelicula con el ID " << id << ". Intente de nuevo." << endl;
+        system("pause");
     }
 
     vector <Funcion> vecFunciones;
@@ -295,21 +307,24 @@ void funcionesPorPelicula()
     }
 
     int encontrados = vecFunciones.size();
+    system("cls");
     if (encontrados == 0){
-        cout << "No hay funciones registradas para la pelicula " << titulo << "." << endl;
-        system ("pause");
+        cout << "====================================================" << endl;
+        cout << "   FUNCIONES DE LA PELICULA: " << titulo << endl;
+        cout << "====================================================" << endl;
+        cout << "No hay funciones registradas para esta pelicula." << endl;
+        system("pause");
         return;
     }
-    system ("cls");
+
     cout << "====================================================" << endl;
-    cout << "    FUNCIONES DE LA PELICULA: " << titulo << endl;
+    cout << "   FUNCIONES DE LA PELICULA: " << titulo << endl;
     cout << "====================================================" << endl;
     for (int i=0; i<encontrados; i++){
         vecFunciones[i].mostrar();
         cout << "====================================================" << endl;
     }
-    system ("pause");
-
+    system("pause");
 }
 
 void funcionesPorFecha()
@@ -325,7 +340,7 @@ void funcionesPorFecha()
     }
 
     cout << "=======================================" << endl;
-    cout << "     CONSULTAR FUNCIONES POR FECHA     " << endl;
+    cout << "      CONSULTAR FUNCIONES POR FECHA    " << endl;
     cout << "=======================================" << endl;
 
     cout << "Ingrese el dia: ";
@@ -365,6 +380,7 @@ void funcionesPorFecha()
     }
 
     int encontrados = vecFunciones.size();
+    system("cls");
     if (encontrados == 0)
     {
         cout << "No hay funciones registradas para la fecha ingresada." << endl;
@@ -372,9 +388,8 @@ void funcionesPorFecha()
         return;
     }
 
-    system("cls");
     cout << "===========================================" << endl;
-    cout << "     FUNCIONES DE LA FECHA " << dia << "/" << mes << "/" << anio << endl;
+    cout << "      FUNCIONES DE LA FECHA " << dia << "/" << mes << "/" << anio << endl;
     cout << "===========================================" << endl;
     for (int i = 0; i < encontrados; i++)
     {
@@ -387,23 +402,35 @@ void funcionesPorFecha()
 void funcionesPorSala()
 {
     ArchivoFunciones arch;
-    int idSala;
-
     int cant = arch.contarRegistros();
     if (cant <= 0)
     {
         cout << "No hay funciones registradas." << endl;
+        system("pause");
         return;
     }
 
-    cout << "Ingrese el ID de la sala a consultar: ";
-    cin >> idSala;
-
     ArchivoSalas archS;
-    if (archS.buscarRegistro(idSala) == -1)
+    int idSala;
+
+    while (true)
     {
-        cout << "No existe una sala con ese ID." << endl;
-        return;
+        system("cls");
+        cout << "=======================================" << endl;
+        cout << "      CONSULTAR FUNCIONES POR SALA     " << endl;
+        cout << "=======================================" << endl;
+        cout << "Ingrese el ID de la sala a consultar (o 0 para volver): ";
+        cin >> idSala;
+
+        if (idSala == 0) return;
+
+        if (archS.buscarRegistro(idSala) != -1)
+        {
+            break;
+        }
+
+        cout << endl << "No existe una sala con ese ID. Intente de nuevo." << endl;
+        system("pause");
     }
 
     vector<Funcion> vecFunciones;
@@ -421,22 +448,24 @@ void funcionesPorSala()
     }
 
     int encontrados = vecFunciones.size();
+    system("cls");
+    cout << "=======================================" << endl;
+    cout << "      FUNCIONES DE LA SALA " << idSala << endl;
+    cout << "=======================================" << endl;
+    cout << endl;
+
     if (encontrados == 0)
     {
         cout << "No hay funciones registradas para la sala " << idSala << "." << endl;
-        return;
     }
-
-    system("cls");
-    cout << "=======================================" << endl;
-    cout << "     FUNCIONES DE LA SALA " << idSala << endl;
-    cout << "=======================================" << endl;
-    cout << endl;
-    for (int i = 0; i < encontrados; i++)
+    else
     {
-        vecFunciones[i].mostrar();
-        cout << "=======================================" << endl;
-        cout << endl;
+        for (int i = 0; i < encontrados; i++)
+        {
+            vecFunciones[i].mostrar();
+            cout << "=======================================" << endl;
+            cout << endl;
+        }
     }
     system("pause");
 }
@@ -458,15 +487,15 @@ void consultarSocios()
         cout << "     2. POR APELLIDO" << endl;
         cout << "     0. VOLVER" << endl;
         cout << endl;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         cout << "Ingrese una opcion: ";
         cin >> opcion;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         system("cls");
         switch (opcion)
         {
         case 1:
-            sociosPorDni();
+            socioPorDni();
             break;
         case 2:
             sociosPorApellido();
@@ -474,55 +503,62 @@ void consultarSocios()
         case 0:
             return;
         }
-        system("pause");
     }
 }
 
-void sociosPorDni()
+void socioPorDni()
 {
     ArchivoSocios arch;
-    int dniBuscado;
-
     int cant = arch.contarRegistros();
     if (cant <= 0)
     {
         cout << "No hay socios registrados." << endl;
+        system("pause");
         return;
     }
 
-    cout << "Ingrese el DNI a buscar: ";
-    cin >> dniBuscado;
+    int dniBuscado;
+    Socio socio;
+    bool encontrado = false;
 
-    vector<Socio> vecSocios;
-
-    for (int i = 0; i < cant; i++)
+    while (true)
     {
-        Socio obj = arch.leerRegistro(i);
-        if (obj.getEstado())
+        system("cls");
+        cout << "=======================================" << endl;
+        cout << "         CONSULTAR SOCIO POR DNI       " << endl;
+        cout << "=======================================" << endl;
+        cout << "Ingrese el DNI a buscar (o 0 para volver): ";
+        cin >> dniBuscado;
+
+        if (dniBuscado == 0) return;
+
+        encontrado = false;
+        for (int i = 0; i < cant; i++)
         {
-            if (obj.getDni() == dniBuscado)
+            Socio obj = arch.leerRegistro(i);
+            if (obj.getEstado() && obj.getDni() == dniBuscado)
             {
-                vecSocios.push_back(obj);
+                socio = obj;
+                encontrado = true;
+                break;
             }
         }
-    }
 
-    int encontrados = vecSocios.size();
-    if (encontrados == 0)
-    {
-        cout << "No hay socios registrados con el DNI " << dniBuscado << "." << endl;
-        return;
+        if (encontrado)
+        {
+            break;
+        }
+
+        cout << endl << "No hay un socio registrado con el DNI " << dniBuscado << ". Intente de nuevo." << endl;
+        system("pause");
     }
 
     system("cls");
     cout << "=======================================" << endl;
-    cout << "     SOCIOS CON DNI " << dniBuscado << endl;
+    cout << "          DATOS DEL SOCIO              " << endl;
     cout << "=======================================" << endl;
-    for (int i = 0; i < encontrados; i++)
-    {
-        vecSocios[i].mostrar();
-        cout << "=======================================" << endl;
-    }
+    socio.mostrar();
+    cout << "=======================================" << endl;
     system("pause");
 }
 
@@ -533,6 +569,7 @@ void sociosPorApellido()
     if (cant <= 0)
     {
         cout << "No hay socios registrados." << endl;
+        system("pause");
         return;
     }
 
@@ -553,53 +590,78 @@ void sociosPorApellido()
     }
 
     int encontrados = vecSocios.size();
+    system("cls");
     if (encontrados == 0)
     {
         cout << "No hay socios registrados con el apellido " << apellidoBuscado << "." << endl;
+        system("pause");
         return;
     }
 
-    system("cls");
     cout << "=======================================" << endl;
-    cout << "     SOCIOS CON APELLIDO " << apellidoBuscado << endl;
+    cout << "      SOCIOS CON APELLIDO " << apellidoBuscado << endl;
     cout << "=======================================" << endl;
     for (int i = 0; i < encontrados; i++)
     {
         vecSocios[i].mostrar();
         cout << "=======================================" << endl;
     }
-    system ("pause");
+    system("pause");
 }
 
 void comprasPorSocio() {
     ArchivoSocios archS;
     ArchivoCompras arcC;
     Socio socio;
-    bool encontro = false;
     int id;
 
-    cout << "ID del socio a consultar: ";
-    cin >> id;
-
-    int pos = archS.buscarRegistro(id);
-    if (pos == -1)
+    int cantSocios = archS.contarRegistros();
+    if (cantSocios <= 0)
     {
-        cout << "No existe un socio con ese ID." << endl;
+        cout << "No hay socios registrados." << endl;
         system("pause");
         return;
     }
-    socio = archS.leerRegistro(pos);
-    cout << endl;
+
+    while (true)
+    {
+        system("cls");
+        cout << "================================================" << endl;
+        cout << "           CONSULTAR COMPRAS POR SOCIO          " << endl;
+        cout << "================================================" << endl;
+        cout << "ID del socio a consultar (o 0 para volver): ";
+        cin >> id;
+
+        if (id == 0) return;
+
+        int pos = archS.buscarRegistro(id);
+        if (pos != -1)
+        {
+            socio = archS.leerRegistro(pos);
+            if (socio.getEstado())
+            {
+                break;
+            }
+        }
+
+        cout << endl << "No existe un socio activo con ese ID. Intente de nuevo." << endl;
+        system("pause");
+    }
+
     system("cls");
     cout << "================================================" << endl;
     cout << " SOCIO: " << socio.getNombre() << " " << socio.getApellido() << " (ID: " << id << ")" << endl;
     cout << "================================================" << endl;
+
     int cantCompras = arcC.contarRegistros();
     if (cantCompras <= 0)
     {
-        cout << "No hay compras registradas en el sistema o el archivo esta vacio." << endl;
+        cout << "No hay compras registradas en el sistema." << endl;
+        system("pause");
         return;
     }
+
+    bool encontro = false;
     for (int i = 0; i < cantCompras; i++)
     {
         Compra c = arcC.leerRegistro(i);
@@ -616,9 +678,11 @@ void comprasPorSocio() {
                     det.mostrar();
                 }
             }
+            cout << "================================================" << endl;
             encontro = true;
         }
     }
+
     if (encontro == false)
     {
         cout << "El socio no registra compras activas en el sistema." << endl;

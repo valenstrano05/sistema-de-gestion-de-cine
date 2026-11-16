@@ -221,7 +221,6 @@ void DetalleEntrada::mostrar()
 
     cout << "Pelicula: " << pelicula.getTitulo() << endl;
     cout << "Sala: " << _idSala << " | Butaca: " << _numeroButaca << endl;
-    cout << "---------------------------------------------  " << endl;
     cout << "Precio: $" << _precioBase << endl;
 
     if (_idDescuento > 0)
@@ -235,6 +234,4 @@ void DetalleEntrada::mostrar()
         cout << "Porcentaje descontado: -" << desc.getPorcentaje() << "%" << endl;
         cout << "Precio final: $" << (long long)_precioFinal << endl;
     }
-
-    cout << "-------------------------------------------------" << endl;
 }

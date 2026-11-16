@@ -49,12 +49,12 @@ void Formato::mostrar()
 {
     if (_estado)
     {
-        cout <<"---------------------------------------" <<endl;
+        cout <<"=======================================" <<endl;
         cout <<"                  " <<_nombre <<endl;
-        cout <<"---------------------------------------" <<endl;
-        cout <<"\tID: " <<_id <<endl;
-        cout <<"\tPRECIO: $" <<_precio <<endl;
-        cout <<endl;
+        cout <<"=======================================" <<endl;
+        cout <<"ID: " <<_id <<endl;
+        cout <<"PRECIO: $" <<_precio <<endl;
+
     }
 }
 

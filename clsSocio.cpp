@@ -53,12 +53,11 @@ void Socio::mostrar()
 {
     if (_estado)
     {
-        cout << "---------------------------------------" << endl;
+        cout << "=======================================" << endl;
         cout << "ID: " << _idSocio << endl;
         cout << "DNI: " << _dni << endl;
         cout << "NOMBRE: " << _nombre << endl;
         cout << "APELLIDO: " << _apellido << endl;
-        cout << endl;
     }
 }
 

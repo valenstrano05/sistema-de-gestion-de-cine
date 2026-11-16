@@ -12,7 +12,7 @@ void funcionesPorFecha();
 void funcionesPorSala();
 
 void consultarSocios();
-void sociosPorDni();
+void socioPorDni();
 void sociosPorApellido();
 
 void comprasPorSocio();

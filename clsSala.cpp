@@ -65,10 +65,9 @@ void Sala::mostrar()
 {
     if (_estado)
     {
-        cout << "---------------------------------------" << endl;
+        cout << "=======================================" << endl;
         cout << "ID: " << _idSala << endl;
-        cout << "CAPACIDAD: " << _capacidadButacas << " butacas" << endl;
-
+        cout << "CAPACIDAD TOTAL: " << _capacidadButacas << " butacas" << endl;
         ArchivoFormato arch;
         int pos = arch.buscarPorID(_formatoProyeccion);
         if (pos != -1){
@@ -78,7 +77,6 @@ void Sala::mostrar()
         }else {
             cout <<"Formato no encontrado."<<endl;
         }
-        cout << endl;
     }
 }
 

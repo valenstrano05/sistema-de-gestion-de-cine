@@ -38,10 +38,10 @@ int menuPrincipal()
         cout << "     9. INFORMES" << endl;
         cout << "     0. SALIR" << endl;
         cout << endl;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         cout << "Ingrese una opción: ";
         cin >> opcion;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         system("cls");
 
         switch (opcion)
@@ -102,10 +102,10 @@ void menuPeliculas()
         cout << "     5. CONSULTAR PELICULAS" << endl;
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         cout << "Ingrese una opción: ";
         cin >> opcion;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         system("cls");
 
         switch (opcion)
@@ -153,10 +153,10 @@ void menuDescuentos()
         cout << "     4. DAR DE BAJA / REACTIVAR DESCUENTO" << endl;
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         cout << "Ingrese una opción: ";
         cin >> opcion;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         system("cls");
 
         switch (opcion)
@@ -202,10 +202,10 @@ void menuSocios()
         cout << "     5. CONSULTAR SOCIOS" << endl;
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         cout << "Ingrese una opcion: ";
         cin >> opcion;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         system("cls");
 
         switch (opcion)
@@ -254,10 +254,10 @@ void menuFormato()
         cout << "     4. DAR DE BAJA / REACTIVAR FORMATO" << endl;
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         cout << "Ingrese una opcion: ";
         cin >> opcion;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         system("cls");
 
         switch (opcion)
@@ -303,10 +303,10 @@ void menuSalas()
         cout << "     4. DAR DE BAJA / REACTIVAR SALA" << endl;
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         cout << "Ingrese una opcion: ";
         cin >> opcion;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         system("cls");
 
         switch (opcion)
@@ -346,14 +346,14 @@ void menuButacas()
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
         cout << endl;
-        cout << "     1. LISTAR BUTACAS DISPONIBLES DE UNA SALA" << endl;
+        cout << "     1. LISTAR BUTACAS DISPONIBLES DE UNA FUNCION" << endl;
         cout << "     2. DAR DE BAJA / REACTIVAR BUTACA" << endl;
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
-        cout << "----------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         cout << "Ingrese una opcion: ";
         cin >> opcion;
-        cout << "----------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         system("cls");
 
         switch (opcion)
@@ -393,10 +393,10 @@ void menuFunciones()
         cout << "     5. CONSULTAR FUNCIONES" << endl;
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         cout << "Ingrese una opcion: ";
         cin >> opcion;
-        cout << "------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         system("cls");
 
         switch (opcion)
@@ -444,10 +444,10 @@ void menuCompras()
         cout << "     4. DAR DE BAJA / REACTIVAR COMPRA" << endl;
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
-        cout << "----------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         cout << "Ingrese una opcion: ";
         cin >> opcion;
-        cout << "----------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         system("cls");
 
         switch (opcion)
@@ -494,10 +494,10 @@ void menuInformes()
         cout << "     6. TICKETS QUE SUPERAN EL GASTO PROMEDIO" << endl;
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
-        cout << "---------------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         cout << "Ingrese una opcion: ";
         cin >> opcion;
-        cout << "---------------------------------------------------------" << endl;
+        cout << "================================================" << endl;
         system("cls");
 
         switch (opcion)
