@@ -17,7 +17,6 @@ using namespace std;
 
 // ----------------------------------
 //UTILIDAD
-
 void cargarCadena(const char* mensaje, char* palabra, int tam)
 {
     cout << mensaje;
@@ -37,23 +36,8 @@ void cargarCadena(const char* mensaje, char* palabra, int tam)
     }
 }
 
-int pedirEntero(const char * mensaje)
-{
-    int n;
-    cout << mensaje;
-    if (!(cin >> n))
-    {
-        cin.clear();
-        cin.ignore(1000, '\n');
-        return -1;
-    }
-    cin.ignore(1000, '\n');
-    return n;
-}
-
 //-------------------------------------------
 // UTILIDADES PERO PARA BUTACAS
-
 int butacasOcupadas(int idFuncion)
 {
     ArchivoDetalleEntradas archD;
@@ -96,11 +80,13 @@ void cargarPelicula()
     obj.cargar();
     if (arch.guardarRegistro(obj))
     {
-        cout << "\n Registro exitoso!" << endl;
+        cout << endl;
+        cout << "¡Registro exitoso!" << endl;
     }
     else
     {
-        cout << "\n Error al guardar el archivo." << endl;
+        cout << endl;
+        cout << "Error al guardar el archivo." << endl;
     }
     system("pause");
 }
@@ -125,7 +111,7 @@ void modificarPelicula()
 
     if (arch.modificarRegistro(obj, pos))
     {
-        cout << "Registro modificado con exito." << endl;
+        cout << "¡Registro modificado con exito." << endl;
     }
     else
     {
@@ -173,7 +159,7 @@ void cambiarEstadoPelicula()
 bool confirmacionSalida()
 {
     char opcion;
-    cout << "Esta seguro/a de que desea salir? (S/N):";
+    cout << "Esta seguro/a de que desea salir? (S/N): ";
     cin >> opcion;
     if (opcion == 's' || opcion == 'S')
     {
@@ -192,11 +178,13 @@ void cargarDescuento()
     obj.cargar();
     if (arch.guardar(obj))
     {
-        cout << "\nRegistro exitoso!" << endl;
+        cout << endl;
+        cout << "¡Registro exitoso!" << endl;
     }
     else
     {
-        cout << "\nError al guardar el archivo." << endl;
+        cout << endl;
+        cout << "Error al guardar el archivo." << endl;
     }
     system("pause");
 }
@@ -218,7 +206,7 @@ void modificarDescuento()
     obj.modificar();
     if (arch.modificar(obj, pos))
     {
-        cout << "Registro modificado con exito!" << endl;
+        cout << "¡Registro modificado con exito!" << endl;
     }
     else
     {
@@ -287,8 +275,9 @@ void cargarSocio()
 void modificarSocio()
 {
     ArchivoSocios arch;
-
-    int id = pedirEntero("ID del socio a modificar: ");
+    int id;
+    cout << "ID del socio a modificar: ";
+    cin >> id;
     int pos = arch.buscarRegistro(id);
     if (pos == -1)
     {
@@ -302,17 +291,22 @@ void modificarSocio()
     cout << "2. NOMBRE" << endl;
     cout << "3. APELLIDO" << endl;
     cout << "0. CANCELAR" << endl;
-    int opcion = pedirEntero("Que desea modificar: ");
+
+    int opcion;
+    cout << "Que desea modificar: ";
+    cin >> opcion;
 
     char texto[30];
     int dni;
     switch (opcion)
     {
     case 1:
-        dni = pedirEntero("NUEVO DNI: ");
+        cout << "NUEVO DNI: ";
+        cin >> dni;
         while (dni < 1000000 || dni > 99999999)
         {
-            dni = pedirEntero("Error, el DNI debe tener 7 u 8 digitos. Ingresar nuevamente: ");
+            cout << "Error, el DNI debe tener 7 u 8 digitos. Ingresar nuevamente: ";
+            cin >> dni;
         }
         obj.setDni(dni);
         break;
@@ -344,8 +338,11 @@ void modificarSocio()
 void cambiarEstadoSocio()
 {
     ArchivoSocios arch;
+    int id;
 
-    int id = pedirEntero("ID del socio a modificar estado: ");
+    cout << "ID del socio a modificar estado: ";
+    cin >> id;
+
     int pos = arch.buscarRegistroInactivo(id);
     if (pos == -1)
     {
@@ -386,11 +383,13 @@ void cargarFormato()
     obj.cargar();
     if (arch.guardarRegistro(obj))
     {
-        cout << "\n Registro exitoso!" << endl;
+        cout << endl;
+        cout << "¡Registro exitoso!" << endl;
     }
     else
     {
-        cout << "\n Error al guardar el archivo." << endl;
+        cout << endl;
+        cout << "Error al guardar el archivo." << endl;
     }
     system("pause");
 }
@@ -416,7 +415,7 @@ void modificarFormato()
 
     if (arch.modificarRegistro(obj, pos))
     {
-        cout << "Registro modificado con exito." << endl;
+        cout << "¡Registro modificado con exito." << endl;
     }
     else
     {
@@ -429,7 +428,7 @@ void modificarFormato()
 void cambiarEstadoFormato()
 {
     int idBuscado;
-    cout <<"Ingrese el ID del formato a modificar estado: ";
+    cout << "Ingrese el ID del formato a modificar estado: ";
     cin >> idBuscado;
     ArchivoFormato arch;
     int pos = arch.buscarPorID(idBuscado);
@@ -437,29 +436,29 @@ void cambiarEstadoFormato()
         pos = arch.buscarPorIDInactivo(idBuscado);
     }
     if (pos == -1){
-        cout <<"Error, no se registro un formato con el ID " <<idBuscado << "." <<endl;
+        cout << "Error, no se registro un formato con el ID " << idBuscado << "." << endl;
         system("pause");
         return;
     }
     Formato obj = arch.leerRegistro(pos);
     if (obj.getEstado() == false)
     {
-        cout <<"El formato previamente dado de baja ha vuelto a ser activado." <<endl;
+        cout << "El formato previamente dado de baja ha vuelto a ser activado." << endl;
         obj.setEstado(true);
     }
     else
     {
-        cout <<"El formato ha sido dado de baja." <<endl;
+        cout << "El formato ha sido dado de baja." << endl;
         obj.setEstado(false);
     }
 
     if (arch.modificarRegistro(obj, pos))
     {
-        cout <<"Estado de formato " << idBuscado << " modificado correctamente." <<endl <<endl;
+        cout << "Estado de formato " << idBuscado << " modificado correctamente." << endl << endl;
     }
     else
     {
-        cout <<"Error al cambiar el estado." <<endl <<endl;
+        cout << "Error al cambiar el estado." << endl << endl;
     }
 
     system("pause");
@@ -491,8 +490,11 @@ void cargarSala()
 void modificarSala()
 {
     ArchivoSalas arch;
+    int id;
 
-    int id = pedirEntero("ID de la sala a modificar: ");
+    cout << "ID de la sala a modificar: ";
+    cin >> id;
+
     int pos = arch.buscarRegistro(id);
     if (pos == -1)
     {
@@ -504,16 +506,21 @@ void modificarSala()
     Sala obj = arch.leerRegistro(pos);
     cout << "1. FORMATO DE PROYECCION" << endl;
     cout << "0. CANCELAR" << endl;
-    int opcion = pedirEntero("Que desea modificar: ");
+
+    int opcion;
+    cout << "Que desea modificar: ";
+    cin >> opcion;
 
     int formato;
     switch (opcion)
     {
     case 1:
-        formato = pedirEntero("NUEVO FORMATO (1: 2D, 2: 3D, 3: IMAX): ");
+        cout << "NUEVO FORMATO (1: 2D, 2: 3D, 3: IMAX): ";
+        cin >> formato;
         while (formato < 1 || formato > 3)
         {
-            formato = pedirEntero("Error, ingrese un formato valido (1, 2 o 3): ");
+            cout << "Error, ingrese un formato valido (1, 2 o 3): ";
+            cin >> formato;
         }
         obj.setFormatoProyeccion(formato);
         break;
@@ -539,8 +546,11 @@ void cambiarEstadoSala()
 {
     ArchivoSalas arch;
     ArchivoButacas archButacas;
+    int id;
 
-    int id = pedirEntero("ID de la sala a cambiar de estado: ");
+    cout << "ID de la sala a cambiar de estado: ";
+    cin >> id;
+
     int pos = arch.buscarRegistro(id);
     if (pos == -1)
     {
@@ -556,7 +566,7 @@ void cambiarEstadoSala()
     bool nuevoEstado = !obj.getEstado();
     obj.setEstado(nuevoEstado);
 
-    if (arch.modificarRegistro(obj, pos)==false)
+    if (arch.modificarRegistro(obj, pos) == false)
     {
         cout << "Error al modificar el estado de la sala." << endl;
         system("pause");
@@ -587,15 +597,18 @@ void cambiarEstadoSala()
 //-------------------------------------------
 //BUTACAS
 
-
 void cambiarEstadoButaca()
 {
     ArchivoSalas archSalas;
     ArchivoButacas archButacas;
-    int idSala = pedirEntero("ID de la sala: ");
+    int idSala;
+
+    cout << "ID de la sala: ";
+    cin >> idSala;
     while (idSala <= 0)
     {
-        idSala = pedirEntero("ID invalido. Ingrese un ID de sala mayor a 0: ");
+        cout << "ID invalido. Ingrese un ID de sala mayor a 0: ";
+        cin >> idSala;
     }
 
     if (archSalas.buscarRegistroInactivo(idSala) == -1)
@@ -658,11 +671,13 @@ void cargarFuncion()
     obj.cargar();
     if (arch.grabarRegistro(obj))
     {
-        cout << "\n Registro exitoso!" << endl;
+        cout << endl;
+        cout << "¡Registro exitoso!" << endl;
     }
     else
     {
-        cout << "\n Error al guardar el archivo." << endl;
+        cout << endl;
+        cout << " Error al guardar el archivo." << endl;
     }
     system("pause");
 }
@@ -702,7 +717,7 @@ void modificarFuncion()
 void cambiarEstadoFuncion()
 {
     int idBuscado;
-    cout <<"Ingrese el ID de la funcion a modificar estado: ";
+    cout << "Ingrese el ID de la funcion a modificar estado: ";
     cin >> idBuscado;
     ArchivoFunciones arch;
     int pos = arch.buscarRegistro(idBuscado);
@@ -710,29 +725,29 @@ void cambiarEstadoFuncion()
         pos = arch.buscarRegistroInactivo(idBuscado);
     }
     if (pos == -1){
-        cout <<"Error, no se registro una funcion con el ID " <<idBuscado << "." <<endl;
+        cout << "Error, no se registro una funcion con el ID " << idBuscado << "." << endl;
         system("pause");
         return;
     }
     Funcion obj = arch.leerRegistro(pos);
     if (obj.getEstado() == false)
     {
-        cout <<"La funcion previamente dada de baja ha vuelto a ser activada." <<endl;
+        cout << "La funcion previamente dada de baja ha vuelto a ser activada." << endl;
         obj.setEstado(true);
     }
     else
     {
-        cout <<"La funcion ha sido dada de baja." <<endl;
+        cout << "La funcion ha sido dada de baja." << endl;
         obj.setEstado(false);
     }
 
     if (arch.modificarRegistro(obj, pos))
     {
-        cout <<"Estado de funcion " << idBuscado << " modificado correctamente." <<endl <<endl;
+        cout << "Estado de funcion " << idBuscado << " modificado correctamente." << endl << endl;
     }
     else
     {
-        cout <<"Error al cambiar el estado de la funcion." <<endl <<endl;
+        cout << "Error al cambiar el estado de la funcion." << endl << endl;
     }
 
     system("pause");
@@ -748,12 +763,12 @@ void registrarCompra() {
     DetalleEntrada d;
 
     cout << "=======================================" << endl;
-    cout << "       REGISTRAR NUEVA VENTA           " << endl;
+    cout << "        REGISTRAR NUEVA VENTA          " << endl;
     cout << "=======================================" << endl;
 
     c.cargar();
 
-    if (archCompra.grabarRegistro(c)==false)
+    if (archCompra.grabarRegistro(c) == false)
     {
         cout << "Error al guardar el archivo de compras." << endl;
         system("pause");
@@ -762,11 +777,13 @@ void registrarCompra() {
     d.cargar(c.getIdCompra());
     if (archDetalle.grabarRegistro(d))
     {
-        cout << "\n Registro exitoso!" << endl;
+        cout << endl;
+        cout << "¡Registro exitoso!" << endl;
     }
     else
     {
-        cout << "\n Error al guardar el detalle de la entrada." << endl;
+        cout << endl;
+        cout << "Error al guardar el detalle de la entrada." << endl;
     }
 
     system("pause");
@@ -775,7 +792,7 @@ void registrarCompra() {
 void cambiarEstadoCompra()
 {
     int idBuscado;
-    cout <<"Ingrese el ID de la compra a modificar estado: ";
+    cout << "Ingrese el ID de la compra a modificar estado: ";
     cin >> idBuscado;
     ArchivoCompras arch;
     int pos = arch.buscarRegistro(idBuscado);
@@ -783,31 +800,30 @@ void cambiarEstadoCompra()
         pos = arch.buscarRegistroInactivo(idBuscado);
     }
     if (pos == -1){
-        cout <<"Error, no se registro una compra con el ID " <<idBuscado << "." <<endl;
+        cout << "Error, no se registro una compra con el ID " << idBuscado << "." << endl;
         system("pause");
         return;
     }
     Compra obj = arch.leerRegistro(pos);
     if (obj.getEstado() == false)
     {
-        cout <<"La compra previamente dada de baja ha vuelto a ser activada." <<endl;
+        cout << "La compra previamente dada de baja ha vuelto a ser activada." << endl;
         obj.setEstado(true);
     }
     else
     {
-        cout <<"La compra ha sido dada de baja." <<endl;
+        cout << "La compra ha sido dada de baja." << endl;
         obj.setEstado(false);
     }
 
     if (arch.modificarRegistro(obj, pos))
     {
-        cout <<"Estado de compra " << idBuscado << " modificado correctamente." <<endl <<endl;
+        cout << "Estado de compra " << idBuscado << " modificado correctamente." << endl << endl;
     }
     else
     {
-        cout <<"Error al cambiar el estado de la compra." <<endl <<endl;
+        cout << "Error al cambiar el estado de la compra." << endl << endl;
     }
 
     system("pause");
 }
-

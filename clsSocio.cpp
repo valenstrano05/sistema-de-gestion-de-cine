@@ -43,8 +43,6 @@ void Socio::cargar()
         cout << "Ingresar DNI nuevamente: ";
         cin >> _dni;
     }
-
-    cin.ignore(1000, '\n');
     cargarCadena("NOMBRE: ", _nombre, 30);
     cargarCadena("APELLIDO: ", _apellido, 30);
 

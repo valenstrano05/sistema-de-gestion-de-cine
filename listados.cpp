@@ -16,12 +16,13 @@ using namespace std;
 
 void listados()
 {
+    int opcion;
     while (true)
     {
         system("cls");
         cout << "||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                              |" << endl;
-        cout << "|               MENU DE LISTADOS               |" << endl;
+        cout << "|                MENU DE LISTADOS              |" << endl;
         cout << "|                                              |" << endl;
         cout << "||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
@@ -36,7 +37,8 @@ void listados()
         cout << "     0. VOLVER" << endl;
         cout << endl;
         cout << "------------------------------------------------" << endl;
-        int opcion = pedirEntero("Ingrese una opcion: ");
+        cout << "Ingrese una opcion: ";
+        cin >> opcion;
         cout << "------------------------------------------------" << endl;
         system("cls");
         switch (opcion)
@@ -73,12 +75,13 @@ void listados()
 
 void listadosPeliculas()
 {
+    int opcion;
     while (true)
     {
         system("cls");
         cout << "||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                              |" << endl;
-        cout << "|               LISTADOS DE PELICULAS          |" << endl;
+        cout << "|             LISTADOS DE PELICULAS            |" << endl;
         cout << "|                                              |" << endl;
         cout << "||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
@@ -89,7 +92,8 @@ void listadosPeliculas()
         cout << "     0. VOLVER" << endl;
         cout << endl;
         cout << "------------------------------------------------" << endl;
-        int opcion = pedirEntero("Ingrese una opcion: ");
+        cout << "Ingrese una opcion: ";
+        cin >> opcion;
         cout << "------------------------------------------------" << endl;
         system("cls");
         switch (opcion)
@@ -169,15 +173,15 @@ void listarPeliculasPorNombre()
             }
         }
     }
-    cout <<"  ===============================================================================================================" <<endl;
-    cout << "                                       PELICULAS ORDENADAS POR NOMBRE     " << endl;
-    cout <<"  ===============================================================================================================" <<endl;
+    cout << " ===============================================================================================================" << endl;
+    cout << "                                     PELICULAS ORDENADAS POR NOMBRE     " << endl;
+    cout << " ===============================================================================================================" << endl;
 
     for (int i = 0; i < activas; i++)
     {
         vecPeliculas[i].mostrar();
     }
-    }
+}
 
 void listarPeliculasCronologico()
 {
@@ -220,9 +224,9 @@ void listarPeliculasCronologico()
         }
     }
 
-    cout <<"  ===============================================================================================================" <<endl;
-    cout << "                              PELICULAS ORDENADAS POR FECHA DE ESTRENO" << endl;
-    cout <<"  ===============================================================================================================" <<endl;
+    cout << " ===============================================================================================================" << endl;
+    cout << "                             PELICULAS ORDENADAS POR FECHA DE ESTRENO" << endl;
+    cout << " ===============================================================================================================" << endl;
 
     for (int i = 0; i < activas; i++)
     {
@@ -271,9 +275,9 @@ void listarPeliculasPorDuracion()
         }
     }
 
-    cout <<"  ===============================================================================================================" <<endl;
-    cout << "                                  PELICULAS ORDENADAS POR DURACION" << endl;
-    cout <<"  ===============================================================================================================" <<endl;
+    cout << " ===============================================================================================================" << endl;
+    cout << "                                 PELICULAS ORDENADAS POR DURACION" << endl;
+    cout << " ===============================================================================================================" << endl;
 
     for (int i = 0; i < activas; i++)
     {
@@ -302,12 +306,13 @@ void listarDescuentos()
 
 void listadosSocios()
 {
+    int opcion;
     while (true)
     {
         system("cls");
         cout << "||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                              |" << endl;
-        cout << "|               LISTADOS DE SOCIOS             |" << endl;
+        cout << "|              LISTADOS DE SOCIOS              |" << endl;
         cout << "|                                              |" << endl;
         cout << "||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
@@ -316,7 +321,8 @@ void listadosSocios()
         cout << "     0. VOLVER" << endl;
         cout << endl;
         cout << "------------------------------------------------" << endl;
-        int opcion = pedirEntero("Ingrese una opcion: ");
+        cout << "Ingrese una opcion: ";
+        cin >> opcion;
         cout << "------------------------------------------------" << endl;
         system("cls");
         switch (opcion)
@@ -451,15 +457,18 @@ void listarSalas()
         Sala obj = arch.leerRegistro(i);
         obj.mostrar();
     }
-        system("pause");
+    system("pause");
 }
 
 void listarButacas()
 {
     ArchivoSalas archSalas;
     ArchivoButacas arch;
+    int idSala;
 
-    int idSala = pedirEntero("ID de la sala: ");
+    cout << "ID de la sala: ";
+    cin >> idSala;
+
     if (archSalas.buscarRegistro(idSala) == -1)
     {
         cout << "No existe una sala con ese ID." << endl;
@@ -484,6 +493,7 @@ void listarButacas()
 
 void listadosFunciones()
 {
+    int opcion;
     while (true)
     {
         system("cls");
@@ -498,7 +508,8 @@ void listadosFunciones()
         cout << "     0. VOLVER" << endl;
         cout << endl;
         cout << "-----------------------------------------------------" << endl;
-        int opcion = pedirEntero("Ingrese una opcion: ");
+        cout << "Ingrese una opcion: ";
+        cin >> opcion;
         cout << "-----------------------------------------------------" << endl;
         system("cls");
         switch (opcion)
@@ -528,7 +539,7 @@ void listarFunciones()
     }
 
     cout << "===========================================" << endl;
-    cout << "       LISTADO GENERAL DE FUNCIONES        " << endl;
+    cout << "        LISTADO GENERAL DE FUNCIONES         " << endl;
     cout << "===========================================" << endl;
 
     for (int i = 0; i < cant; i++)
@@ -601,7 +612,7 @@ void listarFuncionesCronologico()
 
     system("cls");
     cout << "===========================================" << endl;
-    cout << "  FUNCIONES ORDENADAS DE FORMA CRONOLOGICA " << endl;
+    cout << "   FUNCIONES ORDENADAS DE FORMA CRONOLOGICA " << endl;
     cout << "===========================================" << endl;
 
     for (int i = 0; i < activas; i++)
@@ -614,12 +625,13 @@ void listarFuncionesCronologico()
 
 void listadosCompras()
 {
+    int opcion;
     while (true)
     {
         system("cls");
         cout << "||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                              |" << endl;
-        cout << "|               LISTADOS DE COMPRAS            |" << endl;
+        cout << "|             LISTADOS DE COMPRAS              |" << endl;
         cout << "|                                              |" << endl;
         cout << "||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
@@ -628,7 +640,8 @@ void listadosCompras()
         cout << "     0. VOLVER" << endl;
         cout << endl;
         cout << "------------------------------------------------" << endl;
-        int opcion = pedirEntero("Ingrese una opcion: ");
+        cout << "Ingrese una opcion: ";
+        cin >> opcion;
         cout << "------------------------------------------------" << endl;
         system("cls");
         switch (opcion)
@@ -763,7 +776,7 @@ void listarComprasPorFecha()
             if (d.getIdCompra() == vecCompras[i].getIdCompra())
             {
                 d.mostrar();
-                cout <<endl;
+                cout << endl;
             }
         }
     }

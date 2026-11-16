@@ -68,7 +68,7 @@ int ArchivoFormato::buscarPorIDInactivo(int id)
     for (int i=0; i<cant; i++)
     {
         Formato obj = leerRegistro(i);
-        if (obj.getID()==id && !obj.getEstado())
+        if (obj.getID()==id && obj.getEstado()==false)
         {
             return i;
         }

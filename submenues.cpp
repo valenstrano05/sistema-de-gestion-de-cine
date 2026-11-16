@@ -11,19 +11,19 @@ using namespace std;
 
 int menuPrincipal()
 {
+    int opcion;
     while (true)
     {
         system("cls");
-        int opcion;
         cout << endl;
         cout << "  * * * * * * * * * * * * * * * * * * * * * * *" << endl;
         cout << "  *                                           *" << endl;
-        cout << "  *      ██████╗  ██╗███╗   ██╗███████╗       *" << endl;
-        cout << "  *      ██╔════╝ ██║████╗  ██║██╔════╝       *" << endl;
-        cout << "  *      ██║      ██║██╔██╗ ██║█████╗         *" << endl;
-        cout << "  *      ██║      ██║██║╚██╗██║██╔══╝         *" << endl;
-        cout << "  *      ╚██████╗ ██║██║ ╚████║███████╗       *" << endl;
-        cout << "  *       ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝       *" << endl;
+        cout << "  *       ██████╗  ██╗███╗    ██╗███████╗     *" << endl;
+        cout << "  *       ██╔════╝ ██║████╗   ██║██╔════╝     *" << endl;
+        cout << "  *       ██║      ██║██╔██╗  ██║█████╗       *" << endl;
+        cout << "  *       ██║      ██║██║╚██╗ ██║██╔══╝       *" << endl;
+        cout << "  *       ╚██████╗ ██║██║ ╚████║███████╗     *" << endl;
+        cout << "  *        ╚═════╝ ╚═╝╚═╝  ╚═══╝╚══════╝     *" << endl;
         cout << "  *                                           *" << endl;
         cout << "  * * * * * * * * * * * * * * * * * * * * * * *" << endl;
         cout << endl;
@@ -85,10 +85,10 @@ int menuPrincipal()
 
 void menuPeliculas()
 {
+    int opcion;
     while (true)
     {
         system("cls");
-        int opcion;
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                               |" << endl;
         cout << "|                    PELICULAS                  |" << endl;
@@ -137,10 +137,10 @@ void menuPeliculas()
 
 void menuDescuentos()
 {
+    int opcion;
     while (true)
     {
         system("cls");
-        int opcion;
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                               |" << endl;
         cout << "|                   DESCUENTOS                  |" << endl;
@@ -185,12 +185,13 @@ void menuDescuentos()
 
 void menuSocios()
 {
+    int opcion;
     while (true)
     {
         system("cls");
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                               |" << endl;
-        cout << "|                    SOCIOS                     |" << endl;
+        cout << "|                     SOCIOS                    |" << endl;
         cout << "|                                               |" << endl;
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
@@ -202,7 +203,8 @@ void menuSocios()
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "------------------------------------------------" << endl;
-        int opcion = pedirEntero("Ingrese una opcion: ");
+        cout << "Ingrese una opcion: ";
+        cin >> opcion;
         cout << "------------------------------------------------" << endl;
         system("cls");
 
@@ -235,6 +237,7 @@ void menuSocios()
 
 void menuFormato()
 {
+    int opcion;
     while (true)
     {
         system("cls");
@@ -252,7 +255,8 @@ void menuFormato()
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "------------------------------------------------" << endl;
-        int opcion = pedirEntero("Ingrese una opcion: ");
+        cout << "Ingrese una opcion: ";
+        cin >> opcion;
         cout << "------------------------------------------------" << endl;
         system("cls");
 
@@ -282,6 +286,7 @@ void menuFormato()
 
 void menuSalas()
 {
+    int opcion;
     while (true)
     {
         system("cls");
@@ -299,7 +304,8 @@ void menuSalas()
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "------------------------------------------------" << endl;
-        int opcion = pedirEntero("Ingrese una opcion: ");
+        cout << "Ingrese una opcion: ";
+        cin >> opcion;
         cout << "------------------------------------------------" << endl;
         system("cls");
 
@@ -329,12 +335,13 @@ void menuSalas()
 
 void menuButacas()
 {
+    int opcion;
     while (true)
     {
         system("cls");
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                                   |" << endl;
-        cout << "|                       BUTACAS                     |" << endl;
+        cout << "|                      BUTACAS                      |" << endl;
         cout << "|                                                   |" << endl;
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
@@ -344,7 +351,8 @@ void menuButacas()
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "----------------------------------------------------" << endl;
-        int opcion = pedirEntero("Ingrese una opcion: ");
+        cout << "Ingrese una opcion: ";
+        cin >> opcion;
         cout << "----------------------------------------------------" << endl;
         system("cls");
 
@@ -368,6 +376,7 @@ void menuButacas()
 
 void menuFunciones()
 {
+    int opcion;
     while (true)
     {
         system("cls");
@@ -385,7 +394,8 @@ void menuFunciones()
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "------------------------------------------------" << endl;
-        int opcion = pedirEntero("Ingrese una opcion: ");
+        cout << "Ingrese una opcion: ";
+        cin >> opcion;
         cout << "------------------------------------------------" << endl;
         system("cls");
 
@@ -418,12 +428,13 @@ void menuFunciones()
 
 void menuCompras()
 {
+    int opcion;
     while (true)
     {
         system("cls");
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                                   |" << endl;
-        cout << "|                   COMPRAS / VENTAS                |" << endl;
+        cout << "|                  COMPRAS / VENTAS                 |" << endl;
         cout << "|                                                   |" << endl;
         cout << "|||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
@@ -434,7 +445,8 @@ void menuCompras()
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "----------------------------------------------------" << endl;
-        int opcion = pedirEntero("Ingrese una opcion: ");
+        cout << "Ingrese una opcion: ";
+        cin >> opcion;
         cout << "----------------------------------------------------" << endl;
         system("cls");
 
@@ -464,12 +476,13 @@ void menuCompras()
 
 void menuInformes()
 {
+    int opcion;
     while (true)
     {
         system("cls");
         cout << "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << "|                                                        |" << endl;
-        cout << "|                  INFORMES Y ESTADISTICAS               |" << endl;
+        cout << "|                INFORMES Y ESTADISTICAS                 |" << endl;
         cout << "|                                                        |" << endl;
         cout << "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||" << endl;
         cout << endl;
@@ -482,7 +495,8 @@ void menuInformes()
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "---------------------------------------------------------" << endl;
-        int opcion = pedirEntero("Ingrese una opcion: ");
+        cout << "Ingrese una opcion: ";
+        cin >> opcion;
         cout << "---------------------------------------------------------" << endl;
         system("cls");
 
@@ -511,6 +525,7 @@ void menuInformes()
             {
                 return;
             }
+            break;
         }
     }
 }
