@@ -1,0 +1,279 @@
+# depslib dependency file v1.0
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsarchivobutacas.cpp
+	<cstdio>
+	<cstring>
+	"clsArchivoButacas.h"
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsarchivobutacas.h
+	"clsButaca.h"
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsbutaca.h
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsarchivocompras.cpp
+	<iostream>
+	"clsArchivoCompras.h"
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsarchivocompras.h
+	"clsCompra.h"
+	<cstring>
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clscompra.h
+	"clsFecha.h"
+	"clsHora.h"
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsfecha.h
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clshora.h
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsarchivodescuento.cpp
+	<iostream>
+	<cstring>
+	"clsArchivoDescuento.h"
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsarchivodescuento.h
+	"clsDescuento.h"
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsdescuento.h
+	<cstring>
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsarchivodetalleentradas.cpp
+	<iostream>
+	"clsArchivoDetalleEntradas.h"
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsarchivodetalleentradas.h
+	"clsDetalleEntrada.h"
+	<cstring>
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsdetalleentrada.h
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsarchivoformato.cpp
+	<iostream>
+	<cstring>
+	"clsArchivoFormato.h"
+	<cerrno>
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsarchivoformato.h
+	"clsFormato.h"
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsformato.h
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsarchivofunciones.cpp
+	<iostream>
+	"clsArchivoFunciones.h"
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsarchivofunciones.h
+	"clsFuncion.h"
+	<cstring>
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsfuncion.h
+	"clsFecha.h"
+	"clsHora.h"
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsarchivopelicula.cpp
+	<iostream>
+	<cstring>
+	"clsArchivoPeliculas.h"
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsarchivopeliculas.h
+	"clsPelicula.h"
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clspelicula.h
+	"clsFecha.h"
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsarchivosalas.cpp
+	<cstdio>
+	<cstring>
+	"clsArchivoSalas.h"
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsarchivosalas.h
+	"clsSala.h"
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clssala.h
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsarchivosocios.cpp
+	<cstdio>
+	<cstring>
+	"clsArchivoSocios.h"
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsarchivosocios.h
+	"clsSocio.h"
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clssocio.h
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsbutaca.cpp
+	<iostream>
+	<cstring>
+	"clsButaca.h"
+	"clsArchivoButacas.h"
+	"clsArchivoSalas.h"
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clscompra.cpp
+	<iostream>
+	<iomanip>
+	"clsCompra.h"
+	"clsArchivoCompras.h"
+	"clsArchivoSocios.h"
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsdescuento.cpp
+	<iostream>
+	<cstring>
+	"clsDescuento.h"
+	"clsArchivoDescuento.h"
+	"funciones.h"
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\funciones.h
+	"clsFuncion.h"
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsdetalleentrada.cpp
+	<iostream>
+	<cstring>
+	<iomanip>
+	"clsDetalleEntrada.h"
+	"clsArchivoDetalleEntradas.h"
+	"clsArchivoFunciones.h"
+	"clsArchivoCompras.h"
+	"clsArchivoButacas.h"
+	"clsArchivoDescuento.h"
+	"clsArchivoSalas.h"
+	"clsArchivoFormato.h"
+	"clsArchivoPeliculas.h"
+	"funciones.h"
+
+1794932406 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsfecha.cpp
+	<iostream>
+	<iomanip>
+	"clsFecha.h"
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsformato.cpp
+	<iostream>
+	<cstring>
+	"clsFormato.h"
+	"clsArchivoFormato.h"
+	"funciones.h"
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clsfuncion.cpp
+	<iostream>
+	"clsFuncion.h"
+	"clsArchivoFunciones.h"
+	"clsArchivoPeliculas.h"
+	"clsArchivoSalas.h"
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clshora.cpp
+	<iostream>
+	"clsHora.h"
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clspelicula.cpp
+	<iostream>
+	<cstring>
+	"clsPelicula.h"
+	"clsArchivoPeliculas.h"
+	"clsFecha.h"
+	"funciones.h"
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clssala.cpp
+	<iostream>
+	"clsSala.h"
+	"clsArchivoSalas.h"
+	"clsArchivoFormato.h"
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\clssocio.cpp
+	<iostream>
+	<cstring>
+	"clsSocio.h"
+	"clsArchivoSocios.h"
+	"funciones.h"
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\consultas.cpp
+	<iostream>
+	<windows.h>
+	<vector>
+	<cstring>
+	"consultas.h"
+	"funciones.h"
+	"clsArchivoPeliculas.h"
+	"clsArchivoFunciones.h"
+	"clsArchivoSocios.h"
+	"clsArchivoCompras.h"
+	"clsArchivoSalas.h"
+	"clsArchivoDetalleEntradas.h"
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\consultas.h
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\funciones.cpp
+	<iostream>
+	<windows.h>
+	<ctime>
+	<iomanip>
+	"funciones.h"
+	"clsArchivoDescuento.h"
+	"clsArchivoPeliculas.h"
+	"clsArchivoButacas.h"
+	"clsArchivoSalas.h"
+	"clsArchivoSocios.h"
+	"clsArchivoFunciones.h"
+	"clsArchivoFormato.h"
+	"clsArchivoCompras.h"
+	"clsArchivoDetalleEntradas.h"
+	<vector>
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\listados.cpp
+	<iostream>
+	<vector>
+	<windows.h>
+	"listados.h"
+	"funciones.h"
+	"clsArchivoPeliculas.h"
+	"clsArchivoDescuento.h"
+	"clsArchivoSocios.h"
+	"clsArchivoFormato.h"
+	"clsArchivoSalas.h"
+	"clsArchivoButacas.h"
+	"clsArchivoFunciones.h"
+	"clsArchivoCompras.h"
+	"clsArchivoDetalleEntradas.h"
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\listados.h
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\main.cpp
+	"submenues.h"
+	<windows.h>
+	<clocale>
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\submenues.h
+	<iostream>
+	<windows.h>
+	"clsArchivoPeliculas.h"
+	"clsPelicula.h"
+	"funciones.h"
+
+1794931740 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\submenues.cpp
+	<iostream>
+	<windows.h>
+	"clsArchivoPeliculas.h"
+	"clsPelicula.h"
+	"funciones.h"
+	"submenues.h"
+	"listados.h"
+	"consultas.h"
+	"informes.h"
+
+1794931740 c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\informes.h
+
+1794932100 source:c:\users\estudiante\desktop\tpi progra 2\sistema-de-gestion-de-cine\informes.cpp
+	<iostream>
+	<windows.h>
+	<ctime>
+	<iomanip>
+	"informes.h"
+	"funciones.h"
+	"clsArchivoDescuento.h"
+	"clsArchivoPeliculas.h"
+	"clsArchivoButacas.h"
+	"clsArchivoSalas.h"
+	"clsArchivoSocios.h"
+	"clsArchivoFunciones.h"
+	"clsArchivoFormato.h"
+	"clsArchivoCompras.h"
+	"clsArchivoDetalleEntradas.h"
+	<vector>
+

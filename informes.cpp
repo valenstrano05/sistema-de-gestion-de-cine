@@ -212,10 +212,10 @@ void informeOcupacionPorFuncion()
             cout << left << setw(12) << f.getIdFuncion() << " | ";
 
             f.getFecha().Mostrar();
-            cout << " | ";
+            cout << "   | "; // Espacios de relleno para alinear con setw(12) de FECHA
 
             f.getHorario().Mostrar();
-            cout << " | ";
+            cout << "  | ";  // Espacios de relleno para alinear con setw(7) de HORA
 
             cout << left << setw(13) << f.getIdPelicula()
                  << " | " << setw(9)  << f.getIdSala()
