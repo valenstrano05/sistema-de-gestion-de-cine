@@ -86,7 +86,7 @@ void informeRankingRecaudacionPeliculas()
             if (posDesc != -1)
             {
                 Descuento descuento = archDesc.leer(posDesc);
-                precioFinal = precioFinal * (1.0f - (descuento.getPorcentaje() / 100.0f));
+                precioFinal = precioFinal * (1.0 - (descuento.getPorcentaje() / 100.0));
             }
         }
 
@@ -178,8 +178,8 @@ void informeOcupacionPorFuncion()
     cout << endl;
     cout << "==============================================================================" << endl;
     cout << left  << setw(12) << "FUNCION ID"
-         << " | " << setw(10) << "FECHA"
-         << " | " << setw(5)  << "HORA"
+         << " | " << setw(12) << "FECHA"
+         << " | " << setw(7)  << "HORA"
          << " | " << setw(13) << "PELICULA ID"
          << " | " << setw(9)  << "SALA ID"
          << " | " << "OCUPACION" << endl;
@@ -208,18 +208,14 @@ void informeOcupacionPorFuncion()
             {
                 porcentajeOcupacion = ((float)butacasVendidas / capacidadTotal) * 100.0;
             }
+
             cout << left << setw(12) << f.getIdFuncion() << " | ";
 
-            cout << setfill('0')
-                 << setw(2) << f.getFecha().getDia() << "/"
-                 << setw(2) << f.getFecha().getMes() << "/"
-                 << f.getFecha().getAnio()
-                 << setfill(' ') << " | ";
+            f.getFecha().Mostrar();
+            cout << " | ";
 
-            cout << setfill('0')
-                 << setw(2) << f.getHorario().getHora() << ":"
-                 << setw(2) << f.getHorario().getMinutos()
-                 << setfill(' ') << " | ";
+            f.getHorario().Mostrar();
+            cout << " | ";
 
             cout << left << setw(13) << f.getIdPelicula()
                  << " | " << setw(9)  << f.getIdSala()
@@ -240,11 +236,9 @@ void informeOcupacionPorFuncion()
     system("pause");
 }
 
-
-
-
 void informeEntradasPorFormato()
 {
+    system("cls");
     ArchivoDetalleEntradas archD;
     ArchivoCompras archC;
     ArchivoSalas archS;
@@ -312,7 +306,6 @@ void informeEntradasPorFormato()
         return;
     }
 
-
     system("cls");
     cout << "==========================================================================" << endl;
     cout << endl;
@@ -321,24 +314,29 @@ void informeEntradasPorFormato()
     cout << "==========================================================================" << endl;
 
     cout << left  << setw(25) << "FORMATO"
-         << " | " << right << setw(18) << "ENTRADAS VENDIDAS"
-         << " | " << right << setw(22) << "PORCENTAJE DEL TOTAL" << endl;
+         << " | " << setw(18) << "ENTRADAS VENDIDAS"
+         << " | " << "PORCENTAJE DEL TOTAL" << endl;
 
     cout << "==========================================================================" << endl;
 
-    for (size_t i = 0; i < entradasXformato.size(); i++)
+    for (int i = 0; i < entradasXformato.size(); i++)
     {
-        float porcentaje = ((float)entradasXformato[i] / totalEntradas) * 100;
-        cout << left  << setw(25) << vecFormato[i].getNombre()
-             << " | " << right << setw(18) << entradasXformato[i]
-             << " | " << right << setw(21) << porcentaje << " %" << endl;
+        float porcentaje;
+        if (totalEntradas > 0)
+        {
+            porcentaje = ((float)entradasXformato[i] * 100) / totalEntradas;
+        }
+
+    cout << left  << setw(25) << vecFormato[i].getNombre()
+             << " | " << setw(18) << entradasXformato[i]
+             << " | " << fixed << setprecision(2) << porcentaje << "%" << endl;
     }
 
     cout << "==========================================================================" << endl;
 
     cout << left  << setw(25) << "TOTAL"
-         << " | " << right << setw(18) << totalEntradas
-         << " | " << right << setw(21) << "100.00 %" << endl;
+         << " | " << setw(18) << totalEntradas
+         << " | 100%" << endl;
 
     cout << "==========================================================================" << endl;
 
@@ -540,12 +538,12 @@ void informeImpactoDescuentos()
                                 if (posD != -1)
                                 {
                                     Descuento descObj = archDesc.leer(posD);
-                                    float montoDesc = precioBase * (descObj.getPorcentaje() / 100.0);
+                                    float montoDesc = precioBase * (descObj.getPorcentaje() / 100.0f);
 
                                     totalDescontadoGlobal += montoDesc;
                                     totalOperacionesConDesc++;
 
-                                    for (int j = 0; j < (int)vecDescuentos.size(); j++)
+                                    for (size_t j = 0; j < vecDescuentos.size(); j++)
                                     {
                                         if (vecDescuentos[j].getIDDescuento() == idDesc)
                                         {
@@ -566,35 +564,35 @@ void informeImpactoDescuentos()
     float montoNetoAbonado = valorBrutoTotal - totalDescontadoGlobal;
 
     system("cls");
-    cout << "=====================================================================" << endl;
+    cout << "==========================================================================" << endl;
     cout << endl;
-    cout << "        IMPACTO DE PROMOCIONES Y DESCUENTOS - ANIO " << anioFiltro << endl;
+    cout << "                  IMPACTO DE PROMOCIONES Y DESCUENTOS - ANIO " << anioFiltro << endl;
     cout << endl;
-    cout << "=====================================================================" << endl;
-    cout << "PROMOCION                         | OPERACIONES  | TOTAL DESCONTADO" << endl;
-    cout << "=====================================================================" << endl;
+    cout << "==========================================================================" << endl;
+    cout << left << setw(35) << "PROMOCION"
+         << " | " << setw(15) << "OPERACIONES"
+         << " | " << "TOTAL DESCONTADO" << endl;
+    cout << "==========================================================================" << endl;
 
-    for (int i = 0; i < (int)vecDescuentos.size(); i++)
+    for (size_t i = 0; i < vecDescuentos.size(); i++)
     {
         if (vecDescuentos[i].getEstado() || vecOperaciones[i] > 0)
         {
-            cout << vecDescuentos[i].getNombre();
-            int largo = strlen(vecDescuentos[i].getNombre());
-            for (int k = largo; k < 35; k++)
-            {
-                cout << " ";
-            }
-            cout << "| " << vecOperaciones[i] << "            | $" << (long long)vecTotalDescontado[i] << endl;
+            cout << left << setw(35) << vecDescuentos[i].getNombre()
+                 << " | " << setw(15) << vecOperaciones[i]
+                 << " | $" << (long long)vecTotalDescontado[i] << endl;
         }
     }
 
-    cout << "=====================================================================" << endl;
-    cout << "TOTAL                             | " << totalOperacionesConDesc << "          | $" << (long long)totalDescontadoGlobal << endl;
-    cout << "=====================================================================" << endl;
+    cout << "==========================================================================" << endl;
+    cout << left << setw(35) << "TOTAL"
+         << " | " << setw(15) << totalOperacionesConDesc
+         << " | $" << (long long)totalDescontadoGlobal << endl;
+    cout << "==========================================================================" << endl;
     cout << "VALOR BRUTO (SIN DESCUENTOS): $" << (long long)valorBrutoTotal << endl;
     cout << "TOTAL DESCONTADO:             $" << (long long)totalDescontadoGlobal << endl;
     cout << "MONTO NETO ABONADO:           $" << (long long)montoNetoAbonado << endl;
-    cout << "=====================================================================" << endl;
+    cout << "==========================================================================" << endl;
 
     system("pause");
 }
