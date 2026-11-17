@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "clsHora.h"
 
 using namespace std;
@@ -44,7 +45,8 @@ void Hora::Cargar()
 
 void Hora::Mostrar()
 {
-    cout << hora<< ":"<<minutos;
+    cout << setfill('0') << setw(2) << hora << ":" << setw(2) << minutos;
+    cout << setfill(' ');
 }
 
 bool Hora::operator==(Hora h)

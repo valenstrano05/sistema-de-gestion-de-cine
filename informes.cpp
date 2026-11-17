@@ -693,8 +693,8 @@ void informeTicketsSuperanPromedio()
     cout << left
          << setw(12) << "ID COMPRA" << " | "
          << setw(10) << "ID SOCIO" << " | "
-         << setw(12) << "FECHA" << " | "
-         << setw(7)  << "HORA" << " | "
+         << setw(10) << "FECHA" << " | "
+         << setw(5)  << "HORA" << " | "
          << setw(13) << "MONTO PAGADO" << endl;
     cout << "==========================================================================" << endl;
 

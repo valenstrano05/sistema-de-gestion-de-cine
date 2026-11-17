@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "clsFecha.h"
 using namespace std;
 Fecha::Fecha(int d, int m, int a)
@@ -46,7 +47,8 @@ void Fecha::Cargar()
 }
 void Fecha::Mostrar()
 {
-    cout<<dia<<"/"<<mes<<"/"<<anio;
+    cout << setfill('0') << setw(2) << dia << "/" << setw(2) << mes << "/" << anio;
+    cout << setfill(' ');
 }
 
 bool Fecha::operator==(Fecha fec)
