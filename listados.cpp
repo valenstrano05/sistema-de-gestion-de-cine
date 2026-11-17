@@ -423,7 +423,7 @@ void listarButacas()
     }
 
     Funcion funcion = archFunciones.leerRegistro(posF);
-    if (!funcion.getEstado())
+    if (funcion.getEstado()==false)
     {
         cout << "La funcion seleccionada no esta activa." << endl;
         system("pause");

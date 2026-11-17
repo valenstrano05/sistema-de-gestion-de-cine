@@ -90,8 +90,6 @@ bool ArchivoButacas::modificarRegistro(Butaca reg, int pos)
 bool ArchivoButacas::generarButacas(int idSala, int capacidad)
 {
     const int ASIENTOS_POR_FILA = 26;
-    int primerId = contarRegistros() + 1;
-
     FILE *p = fopen(_nombreArchivo, "ab");
     if(p == nullptr)
     {

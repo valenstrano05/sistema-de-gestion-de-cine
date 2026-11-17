@@ -277,7 +277,7 @@
 	"clsArchivoDetalleEntradas.h"
 	<vector>
 
-1794500755 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\clsarchivobutacas.cpp
+1794944021 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\clsarchivobutacas.cpp
 	<cstdio>
 	<cstring>
 	"clsArchivoButacas.h"
@@ -473,7 +473,7 @@
 
 1794865637 c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\consultas.h
 
-1794846472 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\funciones.cpp
+1794944018 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\funciones.cpp
 	<iostream>
 	<windows.h>
 	<ctime>
@@ -490,7 +490,7 @@
 	"clsArchivoDetalleEntradas.h"
 	<vector>
 
-1794865594 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\listados.cpp
+1794944264 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\listados.cpp
 	<iostream>
 	<vector>
 	<windows.h>
@@ -533,7 +533,7 @@
 
 1794746461 c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\informes.h
 
-1794932897 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\informes.cpp
+1794942937 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\informes.cpp
 	<iostream>
 	<windows.h>
 	<ctime>

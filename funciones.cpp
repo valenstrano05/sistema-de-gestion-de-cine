@@ -36,6 +36,18 @@ void cargarCadena(const char* mensaje, char* palabra, int tam)
     }
 }
 
+bool confirmacionSalida()
+{
+    char opcion;
+    cout << "Esta seguro/a de que desea salir? (S/N): ";
+    cin >> opcion;
+    if (opcion == 's' || opcion == 'S')
+    {
+        return true;
+    }
+    return false;
+}
+
 //-------------------------------------------
 // UTILIDADES PERO PARA BUTACAS
 int butacasOcupadas(int idFuncion)
@@ -154,18 +166,6 @@ void cambiarEstadoPelicula()
         cout << "Error al intentar actualizar el archivo." << endl;
     }
     system("pause");
-}
-
-bool confirmacionSalida()
-{
-    char opcion;
-    cout << "Esta seguro/a de que desea salir? (S/N): ";
-    cin >> opcion;
-    if (opcion == 's' || opcion == 'S')
-    {
-        return true;
-    }
-    return false;
 }
 
 //-------------------------------------------
@@ -681,8 +681,6 @@ void cargarFuncion()
     }
     system("pause");
 }
-
-
 
 void modificarFuncion()
 {

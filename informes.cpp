@@ -28,9 +28,9 @@ void informeRankingRecaudacionPeliculas()
     ArchivoDescuento archDesc;
 
     int ventas = archD.contarRegistros();
-    int cantP = archP.contarRegistros();
+    int cantPeliculas = archP.contarRegistros();
 
-    if (ventas <= 0 || cantP <= 0)
+    if (ventas <= 0 || cantPeliculas <= 0)
     {
         cout << "No hay ventas o películas registradas para generar el ranking." << endl;
         system("pause");
@@ -46,10 +46,10 @@ void informeRankingRecaudacionPeliculas()
         anio = localtime(&t)->tm_year + 1900;
     }
 
-    vector<int> vCant(cantP, 0);
-    vector<float> vPrecios(cantP, 0.0f);
+    vector<int> vCant(cantPeliculas, 0);
+    vector<float> vPrecios(cantPeliculas, 0.0);
     int cantTotal = 0;
-    float precioTotal = 0.0f;
+    float precioTotal = 0.0;
 
     for (int i = 0; i < ventas; i++)
     {
@@ -103,12 +103,12 @@ void informeRankingRecaudacionPeliculas()
         return;
     }
 
-    vector<int> orden(cantP);
-    for (int i = 0; i < cantP; i++) orden[i] = i;
+    vector<int> orden(cantPeliculas);
+    for (int i = 0; i < cantPeliculas; i++) orden[i] = i;
 
-    for (int i = 0; i < cantP - 1; i++)
+    for (int i = 0; i < cantPeliculas - 1; i++)
     {
-        for (int j = 0; j < cantP - 1 - i; j++)
+        for (int j = 0; j < cantPeliculas - 1 - i; j++)
         {
             if (vPrecios[orden[j]] < vPrecios[orden[j + 1]])
             {
@@ -132,7 +132,7 @@ void informeRankingRecaudacionPeliculas()
          << setw(15) << "TOTAL RECAUDADO" << endl;
     cout << "==========================================================================================================" << endl;
 
-    for (int k = 0; k < cantP; k++)
+    for (int k = 0; k < cantPeliculas; k++)
     {
         int i = orden[k];
         if (vCant[i] > 0)
