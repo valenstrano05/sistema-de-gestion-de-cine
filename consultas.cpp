@@ -76,7 +76,7 @@ void peliculasPorGenero()
     for (int i=0; i<cant; i++){
         Pelicula obj = arch.leerRegistro(i);
         if (obj.getEstado()){
-            if (_stricmp(obj.getGenero(), genero) == 0){
+            if (strcmp(obj.getGenero(), genero) == 0){
                 vecPeliculas.push_back(obj);
             }
         }
@@ -181,7 +181,7 @@ void peliculasPorDirector()
     for (int i=0; i<cant; i++){
         Pelicula obj = arch.leerRegistro(i);
         if (obj.getEstado()){
-            if (_stricmp(obj.getDirector(), directorBuscado) == 0){
+            if (strcmp(obj.getDirector(), directorBuscado) == 0){
                 vecPeliculas.push_back(obj);
             }
         }
@@ -582,7 +582,7 @@ void sociosPorApellido()
         Socio obj = arch.leerRegistro(i);
         if (obj.getEstado())
         {
-            if (_stricmp(obj.getApellido(), apellidoBuscado) == 0)
+            if (strcmp(obj.getApellido(), apellidoBuscado) == 0)
             {
                 vecSocios.push_back(obj);
             }
