@@ -3,7 +3,7 @@
 #include "clsArchivoPeliculas.h"
 #include "clsPelicula.h"
 #include "funciones.h"
-#include "submenues.h"
+#include "menus.h"
 #include "listados.h"
 #include "consultas.h"
 #include "informes.h"

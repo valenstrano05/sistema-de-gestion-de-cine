@@ -835,3 +835,21 @@
 	"clsArchivoPeliculas.h"
 	"funciones.h"
 
+1794981647 source:c:\users\asus\desktop\programacion\gestion_cines\sistema-de-gestion-de-cine\menus.cpp
+	<iostream>
+	<windows.h>
+	"clsArchivoPeliculas.h"
+	"clsPelicula.h"
+	"funciones.h"
+	"menus.h"
+	"listados.h"
+	"consultas.h"
+	"informes.h"
+
+1794281360 c:\users\asus\desktop\programacion\gestion_cines\sistema-de-gestion-de-cine\menus.h
+	<iostream>
+	<windows.h>
+	"clsArchivoPeliculas.h"
+	"clsPelicula.h"
+	"funciones.h"
+
