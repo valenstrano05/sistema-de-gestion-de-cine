@@ -83,8 +83,8 @@
 		<Unit filename="listados.cpp" />
 		<Unit filename="listados.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="menus.cpp" />
-		<Unit filename="menus.h" />
+		<Unit filename="menues.cpp" />
+		<Unit filename="menues.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

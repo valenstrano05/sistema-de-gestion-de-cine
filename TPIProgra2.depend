@@ -322,7 +322,7 @@
 	"clsDetalleEntrada.h"
 	<cstring>
 
-1794748223 c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\clsdetalleentrada.h
+1795012357 c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\clsdetalleentrada.h
 
 1794845489 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\clsarchivoformato.cpp
 	<iostream>
@@ -402,7 +402,7 @@
 1794746461 c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\funciones.h
 	"clsFuncion.h"
 
-1794863616 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\clsdetalleentrada.cpp
+1795012357 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\clsdetalleentrada.cpp
 	<iostream>
 	<cstring>
 	<iomanip>
@@ -508,8 +508,8 @@
 
 1794609121 c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\listados.h
 
-1794501001 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\main.cpp
-	"submenues.h"
+1795012533 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\main.cpp
+	"menues.h"
 	<windows.h>
 	<clocale>
 
@@ -533,7 +533,7 @@
 
 1794746461 c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\informes.h
 
-1794942937 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\informes.cpp
+1795012357 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\informes.cpp
 	<iostream>
 	<windows.h>
 	<ctime>
@@ -852,4 +852,22 @@
 	"clsArchivoPeliculas.h"
 	"clsPelicula.h"
 	"funciones.h"
+
+1795012357 c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\menues.h
+	<iostream>
+	<windows.h>
+	"clsArchivoPeliculas.h"
+	"clsPelicula.h"
+	"funciones.h"
+
+1795012577 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\menues.cpp
+	<iostream>
+	<windows.h>
+	"clsArchivoPeliculas.h"
+	"clsPelicula.h"
+	"funciones.h"
+	"menues.h"
+	"listados.h"
+	"consultas.h"
+	"informes.h"
 

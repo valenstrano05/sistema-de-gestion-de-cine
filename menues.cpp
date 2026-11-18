@@ -3,7 +3,7 @@
 #include "clsArchivoPeliculas.h"
 #include "clsPelicula.h"
 #include "funciones.h"
-#include "menus.h"
+#include "menues.h"
 #include "listados.h"
 #include "consultas.h"
 #include "informes.h"
@@ -27,16 +27,16 @@ int menuPrincipal()
         cout << "  *                                            *" << endl;
         cout << "  * * * * * * * * * * * * * * * * * * * * * * *" << endl;
         cout << endl;
-        cout << "\t\t 1. PELICULAS" << endl;
-        cout << "\t\t 2. DESCUENTOS" << endl;
-        cout << "\t\t 3. SOCIOS" << endl;
-        cout << "\t\t 4. FORMATO" << endl;
-        cout << "\t\t 5. SALAS" << endl;
-        cout << "\t\t 6. BUTACAS" << endl;
-        cout << "\t\t 7. FUNCIONES" << endl;
-        cout << "\t\t 8. COMPRAS" << endl;
-        cout << "\t\t 9. INFORMES" << endl;
-        cout << "\t\t 0. SALIR" << endl;
+        cout << "     1. PELICULAS" << endl;
+        cout << "     2. DESCUENTOS" << endl;
+        cout << "     3. SOCIOS" << endl;
+        cout << "     4. FORMATO" << endl;
+        cout << "     5. SALAS" << endl;
+        cout << "     6. BUTACAS" << endl;
+        cout << "     7. FUNCIONES" << endl;
+        cout << "     8. COMPRAS" << endl;
+        cout << "     9. INFORMES" << endl;
+        cout << "     0. SALIR" << endl;
         cout << endl;
         cout << "================================================" << endl;
         cout << "Ingrese una opción: ";
