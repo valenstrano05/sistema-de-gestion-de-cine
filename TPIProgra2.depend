@@ -431,7 +431,7 @@
 	"clsArchivoPeliculas.h"
 	"clsArchivoSalas.h"
 
-1794942796 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\clshora.cpp
+1795014041 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\clshora.cpp
 	<iostream>
 	<iomanip>
 	"clsHora.h"
@@ -508,7 +508,7 @@
 
 1794609121 c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\listados.h
 
-1795012533 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\main.cpp
+1795012693 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\main.cpp
 	"menues.h"
 	<windows.h>
 	<clocale>
@@ -533,7 +533,7 @@
 
 1794746461 c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\informes.h
 
-1795012357 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\informes.cpp
+1795013872 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\informes.cpp
 	<iostream>
 	<windows.h>
 	<ctime>
@@ -860,7 +860,7 @@
 	"clsPelicula.h"
 	"funciones.h"
 
-1795012577 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\menues.cpp
+1795012759 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\menues.cpp
 	<iostream>
 	<windows.h>
 	"clsArchivoPeliculas.h"

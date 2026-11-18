@@ -73,7 +73,8 @@ void informeRankingRecaudacionPeliculas()
     }
 
     if (cantTotal <= 0){
-        cout <<"\n NO SE REGISTRARON VENTAS PARA EL ANIO " <<anio <<"." <<endl <<endl;
+        cout << endl;
+        cout <<"NO SE REGISTRARON VENTAS PARA EL AÑO " <<anio <<"." << endl;
         system("pause");
         return;
     }
@@ -136,18 +137,18 @@ void informeOcupacionPorFuncion()
     }
 
     system("cls");
-    cout << "==============================================================================" << endl;
+    cout << "=================================================================================" << endl;
     cout << endl;
     cout << "                     PORCENTAJE DE OCUPACION POR FUNCION                " << endl;
     cout << endl;
-    cout << "==============================================================================" << endl;
-    cout << left  << setw(12) << "FUNCION ID"
-         << " | " << setw(12) << "FECHA"
-         << " | " << setw(7)  << "HORA"
+    cout << "=================================================================================" << endl;
+    cout << left  << setw(9) << "FUNCION ID"
+         << " | " << setw(10) << "FECHA"
+         << " | " << setw(5)  << "HORA"
          << " | " << setw(13) << "PELICULA ID"
          << " | " << setw(9)  << "SALA ID"
          << " | " << "OCUPACION" << endl;
-    cout << "==============================================================================" << endl;
+    cout << "=================================================================================" << endl;
     bool hayFuncionesActivas = false;
 
     for (int i = 0; i < cantFunciones; i++)
@@ -173,13 +174,13 @@ void informeOcupacionPorFuncion()
                 porcentajeOcupacion = ((float)butacasVendidas / capacidadTotal) * 100.0;
             }
 
-            cout << left << setw(12) << f.getIdFuncion() << " | ";
+            cout << left << setw(9) << f.getIdFuncion() << "  | ";
 
             f.getFecha().Mostrar();
-            cout << "   | "; // Espacios de relleno para alinear con setw(12) de FECHA
+            cout << " | ";
 
             f.getHorario().Mostrar();
-            cout << "  | ";  // Espacios de relleno para alinear con setw(7) de HORA
+            cout << " | ";
 
             cout << left << setw(13) << f.getIdPelicula()
                  << " | " << setw(9)  << f.getIdSala()
@@ -188,7 +189,7 @@ void informeOcupacionPorFuncion()
             cout << fixed << setprecision(2) << porcentajeOcupacion << "% ("
                  << butacasVendidas << "/" << capacidadTotal << ")" << endl;
 
-            cout << "==============================================================================" << endl;
+            cout << "=================================================================================" << endl;
         }
     }
 
@@ -425,8 +426,6 @@ void informeSociosMasFrecuentes()
     system("pause");
 }
 
-
-
 void informeImpactoDescuentos()
 {
     system("cls");
@@ -483,13 +482,10 @@ void informeImpactoDescuentos()
                 int idDesc = d.getIdDescuento();
                 if (idDesc == 0)continue;
 
-                int posD = archDesc.buscarPorID(idDesc);
-                Descuento descObj = archDesc.leer(posD);
-
                 float montoDesc = d.getPrecioBase() - d.getPrecioFinal();
                 valorBrutoTotal += d.getPrecioBase();
 
-                for (size_t j = 0; j < vecDescuentos.size(); j++)
+                for (int j = 0; j < vecDescuentos.size(); j++)
                 {
                     if (vecDescuentos[j].getIDDescuento() == idDesc)
                     {
@@ -506,7 +502,8 @@ void informeImpactoDescuentos()
     }
 
     if (totalOperacionesConDesc <= 0){
-        cout <<"\n NO SE REGISTRARON DESCUENTOS DURANTE EL ANIO " <<anioFiltro <<"." <<endl <<endl;
+        cout << endl;
+        cout <<"NO SE REGISTRARON DESCUENTOS DURANTE EL ANIO " <<anioFiltro <<"." <<endl;
         system("pause");
         return;
     }
@@ -522,7 +519,7 @@ void informeImpactoDescuentos()
     cout << left << setw(35) << "PROMOCION" << " | " << setw(15) << "OPERACIONES" << " | " << "TOTAL DESCONTADO" << endl;
     cout << "==========================================================================" << endl;
 
-    for (size_t i = 0; i < vecDescuentos.size(); i++)
+    for (int i = 0; i < vecDescuentos.size(); i++)
     {
         if (vecOperaciones[i] > 0)
         {
@@ -542,9 +539,6 @@ void informeImpactoDescuentos()
     system("pause");
 }
 
-
-
-
 void informeTicketsSuperanPromedio()
 {
     system("cls");
@@ -560,8 +554,7 @@ void informeTicketsSuperanPromedio()
         return;
     }
 
-    vector<float> vGastos(cantC, 0.0f);
-    vector<int> vCantEnt(cantC, 0);
+    vector<float> vGastos(cantC, 0.0);
     float totalMonto = 0.0;
     int contadorActivas = 0;
 
@@ -575,7 +568,7 @@ void informeTicketsSuperanPromedio()
 
         if (compra.getEstado()){
             vGastos[posCompra] += detalle.getPrecioFinal();
-            vCantEnt[posCompra] ++;
+            contadorActivas++;
         }
     }
 
@@ -596,20 +589,19 @@ void informeTicketsSuperanPromedio()
     int cantTicketsMayorPromedio = 0;
 
     system("cls");
-    cout << "==================================================================================================" << endl;
+    cout << "=================================================================================" << endl;
     cout <<endl;
-    cout << "                               TICKETS QUE SUPERAN EL GASTO PROMEDIO                " << endl;
+    cout << "                    TICKETS QUE SUPERAN EL GASTO PROMEDIO                " << endl;
     cout <<endl;
-    cout << "==================================================================================================" << endl;
-    cout << "                                GASTO PROMEDIO GENERAL: $" <<(long long)gastoPromedio << endl;
-    cout << "==================================================================================================" << endl;
+    cout << "=================================================================================" << endl;
+    cout << "                     GASTO PROMEDIO GENERAL: $" <<(long long)gastoPromedio << endl;
+    cout << "=================================================================================" << endl;
     cout << left << setw(11) << "ID COMPRA" << " | "
          << setw(28) << "SOCIO" << " | "
          << setw(11) << "FECHA" << " | "
          << setw(7)  << "HORA" << " | "
-         << setw(15) <<"CANT. ENTRADAS" <<"|"
          << setw(13) << "MONTO TOTAL" << endl;
-    cout << "==================================================================================================" << endl;
+    cout << "=================================================================================" << endl;
 
     for (int i=0; i<cantC; i++){
         if (vGastos[i]> gastoPromedio){
@@ -621,25 +613,21 @@ void informeTicketsSuperanPromedio()
             cout << left
                  << setw(12) << compra.getIdCompra() << "| "
                  << setw(10) << socio.getNombre()
-                 << setw(10) <<socio.getApellido() << "(ID: "
-                 << setw(2) << socio.getIdSocio() <<") | "
+                 << setw(10) << socio.getApellido() << "(ID: "
+                 << setw(2)  << socio.getIdSocio() <<") | "
                  << setw(2)  << compra.getFecha().getDia() << "/"
                  << setw(2)  << compra.getFecha().getMes() << "/"
                  << setw(6)  << compra.getFecha().getAnio() << "| "
                  << setw(2)  << compra.getHorario().getHora() << ":"
-                 << setw(5)  << compra.getHorario().getMinutos() << "| "
-                 << setw(15) << vCantEnt[i] << "| $"
+                 << setw(5)  << compra.getHorario().getMinutos() << "| $"
                  << setw(13) << vGastos[i] <<endl;
-            cout << "--------------------------------------------------------------------------------------------------" <<endl;
+    cout << "=================================================================================" << endl;
         }
     }
-    cout << "==================================================================================================" << endl;
-    cout <<"\n                      CANTIDAD DE TICKETS EVALUADOS: " <<cantC <<endl;
-    cout <<"                      CANTIDAD DE TICKETS QUE SUPERAN EL PROMEDIO: " <<cantTicketsMayorPromedio <<endl;
-    cout << "\n==================================================================================================" << endl;
+    cout << endl;
+    cout <<"               CANTIDAD DE TICKETS EVALUADOS: " << contadorActivas <<endl;
+    cout <<"               CANTIDAD DE TICKETS QUE SUPERAN EL PROMEDIO: " << cantTicketsMayorPromedio <<endl;
+    cout << endl;
+    cout << "=================================================================================" << endl;
     system("pause");
-
 }
-
-
-
