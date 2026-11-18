@@ -74,6 +74,14 @@ int DetalleEntrada::getIdDescuento()
 {
     return _idDescuento;
 }
+float DetalleEntrada::getPrecioBase()
+{
+    return _precioBase;
+}
+float DetalleEntrada::getPrecioFinal()
+{
+    return _precioFinal;
+}
 
 void DetalleEntrada::cargar(int idCompra)
 {

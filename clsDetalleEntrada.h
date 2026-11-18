@@ -26,6 +26,8 @@ public:
     int getIdSala();
     const char * getNumeroButaca();
     int getIdDescuento();
+    float getPrecioBase();
+    float getPrecioFinal();
     void cargar(int idCompra);
     void mostrar();
 };

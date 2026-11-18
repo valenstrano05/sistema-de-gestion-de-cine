@@ -2,24 +2,14 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="clsHora.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="clsFecha.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="258" topLine="17" />
+			<Cursor1 position="39" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="clsArchivoButacas.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="informes.cpp" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="922" topLine="33" />
-		</Cursor>
-	</File>
-	<File name="consultas.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1711" topLine="44" />
-		</Cursor>
-	</File>
-	<File name="funciones.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="18615" topLine="750" />
+			<Cursor1 position="4372" topLine="18" />
 		</Cursor>
 	</File>
 	<File name="clsCompra.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -27,29 +17,14 @@
 			<Cursor1 position="2516" topLine="82" />
 		</Cursor>
 	</File>
-	<File name="informes.cpp" open="1" top="1" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="10658" topLine="161" />
-		</Cursor>
-	</File>
-	<File name="clsArchivoDetalleEntradas.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2374" topLine="56" />
-		</Cursor>
-	</File>
-	<File name="clsDetalleEntrada.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="6523" topLine="198" />
-		</Cursor>
-	</File>
 	<File name="clsSala.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="30" />
 		</Cursor>
 	</File>
-	<File name="clsFecha.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="clsDetalleEntrada.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="39" topLine="0" />
+			<Cursor1 position="717" topLine="6" />
 		</Cursor>
 	</File>
 	<File name="clsFormato.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -57,9 +32,9 @@
 			<Cursor1 position="0" topLine="11" />
 		</Cursor>
 	</File>
-	<File name="listados.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="submenues.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="21829" topLine="727" />
+			<Cursor1 position="333" topLine="10" />
 		</Cursor>
 	</File>
 	<File name="clsDescuento.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -67,14 +42,34 @@
 			<Cursor1 position="0" topLine="10" />
 		</Cursor>
 	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="146" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="funciones.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="18615" topLine="750" />
+		</Cursor>
+	</File>
+	<File name="clsArchivoButacas.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="922" topLine="33" />
+		</Cursor>
+	</File>
+	<File name="clsHora.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="258" topLine="17" />
+		</Cursor>
+	</File>
+	<File name="clsSala.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="56" topLine="0" />
+		</Cursor>
+	</File>
 	<File name="clsPelicula.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="4698" topLine="28" />
-		</Cursor>
-	</File>
-	<File name="clsSocio.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="899" topLine="11" />
 		</Cursor>
 	</File>
 	<File name="clsFuncion.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -82,9 +77,29 @@
 			<Cursor1 position="2817" topLine="104" />
 		</Cursor>
 	</File>
-	<File name="clsSala.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="clsArchivoDetalleEntradas.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="56" topLine="0" />
+			<Cursor1 position="2374" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="listados.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="21829" topLine="741" />
+		</Cursor>
+	</File>
+	<File name="clsSocio.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="899" topLine="11" />
+		</Cursor>
+	</File>
+	<File name="clsDetalleEntrada.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1592" topLine="62" />
+		</Cursor>
+	</File>
+	<File name="consultas.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1711" topLine="44" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

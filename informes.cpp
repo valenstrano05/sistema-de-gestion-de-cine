@@ -16,146 +16,110 @@
 #include <vector>
 using namespace std;
 
+
 void informeRankingRecaudacionPeliculas()
 {
     system("cls");
-    ArchivoDetalleEntradas archD;
-    ArchivoCompras archC;
-    ArchivoFunciones archF;
+
     ArchivoPeliculas archP;
-    ArchivoSalas archS;
-    ArchivoFormato archFor;
-    ArchivoDescuento archDesc;
-
-    int ventas = archD.contarRegistros();
-    int cantPeliculas = archP.contarRegistros();
-
-    if (ventas <= 0 || cantPeliculas <= 0)
-    {
-        cout << "No hay ventas o películas registradas para generar el ranking." << endl;
+    int cantP = archP.contarRegistros();
+    if (cantP <= 0){
+        cout <<"No hay peliculas registradas." <<endl;
         system("pause");
         return;
     }
 
+    ArchivoDetalleEntradas archD;
+    int ventas = archD.contarRegistros();
+    if (ventas <= 0){
+        cout <<"No se registraron ventas. " <<endl;
+        system("pause");
+        return;
+    }
+
+    ArchivoCompras archC;
+    ArchivoFunciones archF;
+    vector<double> vRecaudacion(cantP, 0.0);
+    vector<int> vCant(cantP, 0);
+    int cantTotal = 0;
+    double recaudacionTotal = 0.0;
+
     int anio;
-    cout << "INGRESE ANIO A ANALIZAR (0 PARA ANIO ACTUAL): ";
-    cin >> anio;
-    if (anio == 0)
-    {
+    cout <<"Ingrese el anio a analizar (0 para el actual): ";
+    cin>>anio;
+    if (anio == 0){
         time_t t = time(nullptr);
         anio = localtime(&t)->tm_year + 1900;
     }
 
-    vector<int> vCant(cantPeliculas, 0);
-    vector<float> vPrecios(cantPeliculas, 0.0);
-    int cantTotal = 0;
-    float precioTotal = 0.0;
+    for (int i=0; i<ventas; i++){
+        DetalleEntrada entradas = archD.leerRegistro(i);
 
-    for (int i = 0; i < ventas; i++)
-    {
-        DetalleEntrada entrada = archD.leerRegistro(i);
-        int idCompra = entrada.getIdCompra();
+        int idCompra = entradas.getIdCompra();
         int posCompra = archC.buscarRegistro(idCompra);
         if (posCompra == -1) continue;
-
         Compra compra = archC.leerRegistro(posCompra);
         if (!compra.getEstado() || compra.getFecha().getAnio() != anio) continue;
 
-        int idFuncion = entrada.getIdFuncion();
-        int posFuncion = archF.buscarRegistro(idFuncion);
+        int posFuncion = archF.buscarRegistro(entradas.getIdFuncion());
         if (posFuncion == -1) continue;
-
         Funcion funcion = archF.leerRegistro(posFuncion);
         int posPelicula = archP.buscarPorID(funcion.getIdPelicula());
         if (posPelicula == -1) continue;
-
-        int posSala = archS.buscarRegistro(funcion.getIdSala());
-        if (posSala == -1) continue;
-
-        Sala sala = archS.leerRegistro(posSala);
-        int posFormato = archFor.buscarPorID(sala.getFormatoProyeccion());
-        if (posFormato == -1) continue;
-
-        Formato formato = archFor.leerRegistro(posFormato);
-        float precioFinal = formato.getPrecio();
-
-        int idDesc = entrada.getIdDescuento();
-        if (idDesc != 0)
-        {
-            int posDesc = archDesc.buscarPorID(idDesc);
-            if (posDesc != -1)
-            {
-                Descuento descuento = archDesc.leer(posDesc);
-                precioFinal = precioFinal * (1.0 - (descuento.getPorcentaje() / 100.0));
-            }
-        }
-
-        vCant[posPelicula]++;
-        vPrecios[posPelicula] += precioFinal;
-        cantTotal++;
-        precioTotal += precioFinal;
+        vRecaudacion[posPelicula] += entradas.getPrecioFinal();
+        vCant[posPelicula] ++ ;
+        recaudacionTotal += entradas.getPrecioFinal();
+        cantTotal ++;
     }
 
-    if (cantTotal == 0)
-    {
-        cout << "No hay entradas vendidas en el anio " << anio << "." << endl;
+    if (cantTotal <= 0){
+        cout <<"\n NO SE REGISTRARON VENTAS PARA EL ANIO " <<anio <<"." <<endl <<endl;
         system("pause");
         return;
     }
 
-    vector<int> orden(cantPeliculas);
-    for (int i = 0; i < cantPeliculas; i++) orden[i] = i;
-
-    for (int i = 0; i < cantPeliculas - 1; i++)
-    {
-        for (int j = 0; j < cantPeliculas - 1 - i; j++)
+    vector <int> orden(cantP);
+    for (int i=0; i<cantP; i++){
+        orden[i] = i;
+    }
+    for (int i=0; i<cantP-1; i++){
+        for (int  x=0; x<cantP-1; x++)
         {
-            if (vPrecios[orden[j]] < vPrecios[orden[j + 1]])
-            {
-                int aux = orden[j];
-                orden[j] = orden[j + 1];
-                orden[j + 1] = aux;
+            if (vRecaudacion[orden [x]] < vRecaudacion[orden [x+1]]){
+                int aux = orden[x];
+                orden[x] = orden[x+1];
+                orden[x+1] = aux;
             }
         }
     }
-
     system("cls");
-    cout << "==========================================================================================================" << endl;
+    cout << "=================================================================================================================" << endl;
     cout << endl;
-    cout << "                                  RECAUDACION POR PELICULA DURANTE EL AÑO " << anio << endl;
+    cout << "                                  RECAUDACION POR PELICULA DURANTE EL ANIO " << anio << endl;
     cout << endl;
-    cout << "==========================================================================================================" << endl;
-    cout << left
-         << setw(50) << "PELICULA" << " | "
-         << setw(18) << "GENERO" << " | "
-         << setw(17) << "ENTRADAS VENDIDAS" << " | "
+    cout << "=================================================================================================================" << endl;
+    cout << left << setw(50) << "PELICULA" << " | " << setw(18) << "GENERO" << " | " << setw(17) << "ENTRADAS VENDIDAS" << " | "
          << setw(15) << "TOTAL RECAUDADO" << endl;
-    cout << "==========================================================================================================" << endl;
+    cout << "================================================================================================================" << endl;
 
-    for (int k = 0; k < cantPeliculas; k++)
-    {
-        int i = orden[k];
-        if (vCant[i] > 0)
-        {
-            Pelicula p = archP.leerRegistro(i);
-            cout << left
-                 << setw(50) << p.getTitulo() << " | "
-                 << setw(18) << p.getGenero() << " | "
-                 << setw(17) << vCant[i] << " | $"
-                 << setw(13) << (long long)vPrecios[i] << endl;
-            cout << "==========================================================================================================" << endl;
-        }
+    for (int x=0; x<cantP; x++){
+        int i = orden[x];
+
+        if (vCant[i] > 0){
+            Pelicula pelicula = archP.leerRegistro(i);
+            cout << left << setw(50) << pelicula.getTitulo() << " | " << setw(18) << pelicula.getGenero() << " | " << setw(17) << vCant[i] << " | $"
+                 << setw(13) <<(long long)vRecaudacion[i] << endl;
+            cout << "----------------------------------------------------------------------------------------------------------------" <<endl;
+            }
     }
 
-    cout << left
-         << setw(50) << "TOTAL"
-         << setw(21) << "" << " | "
-         << setw(17) << cantTotal << " | $"
-         << setw(13) << (long long)precioTotal << endl;
-    cout << "==========================================================================================================" << endl;
+    cout << left << setw(50) << "TOTAL" << setw(21) << "" << " | " << setw(17) << cantTotal << " | $" << setw(13) <<(long long)recaudacionTotal << endl;
+            cout << "----------------------------------------------------------------------------------------------------------------" <<endl;
 
     system("pause");
 }
+
+
 
 void informeOcupacionPorFuncion()
 {
@@ -235,6 +199,8 @@ void informeOcupacionPorFuncion()
 
     system("pause");
 }
+
+
 
 void informeEntradasPorFormato()
 {
@@ -342,6 +308,8 @@ void informeEntradasPorFormato()
 
     system("pause");
 }
+
+
 
 void informeSociosMasFrecuentes()
 {
@@ -457,15 +425,14 @@ void informeSociosMasFrecuentes()
     system("pause");
 }
 
+
+
 void informeImpactoDescuentos()
 {
     system("cls");
     ArchivoDescuento archDesc;
     ArchivoCompras archComp;
     ArchivoDetalleEntradas archDet;
-    ArchivoFunciones archFunc;
-    ArchivoSalas archSalas;
-    ArchivoFormato archForm;
 
     int cantD = archDesc.cantidadRegistros();
     int cantComp = archComp.contarRegistros();
@@ -508,57 +475,40 @@ void informeImpactoDescuentos()
     {
         DetalleEntrada d = archDet.leerRegistro(i);
         int posComp = archComp.buscarRegistro(d.getIdCompra());
-
         if (posComp != -1)
         {
             Compra comp = archComp.leerRegistro(posComp);
             if (comp.getEstado() && comp.getFecha().getAnio() == anioFiltro)
             {
-                int posFunc = archFunc.buscarRegistro(d.getIdFuncion());
-                if (posFunc != -1)
+                int idDesc = d.getIdDescuento();
+                if (idDesc == 0)continue;
+
+                int posD = archDesc.buscarPorID(idDesc);
+                Descuento descObj = archDesc.leer(posD);
+
+                float montoDesc = d.getPrecioBase() - d.getPrecioFinal();
+                valorBrutoTotal += d.getPrecioBase();
+
+                for (size_t j = 0; j < vecDescuentos.size(); j++)
                 {
-                    Funcion func = archFunc.leerRegistro(posFunc);
-                    int posSala = archSalas.buscarRegistro(func.getIdSala());
-
-                    if (posSala != -1)
+                    if (vecDescuentos[j].getIDDescuento() == idDesc)
                     {
-                        Sala sala = archSalas.leerRegistro(posSala);
-                        int posForm = archForm.buscarPorID(sala.getFormatoProyeccion());
-
-                        if (posForm != -1)
-                        {
-                            Formato form = archForm.leerRegistro(posForm);
-                            float precioBase = form.getPrecio();
-                            valorBrutoTotal += precioBase;
-
-                            int idDesc = d.getIdDescuento();
-                            if (idDesc > 0)
-                            {
-                                int posD = archDesc.buscarPorID(idDesc);
-                                if (posD != -1)
-                                {
-                                    Descuento descObj = archDesc.leer(posD);
-                                    float montoDesc = precioBase * (descObj.getPorcentaje() / 100.0f);
-
-                                    totalDescontadoGlobal += montoDesc;
-                                    totalOperacionesConDesc++;
-
-                                    for (size_t j = 0; j < vecDescuentos.size(); j++)
-                                    {
-                                        if (vecDescuentos[j].getIDDescuento() == idDesc)
-                                        {
-                                            vecOperaciones[j]++;
-                                            vecTotalDescontado[j] += montoDesc;
-                                            break;
-                                        }
-                                    }
-                                }
-                            }
-                        }
+                        vecOperaciones[j]++;
+                        vecTotalDescontado[j] += montoDesc;
+                        break;
                     }
+
                 }
+                totalDescontadoGlobal += montoDesc;
+                totalOperacionesConDesc++;
             }
         }
+    }
+
+    if (totalOperacionesConDesc <= 0){
+        cout <<"\n NO SE REGISTRARON DESCUENTOS DURANTE EL ANIO " <<anioFiltro <<"." <<endl <<endl;
+        system("pause");
+        return;
     }
 
     float montoNetoAbonado = valorBrutoTotal - totalDescontadoGlobal;
@@ -566,28 +516,23 @@ void informeImpactoDescuentos()
     system("cls");
     cout << "==========================================================================" << endl;
     cout << endl;
-    cout << "                  IMPACTO DE PROMOCIONES Y DESCUENTOS - ANIO " << anioFiltro << endl;
+    cout << "               IMPACTO DE PROMOCIONES Y DESCUENTOS - ANIO " << anioFiltro << endl;
     cout << endl;
     cout << "==========================================================================" << endl;
-    cout << left << setw(35) << "PROMOCION"
-         << " | " << setw(15) << "OPERACIONES"
-         << " | " << "TOTAL DESCONTADO" << endl;
+    cout << left << setw(35) << "PROMOCION" << " | " << setw(15) << "OPERACIONES" << " | " << "TOTAL DESCONTADO" << endl;
     cout << "==========================================================================" << endl;
 
     for (size_t i = 0; i < vecDescuentos.size(); i++)
     {
-        if (vecDescuentos[i].getEstado() || vecOperaciones[i] > 0)
+        if (vecOperaciones[i] > 0)
         {
-            cout << left << setw(35) << vecDescuentos[i].getNombre()
-                 << " | " << setw(15) << vecOperaciones[i]
+            cout << left << setw(35) << vecDescuentos[i].getNombre() << " | " << setw(15) << vecOperaciones[i]
                  << " | $" << (long long)vecTotalDescontado[i] << endl;
         }
     }
 
     cout << "==========================================================================" << endl;
-    cout << left << setw(35) << "TOTAL"
-         << " | " << setw(15) << totalOperacionesConDesc
-         << " | $" << (long long)totalDescontadoGlobal << endl;
+    cout << left << setw(35) << "TOTAL" << " | " << setw(15) << totalOperacionesConDesc << " | $" << (long long)totalDescontadoGlobal << endl;
     cout << "==========================================================================" << endl;
     cout << "VALOR BRUTO (SIN DESCUENTOS): $" << (long long)valorBrutoTotal << endl;
     cout << "TOTAL DESCONTADO:             $" << (long long)totalDescontadoGlobal << endl;
@@ -597,16 +542,14 @@ void informeImpactoDescuentos()
     system("pause");
 }
 
+
+
+
 void informeTicketsSuperanPromedio()
 {
     system("cls");
     ArchivoCompras archComp;
     ArchivoDetalleEntradas archDet;
-    ArchivoFunciones archFunc;
-    ArchivoSalas archSalas;
-    ArchivoFormato archForm;
-    ArchivoDescuento archDesc;
-
     int cantC = archComp.contarRegistros();
     int cantD = archDet.contarRegistros();
 
@@ -617,158 +560,86 @@ void informeTicketsSuperanPromedio()
         return;
     }
 
-    float sumaTotal = 0;
+    vector<float> vGastos(cantC, 0.0f);
+    vector<int> vCantEnt(cantC, 0);
+    float totalMonto = 0.0;
     int contadorActivas = 0;
 
-    for (int i = 0; i < cantC; i++)
+    for (int i=0; i<cantD; i++)
     {
-        Compra comp = archComp.leerRegistro(i);
-        if (comp.getEstado())
-        {
-            float precioFinal = 0;
-            for (int j = 0; j < cantD; j++)
-            {
-                DetalleEntrada det = archDet.leerRegistro(j);
-                if (det.getIdCompra() == comp.getIdCompra())
-                {
-                    int posFunc = archFunc.buscarRegistro(det.getIdFuncion());
-                    if (posFunc != -1)
-                    {
-                        Funcion func = archFunc.leerRegistro(posFunc);
-                        int posSala = archSalas.buscarRegistro(func.getIdSala());
-                        if (posSala != -1)
-                        {
-                            Sala sala = archSalas.leerRegistro(posSala);
-                            int posForm = archForm.buscarPorID(sala.getFormatoProyeccion());
-                            if (posForm != -1)
-                            {
-                                Formato form = archForm.leerRegistro(posForm);
-                                float precioBase = form.getPrecio();
-                                int idDesc = det.getIdDescuento();
-                                if (idDesc > 0)
-                                {
-                                    int posD = archDesc.buscarPorID(idDesc);
-                                    if (posD != -1)
-                                    {
-                                        Descuento desc = archDesc.leer(posD);
-                                        float montoDesc = precioBase * (desc.getPorcentaje() / 100.0);
-                                        precioFinal = precioBase - montoDesc;
-                                    }
-                                    else
-                                    {
-                                        precioFinal = precioBase;
-                                    }
-                                }
-                                else
-                                {
-                                    precioFinal = precioBase;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            sumaTotal += precioFinal;
-            contadorActivas++;
+        DetalleEntrada detalle = archDet.leerRegistro(i);
+        int  posCompra = archComp.buscarRegistro(detalle.getIdCompra());
+        if (posCompra == -1) continue;
+
+        Compra compra = archComp.leerRegistro(posCompra);
+
+        if (compra.getEstado()){
+            vGastos[posCompra] += detalle.getPrecioFinal();
+            vCantEnt[posCompra] ++;
         }
     }
 
-    if (contadorActivas == 0)
-    {
-        cout << "No hay compras activas en el sistema." << endl;
+    int ticketsValidos = 0;
+    for (int i = 0; i < cantC; i++) {
+        if (vGastos[i] > 0) {
+            totalMonto += vGastos[i];
+            ticketsValidos++;
+        }
+    }
+    if (ticketsValidos <= 0) {
+        cout << "No hay ventas registradas." << endl;
         system("pause");
         return;
     }
 
-    float gastoPromedio = sumaTotal / contadorActivas;
+    float gastoPromedio = totalMonto / ticketsValidos;
+    int cantTicketsMayorPromedio = 0;
 
     system("cls");
-    cout << "==========================================================================" << endl;
-    cout << endl;
-    cout << "                    TICKETS QUE SUPERAN EL GASTO PROMEDIO                 " << endl;
-    cout << endl;
-    cout << "==========================================================================" << endl;
-    cout << "GASTO PROMEDIO GENERAL: $" << (long long)gastoPromedio << endl;
-    cout << "==========================================================================" << endl;
-    cout << left
-         << setw(12) << "ID COMPRA" << " | "
-         << setw(10) << "ID SOCIO" << " | "
-         << setw(10) << "FECHA" << " | "
-         << setw(5)  << "HORA" << " | "
-         << setw(13) << "MONTO PAGADO" << endl;
-    cout << "==========================================================================" << endl;
+    cout << "==================================================================================================" << endl;
+    cout <<endl;
+    cout << "                               TICKETS QUE SUPERAN EL GASTO PROMEDIO                " << endl;
+    cout <<endl;
+    cout << "==================================================================================================" << endl;
+    cout << "                                GASTO PROMEDIO GENERAL: $" <<(long long)gastoPromedio << endl;
+    cout << "==================================================================================================" << endl;
+    cout << left << setw(11) << "ID COMPRA" << " | "
+         << setw(28) << "SOCIO" << " | "
+         << setw(11) << "FECHA" << " | "
+         << setw(7)  << "HORA" << " | "
+         << setw(15) <<"CANT. ENTRADAS" <<"|"
+         << setw(13) << "MONTO TOTAL" << endl;
+    cout << "==================================================================================================" << endl;
 
-    bool haySuperiores = false;
-
-    for (int i = 0; i < cantC; i++)
-    {
-        Compra c = archComp.leerRegistro(i);
-        if (c.getEstado())
-        {
-            float precioFinal = 0;
-            for (int j = 0; j < cantD; j++)
-            {
-                DetalleEntrada d = archDet.leerRegistro(j);
-                if (d.getIdCompra() == c.getIdCompra())
-                {
-                    int posFunc = archFunc.buscarRegistro(d.getIdFuncion());
-                    if (posFunc != -1)
-                    {
-                        Funcion func = archFunc.leerRegistro(posFunc);
-                        int posSala = archSalas.buscarRegistro(func.getIdSala());
-                        if (posSala != -1)
-                        {
-                            Sala sala = archSalas.leerRegistro(posSala);
-                            int posForm = archForm.buscarPorID(sala.getFormatoProyeccion());
-                            if (posForm != -1)
-                            {
-                                Formato form = archForm.leerRegistro(posForm);
-                                float precioBase = form.getPrecio();
-                                int idDesc = d.getIdDescuento();
-                                if (idDesc > 0)
-                                {
-                                    int posD = archDesc.buscarPorID(idDesc);
-                                    if (posD != -1)
-                                    {
-                                        Descuento desc = archDesc.leer(posD);
-                                        float montoDesc = precioBase * (desc.getPorcentaje() / 100.0);
-                                        precioFinal = precioBase - montoDesc;
-                                    }
-                                    else
-                                    {
-                                        precioFinal = precioBase;
-                                    }
-                                }
-                                else
-                                {
-                                    precioFinal = precioBase;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (precioFinal > gastoPromedio)
-            {
-                haySuperiores = true;
-                cout << left
-                     << setw(12) << c.getIdCompra() << " | "
-                     << setw(10) << c.getIdSocio() << " | ";
-                c.getFecha().Mostrar();
-                cout << " | ";
-                c.getHorario().Mostrar();
-                cout << " | $" << setw(10) << (long long)precioFinal << endl;
-                cout << "==========================================================================" << endl;
-            }
+    for (int i=0; i<cantC; i++){
+        if (vGastos[i]> gastoPromedio){
+            cantTicketsMayorPromedio ++ ;
+            Compra compra = archComp.leerRegistro(i);
+            ArchivoSocios archS;
+            int posSocio = archS.buscarRegistro(compra.getIdSocio());
+            Socio socio = archS.leerRegistro(posSocio);
+            cout << left
+                 << setw(12) << compra.getIdCompra() << "| "
+                 << setw(10) << socio.getNombre()
+                 << setw(10) <<socio.getApellido() << "(ID: "
+                 << setw(2) << socio.getIdSocio() <<") | "
+                 << setw(2)  << compra.getFecha().getDia() << "/"
+                 << setw(2)  << compra.getFecha().getMes() << "/"
+                 << setw(6)  << compra.getFecha().getAnio() << "| "
+                 << setw(2)  << compra.getHorario().getHora() << ":"
+                 << setw(5)  << compra.getHorario().getMinutos() << "| "
+                 << setw(15) << vCantEnt[i] << "| $"
+                 << setw(13) << vGastos[i] <<endl;
+            cout << "--------------------------------------------------------------------------------------------------" <<endl;
         }
     }
-
-    if (haySuperiores == false)
-    {
-        cout << "No hay tickets que superen el gasto promedio." << endl;
-        cout << "==========================================================================" << endl;
-    }
-
+    cout << "==================================================================================================" << endl;
+    cout <<"\n                      CANTIDAD DE TICKETS EVALUADOS: " <<cantC <<endl;
+    cout <<"                      CANTIDAD DE TICKETS QUE SUPERAN EL PROMEDIO: " <<cantTicketsMayorPromedio <<endl;
+    cout << "\n==================================================================================================" << endl;
     system("pause");
+
 }
+
+
+
