@@ -39,8 +39,7 @@ int menuPrincipal()
         cout << "     0. SALIR" << endl;
         cout << endl;
         cout << "================================================" << endl;
-        cout << "Ingrese una opción: ";
-        cin >> opcion;
+        opcion = leerOpcion();
         cout << "================================================" << endl;
         system("cls");
 
@@ -103,8 +102,7 @@ void menuPeliculas()
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "================================================" << endl;
-        cout << "Ingrese una opción: ";
-        cin >> opcion;
+        opcion = leerOpcion();
         cout << "================================================" << endl;
         system("cls");
 
@@ -154,8 +152,7 @@ void menuDescuentos()
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "================================================" << endl;
-        cout << "Ingrese una opción: ";
-        cin >> opcion;
+        opcion = leerOpcion();
         cout << "================================================" << endl;
         system("cls");
 
@@ -203,8 +200,7 @@ void menuSocios()
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "================================================" << endl;
-        cout << "Ingrese una opcion: ";
-        cin >> opcion;
+        opcion = leerOpcion();
         cout << "================================================" << endl;
         system("cls");
 
@@ -255,8 +251,7 @@ void menuFormato()
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "================================================" << endl;
-        cout << "Ingrese una opcion: ";
-        cin >> opcion;
+        opcion = leerOpcion();
         cout << "================================================" << endl;
         system("cls");
 
@@ -304,8 +299,7 @@ void menuSalas()
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "================================================" << endl;
-        cout << "Ingrese una opcion: ";
-        cin >> opcion;
+        opcion = leerOpcion();
         cout << "================================================" << endl;
         system("cls");
 
@@ -351,8 +345,7 @@ void menuButacas()
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "================================================" << endl;
-        cout << "Ingrese una opcion: ";
-        cin >> opcion;
+        opcion = leerOpcion();
         cout << "================================================" << endl;
         system("cls");
 
@@ -394,8 +387,7 @@ void menuFunciones()
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "================================================" << endl;
-        cout << "Ingrese una opcion: ";
-        cin >> opcion;
+        opcion = leerOpcion();
         cout << "================================================" << endl;
         system("cls");
 
@@ -445,8 +437,7 @@ void menuCompras()
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "================================================" << endl;
-        cout << "Ingrese una opcion: ";
-        cin >> opcion;
+        opcion = leerOpcion();
         cout << "================================================" << endl;
         system("cls");
 
@@ -495,8 +486,7 @@ void menuInformes()
         cout << "     0. VOLVER AL MENU PRINCIPAL" << endl;
         cout << endl;
         cout << "================================================" << endl;
-        cout << "Ingrese una opcion: ";
-        cin >> opcion;
+        opcion = leerOpcion();
         cout << "================================================" << endl;
         system("cls");
 

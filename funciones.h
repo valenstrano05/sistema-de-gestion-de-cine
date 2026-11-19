@@ -3,7 +3,7 @@
 #include "clsFuncion.h"
 
 void cargarCadena (const char* mensaje, char* cadena, int tam);
-int pedirEntero(const char * mensaje);
+int leerOpcion();
 int butacasOcupadas(int idFuncion);
 int butacasDisponibles(Funcion f);
 

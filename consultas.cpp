@@ -31,8 +31,7 @@ void consultarPeliculas()
         cout << "     0. VOLVER" << endl;
         cout << endl;
         cout << "================================================" << endl;
-        cout << "Ingrese una opcion: ";
-        cin >> opcion;
+        opcion = leerOpcion();
         cout << "================================================" << endl;
         system("cls");
         switch (opcion)
@@ -224,8 +223,7 @@ void consultarFunciones()
         cout << "     0. VOLVER" << endl;
         cout << endl;
         cout << "================================================" << endl;
-        cout << "Ingrese una opcion: ";
-        cin >> opcion;
+        opcion = leerOpcion();
         cout << "================================================" << endl;
         system("cls");
         switch (opcion)
@@ -488,8 +486,7 @@ void consultarSocios()
         cout << "     0. VOLVER" << endl;
         cout << endl;
         cout << "================================================" << endl;
-        cout << "Ingrese una opcion: ";
-        cin >> opcion;
+        opcion = leerOpcion();
         cout << "================================================" << endl;
         system("cls");
         switch (opcion)

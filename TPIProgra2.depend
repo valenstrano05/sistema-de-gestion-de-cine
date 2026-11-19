@@ -673,7 +673,7 @@
 	"clsArchivoDescuento.h"
 	"funciones.h"
 
-1794667262 c:\users\asus\desktop\programacion\gestion_cines\sistema-de-gestion-de-cine\funciones.h
+1795078309 c:\users\asus\desktop\programacion\gestion_cines\sistema-de-gestion-de-cine\funciones.h
 	"clsFuncion.h"
 
 1794937671 source:c:\users\asus\desktop\programacion\gestion_cines\sistema-de-gestion-de-cine\clsformato.cpp
@@ -727,8 +727,8 @@
 
 1794937671 c:\users\asus\desktop\programacion\gestion_cines\sistema-de-gestion-de-cine\consultas.h
 
-1794976925 source:c:\users\asus\desktop\programacion\gestion_cines\sistema-de-gestion-de-cine\main.cpp
-	"submenues.h"
+1795077845 source:c:\users\asus\desktop\programacion\gestion_cines\sistema-de-gestion-de-cine\main.cpp
+	"menues.h"
 	<windows.h>
 	<clocale>
 
@@ -754,7 +754,7 @@
 	<iomanip>
 	"clsHora.h"
 
-1794950324 source:c:\users\asus\desktop\programacion\gestion_cines\sistema-de-gestion-de-cine\funciones.cpp
+1795078246 source:c:\users\asus\desktop\programacion\gestion_cines\sistema-de-gestion-de-cine\funciones.cpp
 	<iostream>
 	<windows.h>
 	<ctime>
@@ -771,7 +771,7 @@
 	"clsArchivoDetalleEntradas.h"
 	<vector>
 
-1794974618 source:c:\users\asus\desktop\programacion\gestion_cines\sistema-de-gestion-de-cine\informes.cpp
+1795077845 source:c:\users\asus\desktop\programacion\gestion_cines\sistema-de-gestion-de-cine\informes.cpp
 	<iostream>
 	<windows.h>
 	<ctime>
@@ -861,6 +861,24 @@
 	"funciones.h"
 
 1795012759 source:c:\users\naza\desktop\tpicompartido\sistema-de-gestion-de-cine\menues.cpp
+	<iostream>
+	<windows.h>
+	"clsArchivoPeliculas.h"
+	"clsPelicula.h"
+	"funciones.h"
+	"menues.h"
+	"listados.h"
+	"consultas.h"
+	"informes.h"
+
+1795077845 c:\users\asus\desktop\programacion\gestion_cines\sistema-de-gestion-de-cine\menues.h
+	<iostream>
+	<windows.h>
+	"clsArchivoPeliculas.h"
+	"clsPelicula.h"
+	"funciones.h"
+
+1795078429 source:c:\users\asus\desktop\programacion\gestion_cines\sistema-de-gestion-de-cine\menues.cpp
 	<iostream>
 	<windows.h>
 	"clsArchivoPeliculas.h"

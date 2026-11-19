@@ -33,8 +33,7 @@ void listadosPeliculas()
         cout << "     0. VOLVER" << endl;
         cout << endl;
         cout << "================================================" << endl;
-        cout << "Ingrese una opcion: ";
-        cin >> opcion;
+        opcion = leerOpcion();
         cout << "================================================" << endl;
         system("cls");
         switch (opcion)
@@ -262,8 +261,7 @@ void listadosSocios()
         cout << "     0. VOLVER" << endl;
         cout << endl;
         cout << "================================================" << endl;
-        cout << "Ingrese una opcion: ";
-        cin >> opcion;
+        opcion = leerOpcion();
         cout << "================================================" << endl;
         system("cls");
         switch (opcion)
@@ -493,8 +491,7 @@ void listadosFunciones()
         cout << "     0. VOLVER" << endl;
         cout << endl;
         cout << "=====================================================" << endl;
-        cout << "Ingrese una opcion: ";
-        cin >> opcion;
+        opcion = leerOpcion();
         cout << "=====================================================" << endl;
         system("cls");
         switch (opcion)
@@ -625,8 +622,7 @@ void listadosCompras()
         cout << "     0. VOLVER" << endl;
         cout << endl;
         cout << "================================================" << endl;
-        cout << "Ingrese una opcion: ";
-        cin >> opcion;
+        opcion = leerOpcion();
         cout << "================================================" << endl;
         system("cls");
         switch (opcion)

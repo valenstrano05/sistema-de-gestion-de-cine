@@ -48,6 +48,19 @@ bool confirmacionSalida()
     return false;
 }
 
+
+int leerOpcion() {
+    int opcion;
+    while (true) {
+        cout << "Ingrese una opcion: ";
+        cin >> opcion;
+        if (!cin.fail()) return opcion;
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "Error, solo se acepta una opcion dentro del rango. " << endl;
+    }
+}
+
 //-------------------------------------------
 // UTILIDADES PERO PARA BUTACAS
 int butacasOcupadas(int idFuncion)
